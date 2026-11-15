@@ -12,11 +12,17 @@
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://vividomus.com/">
 
-<!-- Preload critico con priorità massima per azzerare l'LCP (puntando al tuo avif) -->
+<!-- Preload e caricamento asincrono dei Font per azzerare il blocco del rendering -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap" media="print" onload="this.media='all'">
+<noscript>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap">
+</noscript>
+
+<!-- Preload immagine LCP -->
 <link rel="preload" as="image" href="lecce1.avif" fetchpriority="high">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
   :root{
@@ -100,11 +106,11 @@
     position:absolute;bottom:30px;left:50%;transform:translateX(-50%);
     display:flex;gap:10px;z-index:3;
   }
-  .slide-dots span{
+  .slide-dots button{
     width:25px;height:2px;background:rgba(255,255,255,.4);cursor:pointer;
-    transition:background .3s;
+    border:none;padding:0;transition:background .3s;
   }
-  .slide-dots span.active{background:#fff}
+  .slide-dots button.active{background:#fff}
 
   .slider-arrow {
     position: absolute;
@@ -156,14 +162,16 @@
     gap: 6px;
     z-index: 10;
   }
-  .room-dots span {
+  .room-dots button {
     width: 16px;
     height: 2px;
     background: rgba(255,255,255,0.5);
     cursor: pointer;
+    border: none;
+    padding: 0;
     transition: background 0.3s;
   }
-  .room-dots span.active { background: #fff; }
+  .room-dots button.active { background: #fff; }
   .room-slideshow .slider-arrow { width: 32px; height: 32px; font-size: 0.9rem; }
   .room-slideshow .slider-arrow.prev { left: 10px; }
   .room-slideshow .slider-arrow.next { right: 10px; }
@@ -383,10 +391,10 @@
     </div>
 
     <div class="slide-dots">
-      <span class="active" onclick="currentHeroSlide(0)" aria-label="Slide 1"></span>
-      <span onclick="currentHeroSlide(1)" aria-label="Slide 2"></span>
-      <span onclick="currentHeroSlide(2)" aria-label="Slide 3"></span>
-      <span onclick="currentHeroSlide(3)" aria-label="Slide 4"></span>
+      <button class="active" onclick="currentHeroSlide(0)" aria-label="Slide 1"></button>
+      <button onclick="currentHeroSlide(1)" aria-label="Slide 2"></button>
+      <button onclick="currentHeroSlide(2)" aria-label="Slide 3"></button>
+      <button onclick="currentHeroSlide(3)" aria-label="Slide 4"></button>
     </div>
   </section>
 
@@ -412,9 +420,9 @@
           <button class="slider-arrow next" onclick="moveRoomSlide('slider-apt', 1)" aria-label="Successivo">&#10095;</button>
 
           <div class="room-dots">
-            <span class="active" onclick="currentRoomSlide('slider-apt', 0)" aria-label="Slide 1"></span>
-            <span onclick="currentRoomSlide('slider-apt', 1)" aria-label="Slide 2"></span>
-            <span onclick="currentRoomSlide('slider-apt', 2)" aria-label="Slide 3"></span>
+            <button class="active" onclick="currentRoomSlide('slider-apt', 0)" aria-label="Slide 1"></button>
+            <button onclick="currentRoomSlide('slider-apt', 1)" aria-label="Slide 2"></button>
+            <button onclick="currentRoomSlide('slider-apt', 2)" aria-label="Slide 3"></button>
           </div>
         </div>
 
@@ -447,8 +455,8 @@
           <button class="slider-arrow next" onclick="moveRoomSlide('slider-suite1', 1)" aria-label="Successivo">&#10095;</button>
 
           <div class="room-dots">
-            <span class="active" onclick="currentRoomSlide('slider-suite1', 0)" aria-label="Slide 1"></span>
-            <span onclick="currentRoomSlide('slider-suite1', 1)" aria-label="Slide 2"></span>
+            <button class="active" onclick="currentRoomSlide('slider-suite1', 0)" aria-label="Slide 1"></button>
+            <button onclick="currentRoomSlide('slider-suite1', 1)" aria-label="Slide 2"></button>
           </div>
         </div>
         <div class="suite-info">
@@ -474,8 +482,8 @@
           <button class="slider-arrow next" onclick="moveRoomSlide('slider-suite2', 1)" aria-label="Successivo">&#10095;</button>
 
           <div class="room-dots">
-            <span class="active" onclick="currentRoomSlide('slider-suite2', 0)" aria-label="Slide 1"></span>
-            <span onclick="currentRoomSlide('slider-suite2', 1)" aria-label="Slide 2"></span>
+            <button class="active" onclick="currentRoomSlide('slider-suite2', 0)" aria-label="Slide 1"></button>
+            <button onclick="currentRoomSlide('slider-suite2', 1)" aria-label="Slide 2"></button>
           </div>
         </div>
         <div class="suite-info">
@@ -604,7 +612,7 @@
   }
 
   const heroSlides = document.querySelectorAll('.hero .slide');
-  const heroDots = document.querySelectorAll('.slide-dots span');
+  const heroDots = document.querySelectorAll('.slide-dots button');
   let heroCurrent = 0;
   
   function showHeroSlide(i){
@@ -626,7 +634,7 @@
     const container = document.getElementById(containerId);
     if (!container) return;
     const slides = container.querySelectorAll('.room-slide');
-    const dots = container.querySelectorAll('.room-dots span');
+    const dots = container.querySelectorAll('.room-dots button');
     roomSlidersState[containerId] = { current: 0, slides: slides, dots: dots };
     setInterval(() => { moveRoomSlide(containerId, 1); }, 5000);
   }
