@@ -12,10 +12,10 @@
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://vividomus.com/">
 
-<!-- Preload delle risorse critiche per velocità massima -->
+<!-- Preload critico con priorità massima per azzerare l'LCP (puntando al tuo avif) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="image" href="lecce1.avif">
+<link rel="preload" as="image" href="lecce1.avif" fetchpriority="high">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
@@ -48,7 +48,7 @@
     position:fixed;top:0;left:0;right:0;z-index:100;
     padding:14px 30px;
     display:flex;justify-content:space-between;align-items:center;
-    background:rgba(255, 255, 255, 0.92);
+    background:rgba(255, 255, 255, 0.95);
     backdrop-filter:blur(8px);
     border-bottom:1px solid var(--line);
     gap: 20px;
@@ -303,7 +303,7 @@
   }
   .contact-card:hover{border-color:var(--gold);transform:translateY(-3px)}
   .contact-card .icon{font-size:1.3rem;color:var(--gold);margin-bottom:6px}
-  .contact-card h4{font-size:1rem;margin-bottom:4px}
+  .contact-card h3{font-size:1rem;margin-bottom:4px;font-weight:500}
   .contact-card a{color:var(--ink-soft);font-size:.85rem;transition:color .3s}
   .contact-card a:hover{color:var(--gold)}
 
@@ -349,7 +349,7 @@
 
 <header>
   <div class="logo">Vivi<span>Domus</span></div>
-  <nav>
+  <nav aria-label="Principale">
     <ul>
       <li><a href="#appartment" data-i18n="nav_appartment">Appartamento</a></li>
       <li><a href="#suites" data-i18n="nav_suites">Suite</a></li>
@@ -358,232 +358,234 @@
       <li><a href="#contact" data-i18n="nav_contact">Contatti</a></li>
     </ul>
   </nav>
-  <div class="lang-switch">
-    <button data-lang="it" class="active">IT</button>
-    <button data-lang="en">EN</button>
-    <button data-lang="fr">FR</button>
-    <button data-lang="de">DE</button>
-    <button data-lang="es">ES</button>
+  <div class="lang-switch" aria-label="Selettore lingua">
+    <button data-lang="it" class="active" aria-label="Italiano">IT</button>
+    <button data-lang="en" aria-label="Inglese">EN</button>
+    <button data-lang="fr" aria-label="Francese">FR</button>
+    <button data-lang="de" aria-label="Tedesco">DE</button>
+    <button data-lang="es" aria-label="Spagnolo">ES</button>
   </div>
 </header>
 
-<section class="hero">
-  <div class="slide active" style="background-image:url('lecce1.avif')"></div>
-  <div class="slide" style="background-image:url('lecce2.avif')"></div>
-  <div class="slide" style="background-image:url('lecce3.avif')"></div>
-  <div class="slide" style="background-image:url('lecce4.avif')"></div>
+<main>
+  <section class="hero" aria-label="Presentazione">
+    <div class="slide active" style="background-image:url('lecce1.avif')"></div>
+    <div class="slide" style="background-image:url('lecce2.avif')"></div>
+    <div class="slide" style="background-image:url('lecce3.avif')"></div>
+    <div class="slide" style="background-image:url('lecce4.avif')"></div>
 
-  <button class="slider-arrow prev" onclick="moveHeroSlide(-1)" aria-label="Precedente">&#10094;</button>
-  <button class="slider-arrow next" onclick="moveHeroSlide(1)" aria-label="Successivo">&#10095;</button>
+    <button class="slider-arrow prev" onclick="moveHeroSlide(-1)" aria-label="Precedente">&#10094;</button>
+    <button class="slider-arrow next" onclick="moveHeroSlide(1)" aria-label="Successivo">&#10095;</button>
 
-  <div class="hero-content">
-    <h1 data-i18n="hero_title">ViviDomus Lecce</h1>
-    <p data-i18n="hero_subtitle">Appartamento & Suite — nel cuore del barocco</p>
-  </div>
+    <div class="hero-content">
+      <h1 data-i18n="hero_title">ViviDomus Lecce</h1>
+      <p data-i18n="hero_subtitle">Appartamento & Suite — nel cuore del barocco</p>
+    </div>
 
-  <div class="slide-dots">
-    <span class="active" onclick="currentHeroSlide(0)"></span>
-    <span onclick="currentHeroSlide(1)"></span>
-    <span onclick="currentHeroSlide(2)"></span>
-    <span onclick="currentHeroSlide(3)"></span>
-  </div>
-</section>
+    <div class="slide-dots">
+      <span class="active" onclick="currentHeroSlide(0)" aria-label="Slide 1"></span>
+      <span onclick="currentHeroSlide(1)" aria-label="Slide 2"></span>
+      <span onclick="currentHeroSlide(2)" aria-label="Slide 3"></span>
+      <span onclick="currentHeroSlide(3)" aria-label="Slide 4"></span>
+    </div>
+  </section>
 
-<section id="appartment" class="appartment">
-  <div class="container">
-    <div class="appartment-grid">
-      <div class="apt-title-area">
-        <div class="section-label" data-i18n="apt_label">L'appartamento</div>
-        <h2 class="section-title" data-i18n="apt_title" style="margin-bottom:0;">Uno spazio luminoso, ampio e accogliente</h2>
-      </div>
+  <section id="appartment" class="appartment">
+    <div class="container">
+      <div class="appartment-grid">
+        <div class="apt-title-area">
+          <div class="section-label" data-i18n="apt_label">L'appartamento</div>
+          <h2 class="section-title" data-i18n="apt_title" style="margin-bottom:0;">Uno spazio luminoso, ampio e accogliente</h2>
+        </div>
 
-      <div class="apt-desc-area appartment-text">
-        <p data-i18n="apt_p1">Caratterizzato da interni bianchi e luminosi incorniciati da dettagli dorati, l'appartamento accoglie gli ospiti con una straordinaria sensazione di spazio, gioia e comfort assoluto.</p>
-        <p data-i18n="apt_p2">La posizione a due passi da Porta San Biagio e dal centro storico di Lecce permette di vivere la città a piedi, tornando la sera in un ambiente arioso e raffinato.</p>
-      </div>
-      
-      <div class="room-slideshow apt-img-area" id="slider-apt">
-        <div class="room-slide active" style="background-image:url('casa1.avif')"></div>
-        <div class="room-slide" style="background-image:url('lecce1.avif')"></div>
-        <div class="room-slide" style="background-image:url('lecce2.avif')"></div>
+        <div class="apt-desc-area appartment-text">
+          <p data-i18n="apt_p1">Caratterizzato da interni bianchi e luminosi incorniciati da dettagli dorati, l'appartamento accoglie gli ospiti con una straordinaria sensazione di spazio, gioia e comfort assoluto.</p>
+          <p data-i18n="apt_p2">La posizione a due passi da Porta San Biagio e dal centro storico di Lecce permette di vivere la città a piedi, tornando la sera in un ambiente arioso e raffinato.</p>
+        </div>
         
-        <button class="slider-arrow prev" onclick="moveRoomSlide('slider-apt', -1)" aria-label="Precedente">&#10094;</button>
-        <button class="slider-arrow next" onclick="moveRoomSlide('slider-apt', 1)" aria-label="Successivo">&#10095;</button>
+        <div class="room-slideshow apt-img-area" id="slider-apt">
+          <div class="room-slide active" style="background-image:url('casa1.avif')"></div>
+          <div class="room-slide" style="background-image:url('lecce1.avif')"></div>
+          <div class="room-slide" style="background-image:url('lecce2.avif')"></div>
+          
+          <button class="slider-arrow prev" onclick="moveRoomSlide('slider-apt', -1)" aria-label="Precedente">&#10094;</button>
+          <button class="slider-arrow next" onclick="moveRoomSlide('slider-apt', 1)" aria-label="Successivo">&#10095;</button>
 
-        <div class="room-dots">
-          <span class="active" onclick="currentRoomSlide('slider-apt', 0)"></span>
-          <span onclick="currentRoomSlide('slider-apt', 1)"></span>
-          <span onclick="currentRoomSlide('slider-apt', 2)"></span>
+          <div class="room-dots">
+            <span class="active" onclick="currentRoomSlide('slider-apt', 0)" aria-label="Slide 1"></span>
+            <span onclick="currentRoomSlide('slider-apt', 1)" aria-label="Slide 2"></span>
+            <span onclick="currentRoomSlide('slider-apt', 2)" aria-label="Slide 3"></span>
+          </div>
+        </div>
+
+        <div class="features apt-features-area">
+          <div class="feature"><strong data-i18n="apt_f1_l">Piano</strong><span data-i18n="apt_f1_v">Primo piano</span></div>
+          <div class="feature"><strong data-i18n="apt_f2_l">Capienza</strong><span data-i18n="apt_f2_v">Fino a 4 ospiti</span></div>
+          <div class="feature"><strong data-i18n="apt_f3_l">Servizi</strong><span data-i18n="apt_f3_v">Cucina, living, bagno</span></div>
+          <div class="feature"><strong data-i18n="apt_f4_l">Posizione</strong><span data-i18n="apt_f4_v">Vicino al centro</span></div>
+        </div>
+
+        <div class="apt-btn-area">
+          <a href="#booking" class="btn" onclick="selectSolution('Appartamento Principale')" data-i18n="btn_book_apt">Prenota Appartamento</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="suites" class="suites">
+    <div class="container">
+      <div class="section-label" style="text-align:center" data-i18n="suite_label">Le suite</div>
+      <h2 class="section-title" style="text-align:center" data-i18n="suite_title">Due stanze, una volta a stella</h2>
+      <p class="suites-intro" data-i18n="suite_intro">Due camere esclusive con bagno privato, custodite sotto l'antica volta a stella. Uno spazio intimo e riservato, caratterizzato da toni scuri e avvolgenti, pensato per chi cerca silenzio, privacy e la bellezza discreta della pietra leccese.</p>
+
+      <div class="suite-card">
+        <div class="room-slideshow" id="slider-suite1">
+          <div class="room-slide active" style="background-image:url('lecce3.avif')"></div>
+          <div class="room-slide" style="background-image:url('lecce4.avif')"></div>
+          
+          <button class="slider-arrow prev" onclick="moveRoomSlide('slider-suite1', -1)" aria-label="Precedente">&#10094;</button>
+          <button class="slider-arrow next" onclick="moveRoomSlide('slider-suite1', 1)" aria-label="Successivo">&#10095;</button>
+
+          <div class="room-dots">
+            <span class="active" onclick="currentRoomSlide('slider-suite1', 0)" aria-label="Slide 1"></span>
+            <span onclick="currentRoomSlide('slider-suite1', 1)" aria-label="Slide 2"></span>
+          </div>
+        </div>
+        <div class="suite-info">
+          <div class="volta" data-i18n="suite_volta">Volta a stella</div>
+          <h3 data-i18n="suite1_name">Suite I</h3>
+          <p data-i18n="suite1_desc">Camera intima con bagno privato. Toni scuri e rilassanti, arredi sobri e il disegno della volta che regala un'atmosfera di profonda quiete.</p>
+          <ul>
+            <li data-i18n="suite1_f1">Letto matrimoniale / singolo</li>
+            <li data-i18n="suite1_f2">Bagno privato</li>
+            <li data-i18n="suite1_f3">Volta a stella originale</li>
+            <li data-i18n="suite1_f4">Massima riservatezza</li>
+          </ul>
+          <a href="#booking" class="btn btn-light" onclick="selectSolution('Suite I')" data-i18n="btn_book_suite1">Prenota Suite I</a>
         </div>
       </div>
 
-      <div class="features apt-features-area">
-        <div class="feature"><strong data-i18n="apt_f1_l">Piano</strong><span data-i18n="apt_f1_v">Primo piano</span></div>
-        <div class="feature"><strong data-i18n="apt_f2_l">Capienza</strong><span data-i18n="apt_f2_v">Fino a 4 ospiti</span></div>
-        <div class="feature"><strong data-i18n="apt_f3_l">Servizi</strong><span data-i18n="apt_f3_v">Cucina, living, bagno</span></div>
-        <div class="feature"><strong data-i18n="apt_f4_l">Posizione</strong><span data-i18n="apt_f4_v">Vicino al centro</span></div>
-      </div>
+      <div class="suite-card">
+        <div class="room-slideshow" id="slider-suite2">
+          <div class="room-slide active" style="background-image:url('lecce4.avif')"></div>
+          <div class="room-slide" style="background-image:url('lecce3.avif')"></div>
+          
+          <button class="slider-arrow prev" onclick="moveRoomSlide('slider-suite2', -1)" aria-label="Precedente">&#10094;</button>
+          <button class="slider-arrow next" onclick="moveRoomSlide('slider-suite2', 1)" aria-label="Successivo">&#10095;</button>
 
-      <div class="apt-btn-area">
-        <a href="#booking" class="btn" onclick="selectSolution('Appartamento Principale')" data-i18n="btn_book_apt">Prenota Appartamento</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="suites" class="suites">
-  <div class="container">
-    <div class="section-label" style="text-align:center" data-i18n="suite_label">Le suite</div>
-    <h2 class="section-title" style="text-align:center" data-i18n="suite_title">Due stanze, una volta a stella</h2>
-    <p class="suites-intro" data-i18n="suite_intro">Due camere esclusive con bagno privato, custodite sotto l'antica volta a stella. Uno spazio intimo e riservato, caratterizzato da toni scuri e avvolgenti, pensato per chi cerca silenzio, privacy e la bellezza discreta della pietra leccese.</p>
-
-    <div class="suite-card">
-      <div class="room-slideshow" id="slider-suite1">
-        <div class="room-slide active" style="background-image:url('lecce3.avif')"></div>
-        <div class="room-slide" style="background-image:url('lecce4.avif')"></div>
-        
-        <button class="slider-arrow prev" onclick="moveRoomSlide('slider-suite1', -1)" aria-label="Precedente">&#10094;</button>
-        <button class="slider-arrow next" onclick="moveRoomSlide('slider-suite1', 1)" aria-label="Successivo">&#10095;</button>
-
-        <div class="room-dots">
-          <span class="active" onclick="currentRoomSlide('slider-suite1', 0)"></span>
-          <span onclick="currentRoomSlide('slider-suite1', 1)"></span>
+          <div class="room-dots">
+            <span class="active" onclick="currentRoomSlide('slider-suite2', 0)" aria-label="Slide 1"></span>
+            <span onclick="currentRoomSlide('slider-suite2', 1)" aria-label="Slide 2"></span>
+          </div>
+        </div>
+        <div class="suite-info">
+          <div class="volta" data-i18n="suite_volta">Volta a stella</div>
+          <h3 data-i18n="suite2_name">Suite II</h3>
+          <p data-i18n="suite2_desc">Camera esclusiva con bagno privato. La stessa architettura storica, un'altra sfumatura di intimità e un comfort avvolgente.</p>
+          <ul>
+            <li data-i18n="suite2_f1">Letto matrimoniale / singolo</li>
+            <li data-i18n="suite2_f2">Bagno privato</li>
+            <li data-i18n="suite2_f3">Volta a stella originale</li>
+            <li data-i18n="suite2_f4">Massima riservatezza</li>
+          </ul>
+          <a href="#booking" class="btn btn-light" onclick="selectSolution('Suite II')" data-i18n="btn_book_suite2">Prenota Suite II</a>
         </div>
       </div>
-      <div class="suite-info">
-        <div class="volta" data-i18n="suite_volta">Volta a stella</div>
-        <h3 data-i18n="suite1_name">Suite I</h3>
-        <p data-i18n="suite1_desc">Camera intima con bagno privato. Toni scuri e rilassanti, arredi sobri e il disegno della volta che regala un'atmosfera di profonda quiete.</p>
-        <ul>
-          <li data-i18n="suite1_f1">Letto matrimoniale / singolo</li>
-          <li data-i18n="suite1_f2">Bagno privato</li>
-          <li data-i18n="suite1_f3">Volta a stella originale</li>
-          <li data-i18n="suite1_f4">Massima riservatezza</li>
-        </ul>
-        <a href="#booking" class="btn btn-light" onclick="selectSolution('Suite I')" data-i18n="btn_book_suite1">Prenota Suite I</a>
+    </div>
+  </section>
+
+  <section id="location" class="location">
+    <div class="container">
+      <div class="location-grid">
+        <div class="location-text">
+          <div class="section-label" data-i18n="loc_label">Posizione</div>
+          <h2 class="section-title" data-i18n="loc_title">Nel cuore barocco di Lecce</h2>
+          <p data-i18n="loc_p1">ViviDomus si trova in una posizione strategica a due passi da Porta San Biagio. A piedi si raggiungono facilmente Piazza del Duomo, il Teatro Romano e le meraviglie del centro storico.</p>
+          <p data-i18n="loc_p2">La base ideale per esplorare a piedi la città e muoversi comodamente verso le splendide spiagge del Salento.</p>
+        </div>
+        <div class="location-map">Lecce — Porta San Biagio / Via di Leuca</div>
       </div>
     </div>
+  </section>
 
-    <div class="suite-card">
-      <div class="room-slideshow" id="slider-suite2">
-        <div class="room-slide active" style="background-image:url('lecce4.avif')"></div>
-        <div class="room-slide" style="background-image:url('lecce3.avif')"></div>
+  <section id="booking" class="booking">
+    <div class="container">
+      <div class="section-label" data-i18n="book_label">Prenotazione</div>
+      <h2 class="section-title" data-i18n="book_title">Prenota il tuo soggiorno</h2>
+      <p class="booking-subtitle" data-i18n="book_subtitle">Invia la richiesta: ti risponderemo con la conferma di disponibilità.</p>
+      
+      <form class="booking-form" onsubmit="event.preventDefault();alert('Richiesta inviata con successo!');">
+        <div class="form-group">
+          <label for="form-name" data-i18n="form_lbl_name">Nome</label>
+          <input type="text" id="form-name" data-i18n-ph="form_name" placeholder="Nome e cognome" required>
+        </div>
         
-        <button class="slider-arrow prev" onclick="moveRoomSlide('slider-suite2', -1)" aria-label="Precedente">&#10094;</button>
-        <button class="slider-arrow next" onclick="moveRoomSlide('slider-suite2', 1)" aria-label="Successivo">&#10095;</button>
+        <div class="form-group">
+          <label for="form-email" data-i18n="form_lbl_email">Email</label>
+          <input type="email" id="form-email" data-i18n-ph="form_email" placeholder="Indirizzo email" required>
+        </div>
+        
+        <div class="form-group full">
+          <label for="solution-select" data-i18n="form_lbl_solution">Soluzione</label>
+          <select id="solution-select" required aria-label="Seleziona la soluzione">
+            <option value="" data-i18n="form_select">Seleziona la soluzione</option>
+            <option value="Appartamento Principale" data-i18n="form_opt1">Appartamento Principale</option>
+            <option value="Suite I" data-i18n="form_opt2">Suite I</option>
+            <option value="Suite II" data-i18n="form_opt3">Suite II</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="form-arrival" data-i18n="form_lbl_arrival">Arrivo</label>
+          <input type="date" id="form-arrival" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="form-departure" data-i18n="form_lbl_departure">Partenza</label>
+          <input type="date" id="form-departure" required>
+        </div>
+        
+        <div class="form-group full">
+          <label for="form-guests" data-i18n="form_lbl_guests">Ospiti</label>
+          <input type="number" id="form-guests" min="1" max="10" value="2" required>
+        </div>
+        
+        <div class="form-group full">
+          <label for="form-msg" data-i18n="form_lbl_msg">Messaggio</label>
+          <textarea id="form-msg" rows="4" data-i18n-ph="form_msg" placeholder="Messaggio o richieste particolari (opzionale)"></textarea>
+        </div>
+        
+        <div class="full">
+          <button type="submit" class="btn" style="width:100%;" data-i18n="form_send">Invia richiesta</button>
+        </div>
+      </form>
+    </div>
+  </section>
 
-        <div class="room-dots">
-          <span class="active" onclick="currentRoomSlide('slider-suite2', 0)"></span>
-          <span onclick="currentRoomSlide('slider-suite2', 1)"></span>
+  <section id="contact" class="contact">
+    <div class="container">
+      <div class="section-label" data-i18n="ct_label">Contatti</div>
+      <h2 class="section-title" data-i18n="ct_title">Parliamo</h2>
+      <div class="contact-methods">
+        <div class="contact-card">
+          <div class="icon">✆</div>
+          <h3 data-i18n="ct_phone">Telefono</h3>
+          <a href="tel:+393381875578">+39 338 187 5578</a>
+        </div>
+        <div class="contact-card">
+          <div class="icon">✉</div>
+          <h3>Email</h3>
+          <a href="mailto:info@vividomus.com">info@vividomus.com</a>
+        </div>
+        <div class="contact-card">
+          <div class="icon">◉</div>
+          <h3>WhatsApp</h3>
+          <a href="https://wa.me/393381875578" target="_blank" data-i18n="ct_wa">Scrivici su WhatsApp</a>
         </div>
       </div>
-      <div class="suite-info">
-        <div class="volta" data-i18n="suite_volta">Volta a stella</div>
-        <h3 data-i18n="suite2_name">Suite II</h3>
-        <p data-i18n="suite2_desc">Camera esclusiva con bagno privato. La stessa architettura storica, un'altra sfumatura di intimità e un comfort avvolgente.</p>
-        <ul>
-          <li data-i18n="suite2_f1">Letto matrimoniale / singolo</li>
-          <li data-i18n="suite2_f2">Bagno privato</li>
-          <li data-i18n="suite2_f3">Volta a stella originale</li>
-          <li data-i18n="suite2_f4">Massima riservatezza</li>
-        </ul>
-        <a href="#booking" class="btn btn-light" onclick="selectSolution('Suite II')" data-i18n="btn_book_suite2">Prenota Suite II</a>
-      </div>
     </div>
-  </div>
-</section>
-
-<section id="location" class="location">
-  <div class="container">
-    <div class="location-grid">
-      <div class="location-text">
-        <div class="section-label" data-i18n="loc_label">Posizione</div>
-        <h2 class="section-title" data-i18n="loc_title">Nel cuore barocco di Lecce</h2>
-        <p data-i18n="loc_p1">ViviDomus si trova in una posizione strategica a due passi da Porta San Biagio. A piedi si raggiungono facilmente Piazza del Duomo, il Teatro Romano e le meraviglie del centro storico.</p>
-        <p data-i18n="loc_p2">La base ideale per esplorare a piedi la città e muoversi comodamente verso le splendide spiagge del Salento.</p>
-      </div>
-      <div class="location-map">Lecce — Porta San Biagio / Via di Leuca</div>
-    </div>
-  </div>
-</section>
-
-<section id="booking" class="booking">
-  <div class="container">
-    <div class="section-label" data-i18n="book_label">Prenotazione</div>
-    <h2 class="section-title" data-i18n="book_title">Prenota il tuo soggiorno</h2>
-    <p class="booking-subtitle" data-i18n="book_subtitle">Invia la richiesta: ti risponderemo con la conferma di disponibilità.</p>
-    
-    <form class="booking-form" onsubmit="event.preventDefault();alert('Richiesta inviata con successo!');">
-      <div class="form-group">
-        <label for="form-name" data-i18n="form_lbl_name">Nome</label>
-        <input type="text" id="form-name" data-i18n-ph="form_name" placeholder="Nome e cognome" required>
-      </div>
-      
-      <div class="form-group">
-        <label for="form-email" data-i18n="form_lbl_email">Email</label>
-        <input type="email" id="form-email" data-i18n-ph="form_email" placeholder="Indirizzo email" required>
-      </div>
-      
-      <div class="form-group full">
-        <label for="solution-select" data-i18n="form_lbl_solution">Soluzione</label>
-        <select id="solution-select" required aria-label="Seleziona la soluzione">
-          <option value="" data-i18n="form_select">Seleziona la soluzione</option>
-          <option value="Appartamento Principale" data-i18n="form_opt1">Appartamento Principale</option>
-          <option value="Suite I" data-i18n="form_opt2">Suite I</option>
-          <option value="Suite II" data-i18n="form_opt3">Suite II</option>
-        </select>
-      </div>
-      
-      <div class="form-group">
-        <label for="form-arrival" data-i18n="form_lbl_arrival">Arrivo</label>
-        <input type="date" id="form-arrival" required>
-      </div>
-      
-      <div class="form-group">
-        <label for="form-departure" data-i18n="form_lbl_departure">Partenza</label>
-        <input type="date" id="form-departure" required>
-      </div>
-      
-      <div class="form-group full">
-        <label for="form-guests" data-i18n="form_lbl_guests">Ospiti</label>
-        <input type="number" id="form-guests" min="1" max="10" value="2" required>
-      </div>
-      
-      <div class="form-group full">
-        <label for="form-msg" data-i18n="form_lbl_msg">Messaggio</label>
-        <textarea id="form-msg" rows="4" data-i18n-ph="form_msg" placeholder="Messaggio o richieste particolari (opzionale)"></textarea>
-      </div>
-      
-      <div class="full">
-        <button type="submit" class="btn" style="width:100%;" data-i18n="form_send">Invia richiesta</button>
-      </div>
-    </form>
-  </div>
-</section>
-
-<section id="contact" class="contact">
-  <div class="container">
-    <div class="section-label" data-i18n="ct_label">Contatti</div>
-    <h2 class="section-title" data-i18n="ct_title">Parliamo</h2>
-    <div class="contact-methods">
-      <div class="contact-card">
-        <div class="icon">✆</div>
-        <h4 data-i18n="ct_phone">Telefono</h4>
-        <a href="tel:+393381875578">+39 338 187 5578</a>
-      </div>
-      <div class="contact-card">
-        <div class="icon">✉</div>
-        <h4>Email</h4>
-        <a href="mailto:info@vividomus.com">info@vividomus.com</a>
-      </div>
-      <div class="contact-card">
-        <div class="icon">◉</div>
-        <h4>WhatsApp</h4>
-        <a href="https://wa.me/393381875578" target="_blank" data-i18n="ct_wa">Scrivici su WhatsApp</a>
-      </div>
-    </div>
-  </div>
-</section>
+  </section>
+</main>
 
 <footer>
   <div class="logo">Vivi<span style="color:var(--gold)">Domus</span> — Lecce</div>
@@ -790,14 +792,14 @@
       suite2_f1:"Cama doble / individual",suite2_f2:"Baño privado",suite2_f3:"Bóveda estrellada original",suite2_f4:"Máxima privacidad",
       btn_book_suite2:"Reservar Suite II",
       loc_label:"Ubicación",loc_title:"En el corazón barroco de Lecce",
-      loc_p1:"ViviDomus goza de una ubicación estratégica a un paso de Porta San Biagio. A pie se llega fácilmente a la Piazza del Duomo, el Teatro Romano y las maravillas del centro histórico.",
+      loc_p1:"ViviDomus goza de una ubicación estratégica a un paso de Porta San Biagio. A pie se llega fácilmente a la Piazza del Duomo, el Teatro Romano y las maravillas del centro storico.",
       loc_p2:"La base ideal para explorar la ciudad a pie y desplazarse cómodamente hacia las hermosas playas de Salento.",
       book_label:"Reserva",book_title:"Reserva tu estancia",book_subtitle:"Envía la solicitud: te responderemos con la confirmación de disponibilidad.",
       form_lbl_name:"Nombre",form_lbl_email:"Correo electrónico",form_lbl_solution:"Alojamiento",
       form_lbl_arrival:"Llegada",form_lbl_departure:"Salida",form_lbl_guests:"Huéspedes",form_lbl_msg:"Mensaje",
       form_name:"Nombre y apellido",form_email:"Dirección de correo",form_select:"Selecciona el alojamiento",
       form_opt1:"Appartamento Principale",form_opt2:"Suite I",form_opt3:"Suite II",
-      form_msg:"Mensaje o peticiones especiales (opcional)",form_send:"Enviar solicitud",
+      form_msg:"Message o peticiones especiales (opcional)",form_send:"Enviar solicitud",
       ct_label:"Contacto",ct_title:"Hablemos",ct_phone:"Telefono",ct_wa:"Escríbenos por WhatsApp",
       footer:"© 2026 ViviDomus — Todos los derechos reservados"
     }
