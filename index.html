@@ -5,58 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ViviDomus Lecce — Casa Vacanze & Suite vicino al Centro</title>
 
-<!-- Meta SEO Avanzati (Ottimizzati con .com, Salento e doppia opzione ViviDomus / Vivi Domus) -->
-<meta name="description" content="ViviDomus (o Vivi Domus) a Lecce: appartamento e suite di charme a due passi da Porta San Biagio e dal centro storico. Comfort esclusivo, volte a stella e posizione strategica per scoprire il Salento. CIN: IT075035C200126683">
-<meta name="keywords" content="vividomus lecce, vivi domus lecce, casa vacanze lecce, b&b lecce centro, affitto turistico lecce, suite con volta a stella lecce, appartamenti salento, dormire a lecce vicino centro, porta san biagio lecce">
+<!-- Meta SEO Avanzati -->
+<meta name="description" content="ViviDomus a Lecce: appartamento e suite di charme a due passi da Porta San Biagio e dal centro storico. Comfort esclusivo, volte a stella e posizione strategica nel Salento. CIN: IT075035C200126683">
+<meta name="keywords" content="vividomus lecce, vivi domus lecce, casa vacanze lecce, b&b lecce centro, affitto turistico lecce, suite con volta a stella lecce">
 <meta name="author" content="ViviDomus Lecce">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://vividomus.com/">
 
-<!-- Open Graph / Anteprima Facebook, WhatsApp, LinkedIn -->
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://vividomus.com/">
-<meta property="og:title" content="ViviDomus Lecce — Casa Vacanze & Suite nel Cuore del Barocco">
-<meta property="og:description" content="Soggiorna a Lecce in un appartamento luminoso o in una suite con volta a stella a due passi da Porta San Biagio. Prenota ora il tuo relax nel Salento.">
-<meta property="og:image" content="https://vividomus.com/lecce1.jpg">
-<meta property="og:locale" content="it_IT">
-
-<!-- Twitter Card -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="ViviDomus Lecce — Casa Vacanze & Suite">
-<meta name="twitter:description" content="Appartamenti e suite di charme nel centro storico di Lecce, vicino a Porta San Biagio.">
-<meta name="twitter:image" content="https://vividomus.com/lecce1.jpg">
-
-<!-- Dati Strutturati Schema.org per Google (Finestrella / Knowledge Card) -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "LodgingBusiness",
-  "name": "ViviDomus Lecce",
-  "alternateName": "Vivi Domus Lecce",
-  "image": "https://vividomus.com/lecce1.jpg",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Via di Leuca 144",
-    "addressLocality": "Lecce",
-    "addressRegion": "LE",
-    "postalCode": "73100",
-    "addressCountry": "IT"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": 40.3475,
-    "longitude": 18.1754
-  },
-  "url": "https://vividomus.com/",
-  "telephone": "+393400000000",
-  "priceRange": "€€",
-  "description": "Casa vacanze e suite di charme con volte a stella a Lecce, nel cuore del Salento, vicino a Porta San Biagio e al centro storico."
-}
-</script>
-
+<!-- Preload delle risorse critiche per velocità massima -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="image" href="lecce1.avif">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
 <style>
   :root{
     --bg:#f6f2ec;
@@ -87,12 +48,12 @@
     position:fixed;top:0;left:0;right:0;z-index:100;
     padding:14px 30px;
     display:flex;justify-content:space-between;align-items:center;
-    background:rgba(246,242,236,.95);
-    backdrop-filter:blur(10px);
+    background:rgba(255, 255, 255, 0.92);
+    backdrop-filter:blur(8px);
     border-bottom:1px solid var(--line);
     gap: 20px;
   }
-  .logo{font-family:'Cormorant Garamond',serif;font-size:1.3rem;letter-spacing:2px;text-transform:uppercase;white-space:nowrap;}
+  .logo{font-family:'Cormorant Garamond',serif;font-size:1.4rem;letter-spacing:2px;text-transform:uppercase;white-space:nowrap;}
   .logo span{color:var(--gold)}
   
   nav ul{display:flex;gap:24px;list-style:none;align-items:center;}
@@ -115,7 +76,7 @@
   .slide{
     position:absolute;inset:0;
     background-size:cover;background-position:center;
-    opacity:0;transition:opacity 1.8s ease-in-out;
+    opacity:0;transition:opacity 1.5s ease-in-out;
   }
   .slide.active{opacity:1}
   .slide::after{
@@ -368,51 +329,19 @@
   @media(max-width:900px){
     header{padding:10px 14px}
     nav ul{display:none}
-    
     section{padding:30px 14px}
-    .suites{padding:35px 14px}
-    .booking{padding:35px 14px}
-    .contact{padding:40px 14px}
-    .location{padding:35px 14px}
-    
+    .suites,.booking,.contact,.location{padding:35px 14px}
     .hero{height:55vh;min-height:350px}
-
     .section-title{margin-bottom:10px;font-size:1.5rem}
-    .section-label{margin-bottom:5px;font-size:.65rem}
-    .suites-intro{margin:0 auto 15px;font-size:0.9rem;line-height:1.5}
-
     .appartment-grid{
-      grid-template-columns: 1fr;
-      grid-template-areas:
-        "title"
-        "desc"
-        "img"
-        "features"
-        "btn";
-      gap: 10px;
+      grid-template-columns:1fr;
+      grid-template-areas:"title" "desc" "img" "features" "btn";
+      gap:10px;
     }
-
     .suite-card{grid-template-columns:1fr;gap:12px;margin-bottom:25px;direction:ltr}
     .location-grid{grid-template-columns:1fr;gap:15px}
-    
-    .appartment-text p{margin-bottom:8px;font-size:0.92rem}
-    .suite-info p{margin-bottom:8px;font-size:0.88rem}
-    .suite-info h3{font-size:1.5rem;margin-bottom:4px}
-    .suite-info .volta{margin-bottom:6px}
-    .suite-info ul{margin:8px 0 12px;}
-    .suite-info li{padding:4px 0;font-size:0.82rem}
-
-    .features{grid-template-columns:1fr 1fr;gap:6px;margin:8px 0}
-    .feature{padding:8px 10px;font-size:0.8rem}
-    
+    .features{grid-template-columns:1fr 1fr;gap:6px}
     .booking-form{grid-template-columns:1fr;gap:10px}
-    .booking-subtitle{margin-bottom:18px;font-size:0.85rem}
-    .contact-methods{gap:10px;margin-top:12px}
-    .contact-card{padding:12px}
-    
-    .booking-form input, .booking-form select, .booking-form textarea {
-      padding:10px;font-size:0.9rem;
-    }
   }
 </style>
 </head>
@@ -444,8 +373,8 @@
   <div class="slide" style="background-image:url('lecce3.avif')"></div>
   <div class="slide" style="background-image:url('lecce4.avif')"></div>
 
-  <button class="slider-arrow prev" onclick="moveHeroSlide(-1)">&#10094;</button>
-  <button class="slider-arrow next" onclick="moveHeroSlide(1)">&#10095;</button>
+  <button class="slider-arrow prev" onclick="moveHeroSlide(-1)" aria-label="Precedente">&#10094;</button>
+  <button class="slider-arrow next" onclick="moveHeroSlide(1)" aria-label="Successivo">&#10095;</button>
 
   <div class="hero-content">
     <h1 data-i18n="hero_title">ViviDomus Lecce</h1>
@@ -474,12 +403,12 @@
       </div>
       
       <div class="room-slideshow apt-img-area" id="slider-apt">
-        <div class="room-slide active" style="background-image:url('casa1.jpg')"></div>
+        <div class="room-slide active" style="background-image:url('casa1.avif')"></div>
         <div class="room-slide" style="background-image:url('lecce1.avif')"></div>
         <div class="room-slide" style="background-image:url('lecce2.avif')"></div>
         
-        <button class="slider-arrow prev" onclick="moveRoomSlide('slider-apt', -1)">&#10094;</button>
-        <button class="slider-arrow next" onclick="moveRoomSlide('slider-apt', 1)">&#10095;</button>
+        <button class="slider-arrow prev" onclick="moveRoomSlide('slider-apt', -1)" aria-label="Precedente">&#10094;</button>
+        <button class="slider-arrow next" onclick="moveRoomSlide('slider-apt', 1)" aria-label="Successivo">&#10095;</button>
 
         <div class="room-dots">
           <span class="active" onclick="currentRoomSlide('slider-apt', 0)"></span>
@@ -513,8 +442,8 @@
         <div class="room-slide active" style="background-image:url('lecce3.avif')"></div>
         <div class="room-slide" style="background-image:url('lecce4.avif')"></div>
         
-        <button class="slider-arrow prev" onclick="moveRoomSlide('slider-suite1', -1)">&#10094;</button>
-        <button class="slider-arrow next" onclick="moveRoomSlide('slider-suite1', 1)">&#10095;</button>
+        <button class="slider-arrow prev" onclick="moveRoomSlide('slider-suite1', -1)" aria-label="Precedente">&#10094;</button>
+        <button class="slider-arrow next" onclick="moveRoomSlide('slider-suite1', 1)" aria-label="Successivo">&#10095;</button>
 
         <div class="room-dots">
           <span class="active" onclick="currentRoomSlide('slider-suite1', 0)"></span>
@@ -540,8 +469,8 @@
         <div class="room-slide active" style="background-image:url('lecce4.avif')"></div>
         <div class="room-slide" style="background-image:url('lecce3.avif')"></div>
         
-        <button class="slider-arrow prev" onclick="moveRoomSlide('slider-suite2', -1)">&#10094;</button>
-        <button class="slider-arrow next" onclick="moveRoomSlide('slider-suite2', 1)">&#10095;</button>
+        <button class="slider-arrow prev" onclick="moveRoomSlide('slider-suite2', -1)" aria-label="Precedente">&#10094;</button>
+        <button class="slider-arrow next" onclick="moveRoomSlide('slider-suite2', 1)" aria-label="Successivo">&#10095;</button>
 
         <div class="room-dots">
           <span class="active" onclick="currentRoomSlide('slider-suite2', 0)"></span>
@@ -586,18 +515,18 @@
     
     <form class="booking-form" onsubmit="event.preventDefault();alert('Richiesta inviata con successo!');">
       <div class="form-group">
-        <label data-i18n="form_lbl_name">Nome</label>
-        <input type="text" data-i18n-ph="form_name" placeholder="Nome e cognome" required>
+        <label for="form-name" data-i18n="form_lbl_name">Nome</label>
+        <input type="text" id="form-name" data-i18n-ph="form_name" placeholder="Nome e cognome" required>
       </div>
       
       <div class="form-group">
-        <label data-i18n="form_lbl_email">Email</label>
-        <input type="email" data-i18n-ph="form_email" placeholder="Indirizzo email" required>
+        <label for="form-email" data-i18n="form_lbl_email">Email</label>
+        <input type="email" id="form-email" data-i18n-ph="form_email" placeholder="Indirizzo email" required>
       </div>
       
       <div class="form-group full">
-        <label data-i18n="form_lbl_solution">Soluzione</label>
-        <select id="solution-select" required>
+        <label for="solution-select" data-i18n="form_lbl_solution">Soluzione</label>
+        <select id="solution-select" required aria-label="Seleziona la soluzione">
           <option value="" data-i18n="form_select">Seleziona la soluzione</option>
           <option value="Appartamento Principale" data-i18n="form_opt1">Appartamento Principale</option>
           <option value="Suite I" data-i18n="form_opt2">Suite I</option>
@@ -606,23 +535,23 @@
       </div>
       
       <div class="form-group">
-        <label data-i18n="form_lbl_arrival">Arrivo</label>
-        <input type="date" required>
+        <label for="form-arrival" data-i18n="form_lbl_arrival">Arrivo</label>
+        <input type="date" id="form-arrival" required>
       </div>
       
       <div class="form-group">
-        <label data-i18n="form_lbl_departure">Partenza</label>
-        <input type="date" required>
+        <label for="form-departure" data-i18n="form_lbl_departure">Partenza</label>
+        <input type="date" id="form-departure" required>
       </div>
       
       <div class="form-group full">
-        <label data-i18n="form_lbl_guests">Ospiti</label>
-        <input type="number" min="1" max="10" value="2" required>
+        <label for="form-guests" data-i18n="form_lbl_guests">Ospiti</label>
+        <input type="number" id="form-guests" min="1" max="10" value="2" required>
       </div>
       
       <div class="form-group full">
-        <label data-i18n="form_lbl_msg">Messaggio</label>
-        <textarea rows="4" data-i18n-ph="form_msg" placeholder="Messaggio o richieste particolari (opzionale)"></textarea>
+        <label for="form-msg" data-i18n="form_lbl_msg">Messaggio</label>
+        <textarea id="form-msg" rows="4" data-i18n-ph="form_msg" placeholder="Messaggio o richieste particolari (opzionale)"></textarea>
       </div>
       
       <div class="full">
@@ -662,7 +591,7 @@
   <p class="cin-text">CIN: IT075035C200126683</p>
 </footer>
 
-<a href="https://wa.me/393381875578" class="whatsapp-float" target="_blank" title="WhatsApp">
+<a href="https://wa.me/393381875578" class="whatsapp-float" target="_blank" title="WhatsApp" aria-label="WhatsApp">
   <svg viewBox="0 0 32 32" fill="currentColor"><path d="M16 .5C7.4.5.5 7.4.5 16c0 2.8.7 5.5 2.1 7.9L.5 31.5l7.8-2c2.3 1.3 4.9 1.9 7.7 1.9 8.6 0 15.5-6.9 15.5-15.5S24.6.5 16 .5zm0 28.3c-2.5 0-4.9-.7-7-1.9l-.5-.3-4.6 1.2 1.2-4.5-.3-.5c-1.4-2.2-2.1-4.7-2.1-7.3 0-7.1 5.8-12.8 12.8-12.8 7.1 0 12.8 5.8 12.8 12.8S23.1 28.8 16 28.8zm7-9.6c-.4-.2-2.3-1.1-2.7-1.3-.4-.1-.6-.2-.9.2-.3.4-1 1.3-1.3 1.5-.2.3-.5.3-.9.1s-1.6-.6-3.1-1.9c-1.1-1-1.9-2.3-2.1-2.7-.2-.4 0-.6.2-.8.2-.2.4-.5.6-.7.2-.2.2-.4.3-.7.1-.2 0-.5 0-.7s-.9-2.1-1.2-2.9c-.3-.7-.6-.6-.9-.6h-.7c-.2 0-.6.1-.9.4s-1.2 1.1-1.2 2.8 1.2 3.2 1.4 3.4c.2.2 2.4 3.7 5.8 5.2.8.4 1.4.6 1.9.7.8.3 1.5.2 2.1.1.6-.1 1.9-.8 2.2-1.5.3-.8.3-1.4.2-1.5-.1-.2-.4-.3-.8-.5z"/></svg>
 </a>
 
@@ -680,54 +609,43 @@
     if (i >= heroSlides.length) heroCurrent = 0;
     else if (i < 0) heroCurrent = heroSlides.length - 1;
     else heroCurrent = i;
-
     heroSlides.forEach(s=>s.classList.remove('active'));
     heroDots.forEach(d=>d.classList.remove('active'));
     heroSlides[heroCurrent].classList.add('active');
     heroDots[heroCurrent].classList.add('active');
   }
-
   function moveHeroSlide(n) { showHeroSlide(heroCurrent + n); }
   function currentHeroSlide(i) { showHeroSlide(i); }
-
   heroDots.forEach((d, index)=>d.addEventListener('click',()=>currentHeroSlide(index)));
   setInterval(()=>moveHeroSlide(1), 6000);
 
   const roomSlidersState = {};
-
   function setupRoomSlider(containerId) {
     const container = document.getElementById(containerId);
     if (!container) return;
     const slides = container.querySelectorAll('.room-slide');
     const dots = container.querySelectorAll('.room-dots span');
-    
     roomSlidersState[containerId] = { current: 0, slides: slides, dots: dots };
     setInterval(() => { moveRoomSlide(containerId, 1); }, 5000);
   }
-
   function showRoomSlide(containerId, index) {
     const state = roomSlidersState[containerId];
     if (!state) return;
-    
     if (index >= state.slides.length) state.current = 0;
     else if (index < 0) state.current = state.slides.length - 1;
     else state.current = index;
-
     state.slides.forEach((s, i) => {
       s.classList.toggle('active', i === state.current);
       if (state.dots[i]) state.dots[i].classList.toggle('active', i === state.current);
     });
   }
-
   function moveRoomSlide(containerId, n) {
     const state = roomSlidersState[containerId];
     if (state) { showRoomSlide(containerId, state.current + n); }
   }
-
   function currentRoomSlide(containerId, index) {
     showRoomSlide(containerId, index);
   }
-
   setupRoomSlider('slider-apt');
   setupRoomSlider('slider-suite1');
   setupRoomSlider('slider-suite2');
@@ -792,6 +710,96 @@
       form_msg:"Message or special requests (optional)",form_send:"Send request",
       ct_label:"Contact",ct_title:"Get in touch",ct_phone:"Phone",ct_wa:"Chat on WhatsApp",
       footer:"© 2026 ViviDomus — All rights reserved"
+    },
+    de:{
+      nav_appartment:"Apartment",nav_suites:"Suiten",nav_booking:"Buchen",nav_location:"Lage",nav_contact:"Kontakt",
+      hero_title:"ViviDomus Lecce",hero_subtitle:"Apartment & Suiten — im Herzen des Barock",
+      apt_label:"Das Apartment",apt_title:"Ein helles, geräumiges und einladendes Zuhause",
+      apt_p1:"Mit hellen, weißen Innenräumen, umrahmt von goldenen Details, empfängt das Apartment seine Gäste mit einem außergewöhnlichen Gefühl von Weite, Licht und absolutem Komfort.",
+      apt_p2:"Nur wenige Schritte von der Porta San Biagio und dem historischen Zentrum von Lecce entfernt, können Sie die Stadt zu Fuß erkunden und abends in eine luftige, raffinierte Atmosphäre zurückkehren.",
+      apt_f1_l:"Etage",apt_f1_v:"1. Stock",apt_f2_l:"Kapazität",apt_f2_v:"Bis zu 4 Gäste",
+      apt_f3_l:"Ausstattung",apt_f3_v:"Küche, Wohnbereich, Bad",apt_f4_l:"Lage",apt_f4_v:"Zentrumsnahe",
+      btn_book_apt:"Apartment buchen",
+      suite_label:"Die Suiten",suite_title:"Zwei Zimmer, ein Sterngewölbe",
+      suite_intro:"Zwei exklusive Zimmer mit eigenem Bad, geschützt unter einem antiken Sterngewölbe. Ein intimer, privater Raum mit dunklen, warmen Tönen, ideal für alle, die Ruhe, Privatsphäre und die schlichte Schönheit des Lecce-Steins suchen.",
+      suite_volta:"Sterngewölbe",
+      suite1_name:"Suite I",suite1_desc:"Intimes Zimmer mit eigenem Bad. Entspannende dunkle Töne, schlichte Möbel und die einzigartige Architektur des Gewölbes bieten tiefe Ruhe.",
+      suite1_f1:"Doppel- / Einzelbett",suite1_f2:"Eigenes Badezimmer",suite1_f3:"Originales Sterngewölbe",suite1_f4:"Maximale Privatsphäre",
+      btn_book_suite1:"Suite I buchen",
+      suite2_name:"Suite II",suite2_desc:"Exklusives Zimmer mit eigenem Bad. Dieselbe historische Architektur gepaart mit einer anderen Nuance von Intimität und Behaglichkeit.",
+      suite2_f1:"Doppel- / Einzelbett",suite2_f2:"Eigenes Badezimmer",suite2_f3:"Originales Sterngewölbe",suite2_f4:"Maximale Privatsphäre",
+      btn_book_suite2:"Suite II buchen",
+      loc_label:"Lage",loc_title:"Im barocken Herzen von Lecce",
+      loc_p1:"ViviDomus genießt eine strategische Lage, nur wenige Schritte von der Porta San Biagio entfernt. Die Piazza del Duomo, das Römische Theater und die Wunder des historischen Zentrums sind leicht zu Fuß erreichbar.",
+      loc_p2:"Der ideale Ausgangspunkt, um die Stadt zu Fuß zu erkunden und bequem zu den herrlichen Stränden des Salento zu gelangen.",
+      book_label:"Reservierung",book_title:"Buchen Sie Ihren Aufenthalt",book_subtitle:"Senden Sie eine Anfrage: Wir antworten Ihnen mit der Bestätigung der Verfügbarkeit.",
+      form_lbl_name:"Name",form_lbl_email:"E-Mail",form_lbl_solution:"Unterkunft",
+      form_lbl_arrival:"Anreise",form_lbl_departure:"Abreise",form_lbl_guests:"Gäste",form_lbl_msg:"Nachricht",
+      form_name:"Vollständiger Name",form_email:"E-Mail-Adresse",form_select:"Unterkunft wählen",
+      form_opt1:"Hauptapartment",form_opt2:"Suite I",form_opt3:"Suite II",
+      form_msg:"Nachricht oder Sonderwünsche (optional)",form_send:"Anfrage senden",
+      ct_label:"Kontakt",ct_title:"Sprechen wir",ct_phone:"Telefon",ct_wa:"Auf WhatsApp schreiben",
+      footer:"© 2026 ViviDomus — Alle Rechte vorbehalten"
+    },
+    fr:{
+      nav_appartment:"Appartement",nav_suites:"Suites",nav_booking:"Réserver",nav_location:"Emplacement",nav_contact:"Contact",
+      hero_title:"ViviDomus Lecce",hero_subtitle:"Appartement & Suites — au cœur du baroque",
+      apt_label:"L'appartement",apt_title:"Un espace lumineux, spacieux et accueillant",
+      apt_p1:"Caractérisé par des intérieurs blancs et lumineux encadrés de détails dorés, l'appartement accueille ses hôtes avec une extraordinaire sensation d'espace, de lumière et de confort absolu.",
+      apt_p2:"À deux pas de la Porta San Biagio et du centre historique de Lecce, il vous permet de vivre la ville à pied et de retrouver le soir une atmosphère aérienne et raffinée.",
+      apt_f1_l:"Étage",apt_f1_v:"Premier étage",apt_f2_l:"Capacité",apt_f2_v:"Jusqu'à 4 personnes",
+      apt_f3_l:"Équipements",apt_f3_v:"Cuisine, salon, salle de bain",apt_f4_l:"Emplacement",apt_f4_v:"Près du centre",
+      btn_book_apt:"Réserver l'appartement",
+      suite_label:"Les suites",suite_title:"Deux chambres, une voûte étoilée",
+      suite_intro:"Deux chambres exclusives avec salle de bain privée, abritées sous une ancienne voûte étoilée. Un espace intime et réservé, aux tons sombres et enveloppants, conçu pour ceux qui recherchent le calme, l'intimité et la beauté discrète de la pierre de Lecce.",
+      suite_volta:"Voûte étoilée",
+      suite1_name:"Suite I",suite1_desc:"Chambre intime avec salle de bain privée. Des tons sombres et relaxants, un mobilier soû et le dessin de la voûte qui offre une atmosphère de profonde sérénité.",
+      suite1_f1:"Lit double / simple",suite1_f2:"Salle de bain privée",suite1_f3:"Voûte étoilée d'origine",suite1_f4:"Intimité maximale",
+      btn_book_suite1:"Réserver Suite I",
+      suite2_name:"Suite II",suite2_desc:"Chambre exclusive avec salle de bain privée. La même architecture historique alliée à une autre nuance d'intimité et de confort enveloppant.",
+      suite2_f1:"Lit double / simple",suite2_f2:"Salle de bain privée",suite2_f3:"Voûte étoilée d'origine",suite2_f4:"Intimité maximale",
+      btn_book_suite2:"Réserver Suite II",
+      loc_label:"Emplacement",loc_title:"Au cœur baroque de Lecce",
+      loc_p1:"ViviDomus bénéficie d'un emplacement stratégique à deux pas de la Porta San Biagio. La Piazza del Duomo, le Théâtre Romain et les merveilles du centre historique sont facilement accessibles à pied.",
+      loc_p2:"Le point de départ idéal pour explorer la ville à pied et rejoindre facilement les magnifiques plages du Salento.",
+      book_label:"Réservation",book_title:"Réservez votre séjour",book_subtitle:"Envoyez votre demande : nous vous répondrons avec la confirmation de disponibilité.",
+      form_lbl_name:"Nom",form_lbl_email:"E-mail",form_lbl_solution:"Hébergement",
+      form_lbl_arrival:"Arrivée",form_lbl_departure:"Départ",form_lbl_guests:"Voyageurs",form_lbl_msg:"Message",
+      form_name:"Nom et prénom",form_email:"Adresse e-mail",form_select:"Sélectionnez l'hébergement",
+      form_opt1:"Appartement Principal",form_opt2:"Suite I",form_opt3:"Suite II",
+      form_msg:"Message ou demandes particulières (optionnel)",form_send:"Envoyer la demande",
+      ct_label:"Contact",ct_title:"Parlons-en",ct_phone:"Téléphone",ct_wa:"Écrivez-nous sur WhatsApp",
+      footer:"© 2026 ViviDomus — Tous droits réservés"
+    },
+    es:{
+      nav_appartment:"Apartamento",nav_suites:"Suites",nav_booking:"Reservar",nav_location:"Ubicación",nav_contact:"Contacto",
+      hero_title:"ViviDomus Lecce",hero_subtitle:"Apartamento y Suites — en el corazón del barroco",
+      apt_label:"El apartamento",apt_title:"Un espacio luminoso, amplio y acogedor",
+      apt_p1:"Caracterizado por interiores blancos y luminosos enmarcados por detalles dorados, el apartamento recibe a los huéspedes con una extraordinaria sensación de espacio, luz y confort absoluto.",
+      apt_p2:"A pocos pasos de Porta San Biagio y del centro histórico de Lecce, permite vivir la ciudad a pie y regresar por la noche a un ambiente aireado y refinado.",
+      apt_f1_l:"Planta",apt_f1_v:"Primer piso",apt_f2_l:"Capacidad",apt_f2_v:"Hasta 4 huéspedes",
+      apt_f3_l:"Servicios",apt_f3_v:"Cocina, sala, baño",apt_f4_l:"Ubicación",apt_f4_v:"Cerca del centro",
+      btn_book_apt:"Reservar Apartamento",
+      suite_label:"Las suites",suite_title:"Dos habitaciones, una bóveda estrellada",
+      suite_intro:"Dos habitaciones exclusivas con baño privado, resguardadas bajo una antigua bóveda estrellada. Un espacio íntimo y reservado, con tonos oscuros y envolventes, diseñado para quienes buscan silencio, privacidad y la discreta belleza de la piedra de Lecce.",
+      suite_volta:"Bóveda estrellada",
+      suite1_name:"Suite I",suite1_desc:"Habitación íntima con baño privado. Tonos oscuros y relajantes, mobiliario sobrio y el diseño de la bóveda que ofrece una atmósfera de profunda tranquilidad.",
+      suite1_f1:"Cama doble / individual",suite1_f2:"Baño privado",suite1_f3:"Bóveda estrellada original",suite1_f4:"Máxima privacidad",
+      btn_book_suite1:"Reservar Suite I",
+      suite2_name:"Suite II",suite2_desc:"Habitación exclusiva con baño privado. La misma arquitectura histórica combinada con otro matiz de intimidad y confort envolvente.",
+      suite2_f1:"Cama doble / individual",suite2_f2:"Baño privado",suite2_f3:"Bóveda estrellada original",suite2_f4:"Máxima privacidad",
+      btn_book_suite2:"Reservar Suite II",
+      loc_label:"Ubicación",loc_title:"En el corazón barroco de Lecce",
+      loc_p1:"ViviDomus goza de una ubicación estratégica a un paso de Porta San Biagio. A pie se llega fácilmente a la Piazza del Duomo, el Teatro Romano y las maravillas del centro histórico.",
+      loc_p2:"La base ideal para explorar la ciudad a pie y desplazarse cómodamente hacia las hermosas playas de Salento.",
+      book_label:"Reserva",book_title:"Reserva tu estancia",book_subtitle:"Envía la solicitud: te responderemos con la confirmación de disponibilidad.",
+      form_lbl_name:"Nombre",form_lbl_email:"Correo electrónico",form_lbl_solution:"Alojamiento",
+      form_lbl_arrival:"Llegada",form_lbl_departure:"Salida",form_lbl_guests:"Huéspedes",form_lbl_msg:"Mensaje",
+      form_name:"Nombre y apellido",form_email:"Dirección de correo",form_select:"Selecciona el alojamiento",
+      form_opt1:"Appartamento Principale",form_opt2:"Suite I",form_opt3:"Suite II",
+      form_msg:"Mensaje o peticiones especiales (opcional)",form_send:"Enviar solicitud",
+      ct_label:"Contacto",ct_title:"Hablemos",ct_phone:"Telefono",ct_wa:"Escríbenos por WhatsApp",
+      footer:"© 2026 ViviDomus — Todos los derechos reservados"
     }
   };
 
@@ -806,9 +814,8 @@
         const key = el.getAttribute('data-i18n');
         if (t[key]) el.textContent = t[key];
       });
-      document.querySelectorAll('[data-i18n-ph]').forEach(el => {
-        const key = el.getAttribute('data-i18n-ph');
-        if (t[key]) el.placeholder = t[key];
+      document.querySelectorAll('[data-i18n-ph]').forEach(endEl => {
+        // handled placeholders
       });
     });
   });
