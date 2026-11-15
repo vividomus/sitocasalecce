@@ -12,9 +12,7 @@
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://vividomus.com/">
 
-<!-- Preconnect e Preload immagine LCP (massima priorità) -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Preload immagine LCP (massima priorità assoluta) -->
 <link rel="preload" as="image" href="lecce1.avif" fetchpriority="high">
 
 <style>
@@ -33,13 +31,13 @@
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
   body{
-    font-family:'Inter',sans-serif;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
     background:var(--bg);
     color:var(--ink);
     line-height:1.6;
     font-weight:300;
   }
-  h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;font-weight:400;letter-spacing:.5px}
+  h1,h2,h3,h4{font-family:"Cormorant Garamond",Georgia,serif;font-weight:400;letter-spacing:.5px}
   a{color:inherit;text-decoration:none}
   img{max-width:100%;display:block}
 
@@ -52,7 +50,7 @@
     border-bottom:1px solid var(--line);
     gap: 20px;
   }
-  .logo{font-family:'Cormorant Garamond',serif;font-size:1.4rem;letter-spacing:2px;text-transform:uppercase;white-space:nowrap;}
+  .logo{font-family:"Cormorant Garamond",Georgia,serif;font-size:1.4rem;letter-spacing:2px;text-transform:uppercase;white-space:nowrap;}
   .logo span{color:var(--gold)}
   
   nav ul{display:flex;gap:24px;list-style:none;align-items:center;}
@@ -217,7 +215,7 @@
   .suites-intro{
     max-width:650px;margin:0 auto 50px;text-align:center;
     font-size:1rem;line-height:1.8;color:#bdb5a4;font-style:italic;
-    font-family:'Cormorant Garamond',serif;
+    font-family:"Cormorant Garamond",Georgia,serif;
   }
   .suite-card{
     display:grid;grid-template-columns:1fr 1fr;gap:50px;
@@ -599,12 +597,12 @@
 </a>
 
 <script>
-  // Caricamento asincrono dei Google Fonts per azzerare il blocco del rendering
-  window.addEventListener('DOMContentLoaded', () => {
-    const fontLink = document.createElement('link');
-    fontLink.rel = 'stylesheet';
-    fontLink.href = 'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap';
-    document.head.appendChild(fontLink);
+  // Caricamento asincrono dei Google Fonts in background dopo il rendering iniziale per azzerare il blocco critico
+  window.addEventListener('load', () => {
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = 'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap';
+    document.head.appendChild(link);
   });
 
   function selectSolution(solutionName) {
@@ -792,7 +790,7 @@
       apt_f3_l:"Servicios",apt_f3_v:"Cocina, sala, baño",apt_f4_l:"Ubicación",apt_f4_v:"Cerca del centro",
       btn_book_apt:"Reservar Apartamento",
       suite_label:"Las suites",suite_title:"Dos habitaciones, una bóveda estrellada",
-      suite_intro:"Dos habitaciones exclusivas con baño privado, resguardadas bajo una antigua bóveda estrellada. Un espacio íntimo y reservado, con tonos oscuros y envolventes, diseñado para quienes buscan silencio, privacidad y la discreta belleza de la piedra de Lecce.",
+      suite_intro:"Dos habitaciones exclusivas con bagno privado, resguardadas bajo una antigua bóveda estrellada. Un espacio íntimo y reservado, con tonos oscuros y envolventes, diseñado para quienes buscan silencio, privacidad y la discreta belleza de la piedra de Lecce.",
       suite_volta:"Bóveda estrellada",
       suite1_name:"Suite I",suite1_desc:"Habitación íntima con baño privado. Tonos oscuros y relajantes, mobiliario sobrio y el diseño de la bóveda que ofrece una atmósfera de profunda tranquilidad.",
       suite1_f1:"Cama doble / individual",suite1_f2:"Baño privado",suite1_f3:"Bóveda estrellada original",suite1_f4:"Máxima privacidad",
