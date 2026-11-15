@@ -815,7 +815,8 @@
         if (t[key]) el.textContent = t[key];
       });
       document.querySelectorAll('[data-i18n-ph]').forEach(endEl => {
-        // handled placeholders
+        const phKey = endEl.getAttribute('data-i18n-ph');
+        if (t[phKey]) endEl.placeholder = t[phKey];
       });
     });
   });
