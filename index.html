@@ -12,16 +12,9 @@
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://vividomus.com/">
 
-<!-- Preload e caricamento asincrono dei Font per azzerare il blocco del rendering -->
+<!-- Preconnect e Preload immagine LCP (massima priorità) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap" media="print" onload="this.media='all'">
-<noscript>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap">
-</noscript>
-
-<!-- Preload immagine LCP -->
 <link rel="preload" as="image" href="lecce1.avif" fetchpriority="high">
 
 <style>
@@ -606,6 +599,14 @@
 </a>
 
 <script>
+  // Caricamento asincrono dei Google Fonts per azzerare il blocco del rendering
+  window.addEventListener('DOMContentLoaded', () => {
+    const fontLink = document.createElement('link');
+    fontLink.rel = 'stylesheet';
+    fontLink.href = 'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap';
+    document.head.appendChild(fontLink);
+  });
+
   function selectSolution(solutionName) {
     const select = document.getElementById('solution-select');
     if(select) { select.value = solutionName; }
