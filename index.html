@@ -1,902 +1,767 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="it">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2022.7">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
-    span.s1 {font: 12.0px Menlo}
-    span.s2 {font: 12.0px 'Hiragino Sans'}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vivi Domus Lecce — Appartamento & Suite</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f6f2ec;
+    --bg-soft:#ede6db;
+    --ink:#2b2a27;
+    --ink-soft:#5a5650;
+    --gold:#a8895f;
+    --stone:#8a7f6e;
+    --line:#d9d1c2;
+    --suite-bg:#2b2a27;
+    --suite-ink:#e8e2d5;
+    --suite-accent:#c9b48a;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Inter',sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+    line-height:1.6;
+    font-weight:300;
+  }
+  h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;font-weight:400;letter-spacing:.5px}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    padding:14px 30px;
+    display:flex;justify-content:space-between;align-items:center;
+    background:rgba(246,242,236,.95);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+    gap: 20px;
+  }
+  .logo{font-family:'Cormorant Garamond',serif;font-size:1.3rem;letter-spacing:2px;text-transform:uppercase;white-space:nowrap;}
+  .logo span{color:var(--gold)}
+  
+  nav ul{display:flex;gap:24px;list-style:none;align-items:center;}
+  nav a{font-size:.8rem;letter-spacing:1.5px;text-transform:uppercase;transition:color .3s}
+  nav a:hover{color:var(--gold)}
+
+  .lang-switch{
+    display:flex;gap:4px;font-size:.7rem;letter-spacing:1px;
+    background:var(--bg-soft);padding:3px 6px;border-radius:20px;border:1px solid var(--line);
+  }
+  .lang-switch button{
+    background:none;border:none;padding:3px 6px;cursor:pointer;
+    color:var(--ink-soft);transition:all .3s;border-radius:50%;font-weight:500;
+  }
+  .lang-switch button.active,.lang-switch button:hover{background:var(--gold);color:#fff}
+
+  .hero{
+    position:relative;height:100vh;min-height:550px;overflow:hidden;
+  }
+  .slide{
+    position:absolute;inset:0;
+    background-size:cover;background-position:center;
+    opacity:0;transition:opacity 1.8s ease-in-out;
+  }
+  .slide.active{opacity:1}
+  .slide::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(0,0,0,.25) 0%,rgba(0,0,0,.55) 100%);
+  }
+  .hero-content{
+    position:absolute;inset:0;display:flex;flex-direction:column;
+    justify-content:center;align-items:center;text-align:center;
+    color:#fff;z-index:2;padding:0 20px;
+  }
+  .hero-content h1{
+    font-size:clamp(2.3rem,5vw,4.5rem);font-weight:300;
+    letter-spacing:3px;margin-bottom:15px;
+  }
+  .hero-content p{
+    font-size:1rem;letter-spacing:2px;text-transform:uppercase;
+    font-weight:300;opacity:.9;
+  }
+  .slide-dots{
+    position:absolute;bottom:30px;left:50%;transform:translateX(-50%);
+    display:flex;gap:10px;z-index:3;
+  }
+  .slide-dots span{
+    width:25px;height:2px;background:rgba(255,255,255,.4);cursor:pointer;
+    transition:background .3s;
+  }
+  .slide-dots span.active{background:#fff}
+
+  .slider-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.4);
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 20;
+    border: none;
+    font-size: 1.1rem;
+    transition: background 0.3s, transform 0.2s;
+  }
+  .slider-arrow:hover {
+    background: var(--gold);
+    transform: translateY(-50%) scale(1.05);
+  }
+  .slider-arrow.prev { left: 15px; }
+  .slider-arrow.next { right: 15px; }
+
+  .room-slideshow {
+    position: relative;
+    aspect-ratio: 4/5;
+    border-radius: 2px;
+    overflow: hidden;
+    border: 1px solid var(--gold);
+  }
+  .room-slide {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+  }
+  .room-slide.active { opacity: 1; }
+  .room-dots {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 6px;
+    z-index: 10;
+  }
+  .room-dots span {
+    width: 16px;
+    height: 2px;
+    background: rgba(255,255,255,0.5);
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  .room-dots span.active { background: #fff; }
+  .room-slideshow .slider-arrow { width: 32px; height: 32px; font-size: 0.9rem; }
+  .room-slideshow .slider-arrow.prev { left: 10px; }
+  .room-slideshow .slider-arrow.next { right: 10px; }
+
+  section{padding:90px 30px}
+  .container{max-width:1200px;margin:0 auto}
+  .section-label{
+    font-size:.7rem;letter-spacing:3px;text-transform:uppercase;
+    color:var(--gold);margin-bottom:12px;
+  }
+  .section-title{
+    font-size:clamp(1.8rem,3.5vw,3rem);margin-bottom:30px;
+    font-weight:300;
+  }
+
+  .appartment{background:var(--bg)}
+  .appartment-grid{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "title img"
+      "desc img"
+      "features img"
+      "btn img";
+    gap: 20px 50px;
+    align-items: center;
+  }
+  .apt-title-area { grid-area: title; }
+  .apt-desc-area { grid-area: desc; }
+  .apt-img-area { grid-area: img; }
+  .apt-features-area { grid-area: features; }
+  .apt-btn-area { grid-area: btn; }
+
+  .appartment-text p{ color:var(--ink-soft);margin-bottom:16px;font-size:1rem; }
+  .features{
+    display:grid;grid-template-columns:repeat(2,1fr);gap:15px;margin:10px 0;
+  }
+  .feature{
+    padding:16px;border:1px solid var(--line);
+    font-size:.85rem;background:#fff;
+  }
+  .feature strong{display:block;color:var(--gold);font-weight:500;margin-bottom:4px;font-size:.7rem;letter-spacing:2px;text-transform:uppercase}
+
+  .suites{
+    background:var(--suite-bg);color:var(--suite-ink);
+    padding:100px 30px;
+  }
+  .suites .section-label{color:var(--suite-accent)}
+  .suites .section-title{color:var(--suite-ink);font-weight:300}
+  .suites-intro{
+    max-width:650px;margin:0 auto 50px;text-align:center;
+    font-size:1rem;line-height:1.8;color:#bdb5a4;font-style:italic;
+    font-family:'Cormorant Garamond',serif;
+  }
+  .suite-card{
+    display:grid;grid-template-columns:1fr 1fr;gap:50px;
+    margin-bottom:70px;align-items:center;
+  }
+  .suite-card:last-child{margin-bottom:0;}
+  .suite-card:nth-child(even){direction:rtl}
+  .suite-card:nth-child(even) > *{direction:ltr}
+  
+  .suite-info h3{
+    font-size:1.8rem;margin-bottom:10px;color:var(--suite-accent);
+    font-weight:300;letter-spacing:1px;
+  }
+  .suite-info .volta{
+    font-size:.7rem;letter-spacing:3px;text-transform:uppercase;
+    color:var(--suite-accent);margin-bottom:15px;opacity:.8;
+  }
+  .suite-info p{color:#bdb5a4;margin-bottom:14px;font-size:.95rem}
+  .suite-info ul{list-style:none;margin:15px 0 20px;}
+  .suite-info li{
+    padding:6px 0;border-top:1px solid rgba(201,180,138,.15);
+    font-size:.85rem;color:#a8a090;letter-spacing:.5px;
+  }
+  .suite-info li:last-child{border-bottom:1px solid rgba(201,180,138,.15)}
+
+  .location{background:var(--bg-soft)}
+  .location-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+  .location-text p{color:var(--ink-soft);margin-bottom:14px;font-size:0.98rem}
+  .location-map{
+    aspect-ratio:4/3;background:var(--line);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--ink-soft);font-size:.85rem;letter-spacing:2px;text-transform:uppercase;
+    border:1px solid var(--line);
+  }
+
+  .booking{
+    background:var(--suite-bg);
+    color:var(--suite-ink);
+    text-align:center;
+    padding:100px 30px;
+  }
+  .booking .section-label{color:var(--gold)}
+  .booking .section-title{color:#f4f4f0;font-weight:300;margin-bottom:8px}
+  .booking-subtitle{color:#aaa;font-size:.95rem;margin-bottom:35px;letter-spacing:.5px}
+
+  .booking-form{
+    max-width:750px;margin:0 auto;
+    display:grid;grid-template-columns:repeat(2,1fr);gap:20px;text-align:left;
+  }
+  .booking-form .full{grid-column:1/-1}
+  
+  .form-group{ display:flex;flex-direction:column;gap:6px; }
+  .form-group label{
+    font-size:.7rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:500;
+  }
+  .booking-form input,.booking-form select,.booking-form textarea{
+    width:100%;padding:14px;border:1px solid rgba(197,160,89,0.3);
+    background:#383632;font-family:inherit;font-size:.95rem;
+    color:#fff;transition:border-color .3s;border-radius:4px;
+  }
+  .booking-form input:focus,.booking-form select:focus,.booking-form textarea:focus{
+    outline:none;border-color:var(--gold);
+  }
+  .booking-form input::placeholder,.booking-form textarea::placeholder{ color:#888; }
+  
+  .btn{
+    display:inline-block;padding:14px 30px;
+    background:var(--gold);color:#fff;
+    font-size:.75rem;letter-spacing:2px;text-transform:uppercase;
+    border:none;cursor:pointer;transition:all .3s;
+    font-family:inherit;border-radius:4px;font-weight:600;text-align:center;
+  }
+  .btn:hover{background:#d4af37}
+  .btn-light{background:transparent;border:1px solid var(--suite-accent);color:var(--suite-accent)}
+  .btn-light:hover{background:var(--suite-accent);color:var(--suite-bg)}
+
+  .contact{background:var(--bg);text-align:center;padding:60px 30px;}
+  .contact-methods{
+    display:flex;justify-content:center;gap:25px;margin-top:20px;flex-wrap:wrap;
+  }
+  .contact-card{
+    padding:18px 25px;border:1px solid var(--line);background:#fff;
+    min-width:200px;transition:all .3s;
+  }
+  .contact-card:hover{border-color:var(--gold);transform:translateY(-3px)}
+  .contact-card .icon{font-size:1.3rem;color:var(--gold);margin-bottom:6px}
+  .contact-card h4{font-size:1rem;margin-bottom:4px}
+  .contact-card a{color:var(--ink-soft);font-size:.85rem;transition:color .3s}
+  .contact-card a:hover{color:var(--gold)}
+
+  footer{
+    background:var(--ink);color:#8a857c;
+    padding:30px 30px 20px;text-align:center;
+    font-size:.8rem;letter-spacing:1px;
+  }
+  footer .logo{color:#d9d1c2;margin-bottom:6px}
+  footer .cin-text{color:var(--gold);font-weight:500;margin-top:4px;letter-spacing:1px}
+
+  .whatsapp-float{
+    position:fixed;bottom:25px;right:25px;z-index:90;
+    width:52px;height:52px;border-radius:50%;
+    background:#25D366;color:#fff;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 4px 15px rgba(0,0,0,.15);
+    transition:transform .3s;
+  }
+  .whatsapp-float:hover{transform:scale(1.1)}
+  .whatsapp-float svg{width:26px;height:26px}
+
+  @media(max-width:900px){
+    header{padding:10px 14px}
+    nav ul{display:none}
+    
+    section{padding:30px 14px}
+    .suites{padding:35px 14px}
+    .booking{padding:35px 14px}
+    .contact{padding:40px 14px}
+    .location{padding:35px 14px}
+    
+    .hero{height:55vh;min-height:350px}
+
+    .section-title{margin-bottom:10px;font-size:1.5rem}
+    .section-label{margin-bottom:5px;font-size:.65rem}
+    .suites-intro{margin:0 auto 15px;font-size:0.9rem;line-height:1.5}
+
+    .appartment-grid{
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        "title"
+        "desc"
+        "img"
+        "features"
+        "btn";
+      gap: 10px;
+    }
+
+    .suite-card{grid-template-columns:1fr;gap:12px;margin-bottom:25px;direction:ltr}
+    .location-grid{grid-template-columns:1fr;gap:15px}
+    
+    .appartment-text p{margin-bottom:8px;font-size:0.92rem}
+    .suite-info p{margin-bottom:8px;font-size:0.88rem}
+    .suite-info h3{font-size:1.5rem;margin-bottom:4px}
+    .suite-info .volta{margin-bottom:6px}
+    .suite-info ul{margin:8px 0 12px;}
+    .suite-info li{padding:4px 0;font-size:0.82rem}
+
+    .features{grid-template-columns:1fr 1fr;gap:6px;margin:8px 0}
+    .feature{padding:8px 10px;font-size:0.8rem}
+    
+    .booking-form{grid-template-columns:1fr;gap:10px}
+    .booking-subtitle{margin-bottom:18px;font-size:0.85rem}
+    .contact-methods{gap:10px;margin-top:12px}
+    .contact-card{padding:12px}
+    
+    .booking-form input, .booking-form select, .booking-form textarea {
+      padding:10px;font-size:0.9rem;
+    }
+  }
+</style>
 </head>
 <body>
-<p class="p1">&lt;!DOCTYPE html&gt;</p>
-<p class="p1">&lt;html lang="it"&gt;</p>
-<p class="p1">&lt;head&gt;</p>
-<p class="p1">&lt;meta charset="UTF-8"&gt;</p>
-<p class="p1">&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
-<p class="p1">&lt;title&gt;Vivi Domus Lecce — Appartamento &amp; Suite&lt;/title&gt;</p>
-<p class="p1">&lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;</p>
-<p class="p1">&lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;</p>
-<p class="p1">&lt;link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&amp;family=Inter:wght@300;400;500&amp;display=swap" rel="stylesheet"&gt;</p>
-<p class="p1">&lt;style&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>:root{</p>
-<p class="p1"><span class="Apple-converted-space">    </span>--bg:#f6f2ec;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>--bg-soft:#ede6db;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>--ink:#2b2a27;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>--ink-soft:#5a5650;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>--gold:#a8895f;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>--stone:#8a7f6e;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>--line:#d9d1c2;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>--suite-bg:#2b2a27; /* Marrone scuro / antracite elegante ripreso dal footer */</p>
-<p class="p1"><span class="Apple-converted-space">    </span>--suite-ink:#e8e2d5;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>--suite-accent:#c9b48a;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>*{box-sizing:border-box;margin:0;padding:0}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>html{scroll-behavior:smooth}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>body{</p>
-<p class="p1"><span class="Apple-converted-space">    </span>font-family:'Inter',sans-serif;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>background:var(--bg);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>color:var(--ink);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>line-height:1.6;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>font-weight:300;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;font-weight:400;letter-spacing:.5px}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>a{color:inherit;text-decoration:none}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>img{max-width:100%;display:block}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>/* HEADER OTTIMIZZATO E SEPARATO */</p>
-<p class="p1"><span class="Apple-converted-space">  </span>header{</p>
-<p class="p1"><span class="Apple-converted-space">    </span>position:fixed;top:0;left:0;right:0;z-index:100;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>padding:14px 30px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>display:flex;justify-content:space-between;align-items:center;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>background:rgba(246,242,236,.95);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>backdrop-filter:blur(10px);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>border-bottom:1px solid var(--line);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>gap: 20px;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.logo{font-family:'Cormorant Garamond',serif;font-size:1.3rem;letter-spacing:2px;text-transform:uppercase;white-space:nowrap;}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.logo span{color:var(--gold)}</p>
-<p class="p2"><span class="Apple-converted-space">  </span></p>
-<p class="p1"><span class="Apple-converted-space">  </span>nav ul{display:flex;gap:24px;list-style:none;align-items:center;}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>nav a{font-size:.8rem;letter-spacing:1.5px;text-transform:uppercase;transition:color .3s}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>nav a:hover{color:var(--gold)}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>/* Selettore Lingue pulito e separato */</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.lang-switch{</p>
-<p class="p1"><span class="Apple-converted-space">    </span>display:flex;gap:4px;font-size:.7rem;letter-spacing:1px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>background:var(--bg-soft);padding:3px 6px;border-radius:20px;border:1px solid var(--line);</p>
-<p class="p1"><span class="Apple-converted-space">  </span>}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.lang-switch button{</p>
-<p class="p1"><span class="Apple-converted-space">    </span>background:none;border:none;padding:3px 6px;cursor:pointer;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>color:var(--ink-soft);transition:all .3s;border-radius:50%;font-weight:500;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.lang-switch button.active,.lang-switch button:hover{background:var(--gold);color:#fff}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>/* HERO SLIDESHOW */</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.hero{</p>
-<p class="p1"><span class="Apple-converted-space">    </span>position:relative;height:100vh;min-height:550px;overflow:hidden;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.slide{</p>
-<p class="p1"><span class="Apple-converted-space">    </span>position:absolute;inset:0;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>background-size:cover;background-position:center;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>opacity:0;transition:opacity 1.8s ease-in-out;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.slide.active{opacity:1}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.slide::after{</p>
-<p class="p1"><span class="Apple-converted-space">    </span>content:"";position:absolute;inset:0;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>background:linear-gradient(180deg,rgba(0,0,0,.25) 0%,rgba(0,0,0,.55) 100%);</p>
-<p class="p1"><span class="Apple-converted-space">  </span>}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.hero-content{</p>
-<p class="p1"><span class="Apple-converted-space">    </span>position:absolute;inset:0;display:flex;flex-direction:column;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>justify-content:center;align-items:center;text-align:center;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>color:#fff;z-index:2;padding:0 20px;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.hero-content h1{</p>
-<p class="p1"><span class="Apple-converted-space">    </span>font-size:clamp(2.3rem,5vw,4.5rem);font-weight:300;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>letter-spacing:3px;margin-bottom:15px;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.hero-content p{</p>
-<p class="p1"><span class="Apple-converted-space">    </span>font-size:1rem;letter-spacing:2px;text-transform:uppercase;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>font-weight:300;opacity:.9;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.slide-dots{</p>
-<p class="p1"><span class="Apple-converted-space">    </span>position:absolute;bottom:30px;left:50%;transform:translateX(-50%);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>display:flex;gap:10px;z-index:3;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.slide-dots span{</p>
-<p class="p1"><span class="Apple-converted-space">    </span>width:25px;height:2px;background:rgba(255,255,255,.4);cursor:pointer;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>transition:background .3s;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.slide-dots span.active{background:#fff}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>/* FRECCE PER LE SLIDESHOW */</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.slider-arrow {</p>
-<p class="p1"><span class="Apple-converted-space">    </span>position: absolute;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>top: 50%;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>transform: translateY(-50%);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>background: rgba(0, 0, 0, 0.4);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>color: #fff;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>width: 40px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>height: 40px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>border-radius: 50%;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>align-items: center;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>justify-content: center;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>cursor: pointer;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>z-index: 20;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>border: none;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>font-size: 1.1rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>transition: background 0.3s, transform 0.2s;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.slider-arrow:hover {</p>
-<p class="p1"><span class="Apple-converted-space">    </span>background: var(--gold);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>transform: translateY(-50%) scale(1.05);</p>
-<p class="p1"><span class="Apple-converted-space">  </span>}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.slider-arrow.prev { left: 15px; }</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.slider-arrow.next { right: 15px; }</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>/* SLIDESHOW CAMERE */</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.room-slideshow {</p>
-<p class="p1"><span class="Apple-converted-space">    </span>position: relative;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>aspect-ratio: 4/5;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>border-radius: 2px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>overflow: hidden;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>border: 1px solid var(--gold);</p>
-<p class="p1"><span class="Apple-converted-space">  </span>}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.room-slide {</p>
-<p class="p1"><span class="Apple-converted-space">    </span>position: absolute;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>inset: 0;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>background-size: cover;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>background-position: center;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>opacity: 0;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>transition: opacity 1s ease-in-out;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.room-slide.active { opacity: 1; }</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.room-dots {</p>
-<p class="p1"><span class="Apple-converted-space">    </span>position: absolute;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>bottom: 15px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>left: 50%;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>transform: translateX(-50%);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>gap: 6px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>z-index: 10;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.room-dots span {</p>
-<p class="p1"><span class="Apple-converted-space">    </span>width: 16px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>height: 2px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>background: rgba(255,255,255,0.5);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>cursor: pointer;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>transition: background 0.3s;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.room-dots span.active { background: #fff; }</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.room-slideshow .slider-arrow { width: 32px; height: 32px; font-size: 0.9rem; }</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.room-slideshow .slider-arrow.prev { left: 10px; }</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.room-slideshow .slider-arrow.next { right: 10px; }</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>/* SECTIONS */</p>
-<p class="p1"><span class="Apple-converted-space">  </span>section{padding:90px 30px}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.container{max-width:1200px;margin:0 auto}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.section-label{</p>
-<p class="p1"><span class="Apple-converted-space">    </span>font-size:.7rem;letter-spacing:3px;text-transform:uppercase;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>color:var(--gold);margin-bottom:12px;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.section-title{</p>
-<p class="p1"><span class="Apple-converted-space">    </span>font-size:clamp(1.8rem,3.5vw,3rem);margin-bottom:30px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>font-weight:300;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>/* APPARTAMENTO */</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.appartment{background:var(--bg)}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.appartment-grid{</p>
-<p class="p1"><span class="Apple-converted-space">    </span>display:grid;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>grid-template-columns: 1fr 1fr;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>grid-template-areas:</p>
-<p class="p1"><span class="Apple-converted-space">      </span>"title img"</p>
-<p class="p1"><span class="Apple-converted-space">      </span>"desc img"</p>
-<p class="p1"><span class="Apple-converted-space">      </span>"features img"</p>
-<p class="p1"><span class="Apple-converted-space">      </span>"btn img";</p>
-<p class="p1"><span class="Apple-converted-space">    </span>gap: 20px 50px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>align-items: center;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.apt-title-area { grid-area: title; }</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.apt-desc-area { grid-area: desc; }</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.apt-img-area { grid-area: img; }</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.apt-features-area { grid-area: features; }</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.apt-btn-area { grid-area: btn; }</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>.appartment-text p{ color:var(--ink-soft);margin-bottom:16px;font-size:1rem; }</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.features{</p>
-<p class="p1"><span class="Apple-converted-space">    </span>display:grid;grid-template-columns:repeat(2,1fr);gap:15px;margin:10px 0;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.feature{</p>
-<p class="p1"><span class="Apple-converted-space">    </span>padding:16px;border:1px solid var(--line);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>font-size:.85rem;background:#fff;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.feature strong{display:block;color:var(--gold);font-weight:500;margin-bottom:4px;font-size:.7rem;letter-spacing:2px;text-transform:uppercase}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>/* SUITE */</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.suites{</p>
-<p class="p1"><span class="Apple-converted-space">    </span>background:var(--suite-bg);color:var(--suite-ink);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>padding:100px 30px;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.suites .section-label{color:var(--suite-accent)}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.suites .section-title{color:var(--suite-ink);font-weight:300}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.suites-intro{</p>
-<p class="p1"><span class="Apple-converted-space">    </span>max-width:650px;margin:0 auto 50px;text-align:center;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>font-size:1rem;line-height:1.8;color:#bdb5a4;font-style:italic;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>font-family:'Cormorant Garamond',serif;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.suite-card{</p>
-<p class="p1"><span class="Apple-converted-space">    </span>display:grid;grid-template-columns:1fr 1fr;gap:50px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>margin-bottom:70px;align-items:center;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.suite-card:last-child{margin-bottom:0;}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.suite-card:nth-child(even){direction:rtl}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.suite-card:nth-child(even) &gt; *{direction:ltr}</p>
-<p class="p2"><span class="Apple-converted-space">  </span></p>
-<p class="p1"><span class="Apple-converted-space">  </span>.suite-info h3{</p>
-<p class="p1"><span class="Apple-converted-space">    </span>font-size:1.8rem;margin-bottom:10px;color:var(--suite-accent);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>font-weight:300;letter-spacing:1px;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.suite-info .volta{</p>
-<p class="p1"><span class="Apple-converted-space">    </span>font-size:.7rem;letter-spacing:3px;text-transform:uppercase;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>color:var(--suite-accent);margin-bottom:15px;opacity:.8;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.suite-info p{color:#bdb5a4;margin-bottom:14px;font-size:.95rem}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.suite-info ul{list-style:none;margin:15px 0 20px;}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.suite-info li{</p>
-<p class="p1"><span class="Apple-converted-space">    </span>padding:6px 0;border-top:1px solid rgba(201,180,138,.15);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>font-size:.85rem;color:#a8a090;letter-spacing:.5px;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.suite-info li:last-child{border-bottom:1px solid rgba(201,180,138,.15)}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>/* POSIZIONE (Rimessa prima della prenotazione, come da logica strategica) */</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.location{background:var(--bg-soft)}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.location-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.location-text p{color:var(--ink-soft);margin-bottom:14px;font-size:0.98rem}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.location-map{</p>
-<p class="p1"><span class="Apple-converted-space">    </span>aspect-ratio:4/3;background:var(--line);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>display:flex;align-items:center;justify-content:center;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>color:var(--ink-soft);font-size:.85rem;letter-spacing:2px;text-transform:uppercase;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>border:1px solid var(--line);</p>
-<p class="p1"><span class="Apple-converted-space">  </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>/* PRENOTAZIONE */</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.booking{</p>
-<p class="p1"><span class="Apple-converted-space">    </span>background:var(--suite-bg);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>color:var(--suite-ink);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>text-align:center;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>padding:100px 30px;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.booking .section-label{color:var(--gold)}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.booking .section-title{color:#f4f4f0;font-weight:300;margin-bottom:8px}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.booking-subtitle{color:#aaa;font-size:.95rem;margin-bottom:35px;letter-spacing:.5px}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>.booking-form{</p>
-<p class="p1"><span class="Apple-converted-space">    </span>max-width:750px;margin:0 auto;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>display:grid;grid-template-columns:repeat(2,1fr);gap:20px;text-align:left;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.booking-form .full{grid-column:1/-1}</p>
-<p class="p2"><span class="Apple-converted-space">  </span></p>
-<p class="p1"><span class="Apple-converted-space">  </span>.form-group{ display:flex;flex-direction:column;gap:6px; }</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.form-group label{</p>
-<p class="p1"><span class="Apple-converted-space">    </span>font-size:.7rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:500;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.booking-form input,.booking-form select,.booking-form textarea{</p>
-<p class="p1"><span class="Apple-converted-space">    </span>width:100%;padding:14px;border:1px solid rgba(197,160,89,0.3);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>background:#383632;font-family:inherit;font-size:.95rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>color:#fff;transition:border-color .3s;border-radius:4px;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.booking-form input:focus,.booking-form select:focus,.booking-form textarea:focus{</p>
-<p class="p1"><span class="Apple-converted-space">    </span>outline:none;border-color:var(--gold);</p>
-<p class="p1"><span class="Apple-converted-space">  </span>}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.booking-form input::placeholder,.booking-form textarea::placeholder{ color:#888; }</p>
-<p class="p2"><span class="Apple-converted-space">  </span></p>
-<p class="p1"><span class="Apple-converted-space">  </span>.btn{</p>
-<p class="p1"><span class="Apple-converted-space">    </span>display:inline-block;padding:14px 30px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>background:var(--gold);color:#fff;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>font-size:.75rem;letter-spacing:2px;text-transform:uppercase;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>border:none;cursor:pointer;transition:all .3s;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>font-family:inherit;border-radius:4px;font-weight:600;text-align:center;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.btn:hover{background:#d4af37}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.btn-light{background:transparent;border:1px solid var(--suite-accent);color:var(--suite-accent)}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.btn-light:hover{background:var(--suite-accent);color:var(--suite-bg)}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>/* CONTATTI (Molto compatti) */</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.contact{background:var(--bg);text-align:center;padding:60px 30px;}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.contact-methods{</p>
-<p class="p1"><span class="Apple-converted-space">    </span>display:flex;justify-content:center;gap:25px;margin-top:20px;flex-wrap:wrap;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.contact-card{</p>
-<p class="p1"><span class="Apple-converted-space">    </span>padding:18px 25px;border:1px solid var(--line);background:#fff;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>min-width:200px;transition:all .3s;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.contact-card:hover{border-color:var(--gold);transform:translateY(-3px)}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.contact-card .icon{font-size:1.3rem;color:var(--gold);margin-bottom:6px}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.contact-card h4{font-size:1rem;margin-bottom:4px}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.contact-card a{color:var(--ink-soft);font-size:.85rem;transition:color .3s}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.contact-card a:hover{color:var(--gold)}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>/* FOOTER */</p>
-<p class="p1"><span class="Apple-converted-space">  </span>footer{</p>
-<p class="p1"><span class="Apple-converted-space">    </span>background:var(--ink);color:#8a857c;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>padding:30px 30px 20px;text-align:center;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>font-size:.8rem;letter-spacing:1px;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>footer .logo{color:#d9d1c2;margin-bottom:6px}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>footer .cin-text{color:var(--gold);font-weight:500;margin-top:4px;letter-spacing:1px}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>/* WHATSAPP FLOAT */</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.whatsapp-float{</p>
-<p class="p1"><span class="Apple-converted-space">    </span>position:fixed;bottom:25px;right:25px;z-index:90;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>width:52px;height:52px;border-radius:50%;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>background:#25D366;color:#fff;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>display:flex;align-items:center;justify-content:center;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>box-shadow:0 4px 15px rgba(0,0,0,.15);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>transition:transform .3s;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.whatsapp-float:hover{transform:scale(1.1)}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.whatsapp-float svg{width:26px;height:26px}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>/* RESPONSIVE MOBILE COMPATTO */</p>
-<p class="p1"><span class="Apple-converted-space">  </span>@media(max-width:900px){</p>
-<p class="p1"><span class="Apple-converted-space">    </span>header{padding:10px 14px}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>nav ul{display:none} /* Da gestire con eventuale menu hamburger se necessario */</p>
-<p class="p2"><span class="Apple-converted-space">    </span></p>
-<p class="p1"><span class="Apple-converted-space">    </span>section{padding:30px 14px}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>.suites{padding:35px 14px}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>.booking{padding:35px 14px}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>.contact{padding:40px 14px}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>.location{padding:35px 14px}</p>
-<p class="p2"><span class="Apple-converted-space">    </span></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.hero{height:55vh;min-height:350px}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.section-title{margin-bottom:10px;font-size:1.5rem}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>.section-label{margin-bottom:5px;font-size:.65rem}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>.suites-intro{margin:0 auto 15px;font-size:0.9rem;line-height:1.5}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.appartment-grid{</p>
-<p class="p1"><span class="Apple-converted-space">      </span>grid-template-columns: 1fr;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>grid-template-areas:</p>
-<p class="p1"><span class="Apple-converted-space">        </span>"title"</p>
-<p class="p1"><span class="Apple-converted-space">        </span>"desc"</p>
-<p class="p1"><span class="Apple-converted-space">        </span>"img"</p>
-<p class="p1"><span class="Apple-converted-space">        </span>"features"</p>
-<p class="p1"><span class="Apple-converted-space">        </span>"btn";</p>
-<p class="p1"><span class="Apple-converted-space">      </span>gap: 10px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.suite-card{grid-template-columns:1fr;gap:12px;margin-bottom:25px;direction:ltr}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>.location-grid{grid-template-columns:1fr;gap:15px}</p>
-<p class="p2"><span class="Apple-converted-space">    </span></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.appartment-text p{margin-bottom:8px;font-size:0.92rem}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>.suite-info p{margin-bottom:8px;font-size:0.88rem}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>.suite-info h3{font-size:1.5rem;margin-bottom:4px}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>.suite-info .volta{margin-bottom:6px}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>.suite-info ul{margin:8px 0 12px;}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>.suite-info li{padding:4px 0;font-size:0.82rem}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.features{grid-template-columns:1fr 1fr;gap:6px;margin:8px 0}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>.feature{padding:8px 10px;font-size:0.8rem}</p>
-<p class="p2"><span class="Apple-converted-space">    </span></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.booking-form{grid-template-columns:1fr;gap:10px}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>.booking-subtitle{margin-bottom:18px;font-size:0.85rem}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>.contact-methods{gap:10px;margin-top:12px}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>.contact-card{padding:12px}</p>
-<p class="p2"><span class="Apple-converted-space">    </span></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.booking-form input, .booking-form select, .booking-form textarea {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding:10px;font-size:0.9rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>}</p>
-<p class="p1">&lt;/style&gt;</p>
-<p class="p1">&lt;/head&gt;</p>
-<p class="p1">&lt;body&gt;</p>
-<p class="p2"><br></p>
-<p class="p1">&lt;header&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="logo"&gt;Vivi &lt;span&gt;Domus&lt;/span&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;nav&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;ul&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;li&gt;&lt;a href="#appartment" data-i18n="nav_appartment"&gt;Appartamento&lt;/a&gt;&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;li&gt;&lt;a href="#suites" data-i18n="nav_suites"&gt;Suite&lt;/a&gt;&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;li&gt;&lt;a href="#location" data-i18n="nav_location"&gt;Posizione&lt;/a&gt;&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;li&gt;&lt;a href="#booking" data-i18n="nav_booking"&gt;Prenota&lt;/a&gt;&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;li&gt;&lt;a href="#contact" data-i18n="nav_contact"&gt;Contatti&lt;/a&gt;&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/ul&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/nav&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="lang-switch"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;button data-lang="it" class="active"&gt;IT&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;button data-lang="en"&gt;EN&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;button data-lang="fr"&gt;FR&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;button data-lang="de"&gt;DE&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;button data-lang="es"&gt;ES&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
-<p class="p1">&lt;/header&gt;</p>
-<p class="p2"><br></p>
-<p class="p1">&lt;!-- HERO SLIDESHOW --&gt;</p>
-<p class="p1">&lt;section class="hero"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="slide active" style="background-image:url('https://images.unsplash.com/photo-1525931464436-3baba87d4e47?w=1600')"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="slide" style="background-image:url('https://images.unsplash.com/photo-1533587851505-d119e13fa0d7?w=1600')"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="slide" style="background-image:url('https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=1600')"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="slide" style="background-image:url('https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=1600')"&gt;&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;button class="slider-arrow prev" onclick="moveHeroSlide(-1)"&gt;&amp;#10094;&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;button class="slider-arrow next" onclick="moveHeroSlide(1)"&gt;&amp;#10095;&lt;/button&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="hero-content"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;h1 data-i18n="hero_title"&gt;Vivi Domus Lecce&lt;/h1&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;p data-i18n="hero_subtitle"&gt;Appartamento &amp; Suite — nel cuore del barocco&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="slide-dots"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;span class="active" onclick="currentHeroSlide(0)"&gt;&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;span onclick="currentHeroSlide(1)"&gt;&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;span onclick="currentHeroSlide(2)"&gt;&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;span onclick="currentHeroSlide(3)"&gt;&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
-<p class="p1">&lt;/section&gt;</p>
-<p class="p2"><br></p>
-<p class="p1">&lt;!-- APPARTAMENTO --&gt;</p>
-<p class="p1">&lt;section id="appartment" class="appartment"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="container"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="appartment-grid"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="apt-title-area"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="section-label" data-i18n="apt_label"&gt;L'appartamento&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;h2 class="section-title" data-i18n="apt_title" style="margin-bottom:0;"&gt;Uno spazio luminoso, ampio e accogliente&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="apt-desc-area appartment-text"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;p data-i18n="apt_p1"&gt;Caratterizzato da interni bianchi e luminosi incorniciati da dettagli dorati, l'appartamento accoglie gli ospiti con una straordinaria sensazione di spazio, gioia e comfort assoluto.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;p data-i18n="apt_p2"&gt;La posizione a due passi da Porta San Biagio e dal centro storico di Lecce permette di vivere la città a piedi, tornando la sera in un ambiente arioso e raffinato.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">      </span></p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="room-slideshow apt-img-area" id="slider-apt"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="room-slide active" style="background-image:url('https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=900')"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="room-slide" style="background-image:url('https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=900')"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="room-slide" style="background-image:url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=900')"&gt;&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;button class="slider-arrow prev" onclick="moveRoomSlide('slider-apt', -1)"&gt;&amp;#10094;&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;button class="slider-arrow next" onclick="moveRoomSlide('slider-apt', 1)"&gt;&amp;#10095;&lt;/button&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="room-dots"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;span class="active" onclick="currentRoomSlide('slider-apt', 0)"&gt;&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;span onclick="currentRoomSlide('slider-apt', 1)"&gt;&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;span onclick="currentRoomSlide('slider-apt', 2)"&gt;&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="features apt-features-area"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="feature"&gt;&lt;strong data-i18n="apt_f1_l"&gt;Piano&lt;/strong&gt;&lt;span data-i18n="apt_f1_v"&gt;Primo piano&lt;/span&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="feature"&gt;&lt;strong data-i18n="apt_f2_l"&gt;Capienza&lt;/strong&gt;&lt;span data-i18n="apt_f2_v"&gt;Fino a 4 ospiti&lt;/span&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="feature"&gt;&lt;strong data-i18n="apt_f3_l"&gt;Servizi&lt;/strong&gt;&lt;span data-i18n="apt_f3_v"&gt;Cucina, living, bagno&lt;/span&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="feature"&gt;&lt;strong data-i18n="apt_f4_l"&gt;Posizione&lt;/strong&gt;&lt;span data-i18n="apt_f4_v"&gt;Vicino al centro&lt;/span&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="apt-btn-area"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;a href="#booking" class="btn" onclick="selectSolution('Appartamento Principale')" data-i18n="btn_book_apt"&gt;Prenota Appartamento&lt;/a&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
-<p class="p1">&lt;/section&gt;</p>
-<p class="p2"><br></p>
-<p class="p1">&lt;!-- SUITE --&gt;</p>
-<p class="p1">&lt;section id="suites" class="suites"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="container"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="section-label" style="text-align:center" data-i18n="suite_label"&gt;Le suite&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;h2 class="section-title" style="text-align:center" data-i18n="suite_title"&gt;Due stanze, una volta a stella&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;p class="suites-intro" data-i18n="suite_intro"&gt;Due camere esclusive con bagno privato, custodite sotto l'antica volta a stella. Uno spazio intimo e riservato, caratterizzato da toni scuri e avvolgenti, pensato per chi cerca silenzio, privacy e la bellezza discreta della pietra leccese.&lt;/p&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Suite I --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="suite-card"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="room-slideshow" id="slider-suite1"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="room-slide active" style="background-image:url('https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=900')"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="room-slide" style="background-image:url('https://images.unsplash.com/photo-1590490360182-c33d57733427?w=900')"&gt;&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;button class="slider-arrow prev" onclick="moveRoomSlide('slider-suite1', -1)"&gt;&amp;#10094;&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;button class="slider-arrow next" onclick="moveRoomSlide('slider-suite1', 1)"&gt;&amp;#10095;&lt;/button&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="room-dots"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;span class="active" onclick="currentRoomSlide('slider-suite1', 0)"&gt;&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;span onclick="currentRoomSlide('slider-suite1', 1)"&gt;&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="suite-info"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="volta" data-i18n="suite_volta"&gt;Volta a stella&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;h3 data-i18n="suite1_name"&gt;Suite I&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;p data-i18n="suite1_desc"&gt;Camera intima con bagno privato. Toni scuri e rilassanti, arredi sobri e il disegno della volta che regala un'atmosfera di profonda quiete.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;ul&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;li data-i18n="suite1_f1"&gt;Letto matrimoniale / singolo&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;li data-i18n="suite1_f2"&gt;Bagno privato&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;li data-i18n="suite1_f3"&gt;Volta a stella originale&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;li data-i18n="suite1_f4"&gt;Massima riservatezza&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/ul&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;a href="#booking" class="btn btn-light" onclick="selectSolution('Suite I')" data-i18n="btn_book_suite1"&gt;Prenota Suite I&lt;/a&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Suite II --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="suite-card"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="room-slideshow" id="slider-suite2"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="room-slide active" style="background-image:url('https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=900')"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="room-slide" style="background-image:url('https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?w=900')"&gt;&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;button class="slider-arrow prev" onclick="moveRoomSlide('slider-suite2', -1)"&gt;&amp;#10094;&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;button class="slider-arrow next" onclick="moveRoomSlide('slider-suite2', 1)"&gt;&amp;#10095;&lt;/button&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="room-dots"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;span class="active" onclick="currentRoomSlide('slider-suite2', 0)"&gt;&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;span onclick="currentRoomSlide('slider-suite2', 1)"&gt;&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="suite-info"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="volta" data-i18n="suite_volta"&gt;Volta a stella&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;h3 data-i18n="suite2_name"&gt;Suite II&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;p data-i18n="suite2_desc"&gt;Camera esclusiva con bagno privato. La stessa architettura storica, un'altra sfumatura di intimità e un comfort avvolgente.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;ul&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;li data-i18n="suite2_f1"&gt;Letto matrimoniale / singolo&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;li data-i18n="suite2_f2"&gt;Bagno privato&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;li data-i18n="suite2_f3"&gt;Volta a stella originale&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;li data-i18n="suite2_f4"&gt;Massima riservatezza&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/ul&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;a href="#booking" class="btn btn-light" onclick="selectSolution('Suite II')" data-i18n="btn_book_suite2"&gt;Prenota Suite II&lt;/a&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
-<p class="p1">&lt;/section&gt;</p>
-<p class="p2"><br></p>
-<p class="p1">&lt;!-- POSIZIONE (Rimessa prima del form, come da standard strategico) --&gt;</p>
-<p class="p1">&lt;section id="location" class="location"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="container"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="location-grid"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="location-text"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="section-label" data-i18n="loc_label"&gt;Posizione&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;h2 class="section-title" data-i18n="loc_title"&gt;Nel cuore barocco di Lecce&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;p data-i18n="loc_p1"&gt;Vivi Domus si trova in una posizione strategica a due passi da Porta San Biagio. A piedi si raggiungono facilmente Piazza del Duomo, il Teatro Romano e le meraviglie del centro storico.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;p data-i18n="loc_p2"&gt;La base ideale per esplorare a piedi la città e muoversi comodamente verso le splendide spiagge del Salento.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="location-map"&gt;Lecce — Porta San Biagio / Via di Leuca&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
-<p class="p1">&lt;/section&gt;</p>
-<p class="p2"><br></p>
-<p class="p1">&lt;!-- PRENOTAZIONE --&gt;</p>
-<p class="p1">&lt;section id="booking" class="booking"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="container"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="section-label" data-i18n="book_label"&gt;Prenotazione&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;h2 class="section-title" data-i18n="book_title"&gt;Prenota il tuo soggiorno&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;p class="booking-subtitle" data-i18n="book_subtitle"&gt;Invia la richiesta: ti risponderemo con la conferma di disponibilità.&lt;/p&gt;</p>
-<p class="p2"><span class="Apple-converted-space">    </span></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;form class="booking-form" onsubmit="event.preventDefault();alert('Richiesta inviata con successo!');"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="form-group"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;label data-i18n="form_lbl_name"&gt;Nome&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;input type="text" data-i18n-ph="form_name" placeholder="Nome e cognome" required&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">      </span></p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="form-group"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;label data-i18n="form_lbl_email"&gt;Email&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;input type="email" data-i18n-ph="form_email" placeholder="Indirizzo email" required&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">      </span></p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="form-group full"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;label data-i18n="form_lbl_solution"&gt;Soluzione&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;select id="solution-select" required&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;option value="" data-i18n="form_select"&gt;Seleziona la soluzione&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;option value="Appartamento Principale" data-i18n="form_opt1"&gt;Appartamento Principale&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;option value="Suite I" data-i18n="form_opt2"&gt;Suite I&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;option value="Suite II" data-i18n="form_opt3"&gt;Suite II&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/select&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">      </span></p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="form-group"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;label data-i18n="form_lbl_arrival"&gt;Arrivo&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;input type="date" required&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">      </span></p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="form-group"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;label data-i18n="form_lbl_departure"&gt;Partenza&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;input type="date" required&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">      </span></p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="form-group full"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;label data-i18n="form_lbl_guests"&gt;Ospiti&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;input type="number" min="1" max="10" value="2" required&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">      </span></p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="form-group full"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;label data-i18n="form_lbl_msg"&gt;Messaggio&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;textarea rows="4" data-i18n-ph="form_msg" placeholder="Messaggio o richieste particolari (opzionale)"&gt;&lt;/textarea&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">      </span></p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="full"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;button type="submit" class="btn" style="width:100%;" data-i18n="form_send"&gt;Invia richiesta&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/form&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
-<p class="p1">&lt;/section&gt;</p>
-<p class="p2"><br></p>
-<p class="p1">&lt;!-- CONTATTI --&gt;</p>
-<p class="p1">&lt;section id="contact" class="contact"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="container"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="section-label" data-i18n="ct_label"&gt;Contatti&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;h2 class="section-title" data-i18n="ct_title"&gt;Parliamo&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="contact-methods"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="contact-card"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="icon"&gt;<span class="s1">✆</span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;h4 data-i18n="ct_phone"&gt;Telefono&lt;/h4&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;a href="tel:+393400000000"&gt;+39 340 000 0000&lt;/a&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="contact-card"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="icon"&gt;<span class="s1">✉</span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;h4&gt;Email&lt;/h4&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;a href="mailto:info@vividomus.it"&gt;info@vividomus.it&lt;/a&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="contact-card"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="icon"&gt;<span class="s2">◉</span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;h4&gt;WhatsApp&lt;/h4&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;a href="https://wa.me/393400000000" target="_blank" data-i18n="ct_wa"&gt;Scrivici su WhatsApp&lt;/a&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
-<p class="p1">&lt;/section&gt;</p>
-<p class="p2"><br></p>
-<p class="p1">&lt;footer&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="logo"&gt;Vivi &lt;span style="color:var(--gold)"&gt;Domus&lt;/span&gt; — Lecce&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;p data-i18n="footer"&gt;© 2026 Vivi Domus — Tutti i diritti riservati&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;p class="cin-text"&gt;CIN: IT075035C200126683&lt;/p&gt;</p>
-<p class="p1">&lt;/footer&gt;</p>
-<p class="p2"><br></p>
-<p class="p1">&lt;!-- WHATSAPP FLOAT --&gt;</p>
-<p class="p1">&lt;a href="https://wa.me/393400000000" class="whatsapp-float" target="_blank" title="WhatsApp"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;svg viewBox="0 0 32 32" fill="currentColor"&gt;&lt;path d="M16 .5C7.4.5.5 7.4.5 16c0 2.8.7 5.5 2.1 7.9L.5 31.5l7.8-2c2.3 1.3 4.9 1.9 7.7 1.9 8.6 0 15.5-6.9 15.5-15.5S24.6.5 16 .5zm0 28.3c-2.5 0-4.9-.7-7-1.9l-.5-.3-4.6 1.2 1.2-4.5-.3-.5c-1.4-2.2-2.1-4.7-2.1-7.3 0-7.1 5.8-12.8 12.8-12.8 7.1 0 12.8 5.8 12.8 12.8S23.1 28.8 16 28.8zm7-9.6c-.4-.2-2.3-1.1-2.7-1.3-.4-.1-.6-.2-.9.2-.3.4-1 1.3-1.3 1.5-.2.3-.5.3-.9.1s-1.6-.6-3.1-1.9c-1.1-1-1.9-2.3-2.1-2.7-.2-.4 0-.6.2-.8.2-.2.4-.5.6-.7.2-.2.2-.4.3-.7.1-.2 0-.5 0-.7s-.9-2.1-1.2-2.9c-.3-.7-.6-.6-.9-.6h-.7c-.2 0-.6.1-.9.4s-1.2 1.1-1.2 2.8 1.2 3.2 1.4 3.4c.2.2 2.4 3.7 5.8 5.2.8.4 1.4.6 1.9.7.8.3 1.5.2 2.1.1.6-.1 1.9-.8 2.2-1.5.3-.8.3-1.4.2-1.5-.1-.2-.4-.3-.8-.5z"/&gt;&lt;/svg&gt;</p>
-<p class="p1">&lt;/a&gt;</p>
-<p class="p2"><br></p>
-<p class="p1">&lt;script&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>function selectSolution(solutionName) {</p>
-<p class="p1"><span class="Apple-converted-space">    </span>const select = document.getElementById('solution-select');</p>
-<p class="p1"><span class="Apple-converted-space">    </span>if(select) { select.value = solutionName; }</p>
-<p class="p1"><span class="Apple-converted-space">  </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>const heroSlides = document.querySelectorAll('.hero .slide');</p>
-<p class="p1"><span class="Apple-converted-space">  </span>const heroDots = document.querySelectorAll('.slide-dots span');</p>
-<p class="p1"><span class="Apple-converted-space">  </span>let heroCurrent = 0;</p>
-<p class="p2"><span class="Apple-converted-space">  </span></p>
-<p class="p1"><span class="Apple-converted-space">  </span>function showHeroSlide(i){</p>
-<p class="p1"><span class="Apple-converted-space">    </span>if (i &gt;= heroSlides.length) heroCurrent = 0;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>else if (i &lt; 0) heroCurrent = heroSlides.length - 1;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>else heroCurrent = i;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>heroSlides.forEach(s=&gt;s.classList.remove('active'));</p>
-<p class="p1"><span class="Apple-converted-space">    </span>heroDots.forEach(d=&gt;d.classList.remove('active'));</p>
-<p class="p1"><span class="Apple-converted-space">    </span>heroSlides[heroCurrent].classList.add('active');</p>
-<p class="p1"><span class="Apple-converted-space">    </span>heroDots[heroCurrent].classList.add('active');</p>
-<p class="p1"><span class="Apple-converted-space">  </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>function moveHeroSlide(n) { showHeroSlide(heroCurrent + n); }</p>
-<p class="p1"><span class="Apple-converted-space">  </span>function currentHeroSlide(i) { showHeroSlide(i); }</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>heroDots.forEach((d, index)=&gt;d.addEventListener('click',()=&gt;currentHeroSlide(index)));</p>
-<p class="p1"><span class="Apple-converted-space">  </span>setInterval(()=&gt;moveHeroSlide(1), 6000);</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>const roomSlidersState = {};</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>function setupRoomSlider(containerId) {</p>
-<p class="p1"><span class="Apple-converted-space">    </span>const container = document.getElementById(containerId);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>if (!container) return;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>const slides = container.querySelectorAll('.room-slide');</p>
-<p class="p1"><span class="Apple-converted-space">    </span>const dots = container.querySelectorAll('.room-dots span');</p>
-<p class="p2"><span class="Apple-converted-space">    </span></p>
-<p class="p1"><span class="Apple-converted-space">    </span>roomSlidersState[containerId] = { current: 0, slides: slides, dots: dots };</p>
-<p class="p1"><span class="Apple-converted-space">    </span>setInterval(() =&gt; { moveRoomSlide(containerId, 1); }, 5000);</p>
-<p class="p1"><span class="Apple-converted-space">  </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>function showRoomSlide(containerId, index) {</p>
-<p class="p1"><span class="Apple-converted-space">    </span>const state = roomSlidersState[containerId];</p>
-<p class="p1"><span class="Apple-converted-space">    </span>if (!state) return;</p>
-<p class="p2"><span class="Apple-converted-space">    </span></p>
-<p class="p1"><span class="Apple-converted-space">    </span>if (index &gt;= state.slides.length) state.current = 0;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>else if (index &lt; 0) state.current = state.slides.length - 1;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>else state.current = index;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>state.slides.forEach((s, i) =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>s.classList.toggle('active', i === state.current);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>if (state.dots[i]) state.dots[i].classList.toggle('active', i === state.current);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>});</p>
-<p class="p1"><span class="Apple-converted-space">  </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>function moveRoomSlide(containerId, n) {</p>
-<p class="p1"><span class="Apple-converted-space">    </span>const state = roomSlidersState[containerId];</p>
-<p class="p1"><span class="Apple-converted-space">    </span>if (state) { showRoomSlide(containerId, state.current + n); }</p>
-<p class="p1"><span class="Apple-converted-space">  </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>function currentRoomSlide(containerId, index) {</p>
-<p class="p1"><span class="Apple-converted-space">    </span>showRoomSlide(containerId, index);</p>
-<p class="p1"><span class="Apple-converted-space">  </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>setupRoomSlider('slider-apt');</p>
-<p class="p1"><span class="Apple-converted-space">  </span>setupRoomSlider('slider-suite1');</p>
-<p class="p1"><span class="Apple-converted-space">  </span>setupRoomSlider('slider-suite2');</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>const translations = {</p>
-<p class="p1"><span class="Apple-converted-space">    </span>it:{</p>
-<p class="p1"><span class="Apple-converted-space">      </span>nav_appartment:"Appartamento",nav_suites:"Suite",nav_booking:"Prenota",nav_location:"Posizione",nav_contact:"Contatti",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>hero_title:"Vivi Domus Lecce",hero_subtitle:"Appartamento &amp; Suite — nel cuore del barocco",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>apt_label:"L'appartamento",apt_title:"Uno spazio luminoso, ampio e accogliente",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>apt_p1:"Caratterizzato da interni bianchi e luminosi incorniciati da dettagli dorati, l'appartamento accoglie gli ospiti con una straordinaria sensazione di spazio, gioia e comfort assoluto.",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>apt_p2:"La posizione a due passi da Porta San Biagio e dal centro storico di Lecce permette di vivere la città a piedi, tornando la sera in un ambiente arioso e raffinato.",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>apt_f1_l:"Piano",apt_f1_v:"Primo piano",apt_f2_l:"Capienza",apt_f2_v:"Fino a 4 ospiti",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>apt_f3_l:"Servizi",apt_f3_v:"Cucina, living, bagno",apt_f4_l:"Posizione",apt_f4_v:"Vicino al centro",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>btn_book_apt:"Prenota Appartamento",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>suite_label:"Le suite",suite_title:"Due stanze, una volta a stella",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>suite_intro:"Due camere esclusive con bagno privato, custodite sotto l'antica volta a stella. Uno spazio intimo e riservato, caratterizzato da toni scuri e avvolgenti, pensato per chi cerca silenzio, privacy e la bellezza discreta della pietra leccese.",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>suite_volta:"Volta a stella",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>suite1_name:"Suite I",suite1_desc:"Camera intima con bagno privato. Toni scuri e rilassanti, arredi sobri e il disegno della volta che regala un'atmosfera di profonda quiete.",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>suite1_f1:"Letto matrimoniale / singolo",suite1_f2:"Bagno privato",suite1_f3:"Volta a stella originale",suite1_f4:"Massima riservatezza",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>btn_book_suite1:"Prenota Suite I",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>suite2_name:"Suite II",suite2_desc:"Camera esclusiva con bagno privato. La stessa architettura storica, un'altra sfumatura di intimità e un comfort avvolgente.",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>suite2_f1:"Letto matrimoniale / singolo",suite2_f2:"Bagno privato",suite2_f3:"Volta a stella originale",suite2_f4:"Massima riservatezza",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>btn_book_suite2:"Prenota Suite II",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>loc_label:"Posizione",loc_title:"Nel cuore barocco di Lecce",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>loc_p1:"Vivi Domus si trova in una posizione strategica a due passi da Porta San Biagio. A piedi si raggiungono facilmente Piazza del Duomo, il Teatro Romano e le meraviglie del centro storico.",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>loc_p2:"La base ideale per esplorare a piedi la città e muoversi comodamente verso le splendide spiagge del Salento.",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>book_label:"Prenotazione",book_title:"Prenota il tuo soggiorno",book_subtitle:"Invia la richiesta: ti risponderemo con la conferma di disponibilità.",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>form_lbl_name:"Nome",form_lbl_email:"Email",form_lbl_solution:"Soluzione",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>form_lbl_arrival:"Arrivo",form_lbl_departure:"Partenza",form_lbl_guests:"Ospiti",form_lbl_msg:"Messaggio",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>form_name:"Nome e cognome",form_email:"Indirizzo email",form_select:"Seleziona la soluzione",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>form_opt1:"Appartamento Principale",form_opt2:"Suite I",form_opt3:"Suite II",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>form_msg:"Messaggio o richieste particolari (opzionale)",form_send:"Invia richiesta",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>ct_label:"Contatti",ct_title:"Parliamo",ct_phone:"Telefono",ct_wa:"Scrivici su WhatsApp",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>footer:"© 2026 Vivi Domus — Tutti i diritti riservati"</p>
-<p class="p1"><span class="Apple-converted-space">    </span>},</p>
-<p class="p1"><span class="Apple-converted-space">    </span>en:{</p>
-<p class="p1"><span class="Apple-converted-space">      </span>nav_appartment:"Apartment",nav_suites:"Suites",nav_booking:"Book",nav_location:"Location",nav_contact:"Contact",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>hero_title:"Vivi Domus Lecce",hero_subtitle:"Apartment &amp; Suites — in the heart of the Baroque",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>apt_label:"The apartment",apt_title:"A bright, spacious and welcoming space",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>apt_p1:"Featuring bright white interiors framed by golden details, the apartment welcomes guests with an extraordinary sense of space, joy and absolute comfort.",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>apt_p2:"Located a short walk from Porta San Biagio and Lecce's historic center, it allows you to experience the city on foot, returning in the evening to an airy and refined retreat.",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>apt_f1_l:"Floor",apt_f1_v:"First floor",apt_f2_l:"Capacity",apt_f2_v:"Up to 4 guests",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>apt_f3_l:"Facilities",apt_f3_v:"Kitchen, living room, bathroom",apt_f4_l:"Location",apt_f4_v:"Near the center",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>btn_book_apt:"Book Apartment",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>suite_label:"The suites",suite_title:"Two rooms, a star vault",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>suite_intro:"Two exclusive rooms with private bathrooms, sheltered beneath the ancient star vault. An intimate and private space with dark, enveloping tones, designed for those seeking silence, privacy and the discreet beauty of Lecce stone.",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>suite_volta:"Star vault",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>suite1_name:"Suite I",suite1_desc:"Intimate room with private bathroom. Dark and relaxing tones, sober furnishings, and the design of the vault offering an atmosphere of deep peace.",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>suite1_f1:"Double / single bed",suite1_f2:"Private bathroom",suite1_f3:"Original star vault",suite1_f4:"Maximum privacy",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>btn_book_suite1:"Book Suite I",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>suite2_name:"Suite II",suite2_desc:"Exclusive room with private bathroom. The same historic architecture, another nuance of intimacy and enveloping comfort.",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>suite2_f1:"Double / single bed",suite2_f2:"Private bathroom",suite2_f3:"Original star vault",suite2_f4:"Maximum privacy",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>btn_book_suite2:"Book Suite II",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>loc_label:"Location",loc_title:"In the Baroque heart of Lecce",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>loc_p1:"Vivi Domus is in a strategic location a stone's throw from Porta San Biagio. Piazza del Duomo, the Roman Theatre and the wonders of the historic center are easily reached on foot.",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>loc_p2:"The ideal base for exploring the city on foot and easily heading to the beautiful beaches of Salento.",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>book_label:"Booking",book_title:"Book your stay",book_subtitle:"Send your request: we will reply with availability confirmation.",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>form_lbl_name:"Name",form_lbl_email:"Email",form_lbl_solution:"Solution",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>form_lbl_arrival:"Arrival",form_lbl_departure:"Departure",form_lbl_guests:"Guests",form_lbl_msg:"Message",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>form_name:"Full name",form_email:"Email address",form_select:"Select solution",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>form_opt1:"Main Apartment",form_opt2:"Suite I",form_opt3:"Suite II",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>form_msg:"Message or special requests (optional)",form_send:"Send request",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>ct_label:"Contact",ct_title:"Get in touch",ct_phone:"Phone",ct_wa:"Message us on WhatsApp",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>footer:"© 2026 Vivi Domus — All rights reserved"</p>
-<p class="p1"><span class="Apple-converted-space">    </span>},</p>
-<p class="p1"><span class="Apple-converted-space">    </span>fr:{</p>
-<p class="p1"><span class="Apple-converted-space">      </span>nav_appartment:"Appartement",nav_suites:"Suites",nav_booking:"Réserver",nav_location:"Position",nav_contact:"Contact",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>hero_title:"Vivi Domus Lecce",hero_subtitle:"Appartement &amp; Suites — au cœur du baroque",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>apt_label:"L'appartement",apt_title:"Un espace lumineux, spacieux et chaleureux",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>apt_p1:"Caractérisé par des intérieurs blancs et lumineux encadrés de détails dorés, l'appartement accueille les hôtes avec une extraordinaire sensation d'espace, de joie et de confort absolu.",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>apt_p2:"Situé à deux pas de Porta San Biagio et du centre historique de Lecce, il permet de vivre la ville à pied, en revenant le soir dans un cadre aéré et raffiné.",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>apt_f1_l:"Étage",apt_f1_v:"Premier étage",apt_f2_l:"Capacité",apt_f2_v:"Jusqu'à 4 personnes",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>apt_f3_l:"Services",apt_f3_v:"Cuisine, salon, salle de bain",apt_f4_l:"Position",apt_f4_v:"Près du centre",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>btn_book_apt:"Réserver l'appartement",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>suite_label:"Les suites",suite_title:"Deux chambres, une voûte étoilée",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>suite_intro:"Deux chambres exclusives avec salle de bain privée, abritées sous l'ancienne voûte étoilée. Un espace intime et réservé aux tons sombres et enveloppants, pensé pour ceux qui recherchent le silence, l'intimité et la beauté discrète de la pierre de Lecce.",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>suite_volta:"Voûte étoilée",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>suite1_name:"Suite I",suite1_desc:"Chambre intime avec salle de bain privée. Tons sombres et relaxants, mobilier sobre et dessin de la voûte offrant une atmosphère de paix profonde.",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>suite1_f1:"Lit double / simple",suite1_f2:"Salle de bain privée",suite1_f3:"Voûte étoilée d'origine",suite1_f4:"Intimité maximale",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>btn_book_suite1:"Réserver Suite I",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>suite2_name:"Suite II",suite2_desc:"Chambre exclusive avec salle de bain privée. La même architecture historique, une autre nuance d'intimité et un confort enveloppant.",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>suite2_f1:"Lit double / simple",suite2_f2:"Salle de bain privée",suite2_f3:"Voûte étoilée d'origine",suite2_f4:"Intimité maximale",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>btn_book_suite2:"Réserver Suite II",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>loc_label:"Position",loc_title:"Au cœur baroque de Lecce",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>loc_p1:"Vivi Domus bénéficie d'un emplacement stratégique à deux pas de Porta San Biagio. La Piazza del Duomo, le Théâtre Romain et les merveilles du centre historique sont accessibles à pied.",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>loc_p2:"Le point de départ idéal pour explorer la ville à pied et rejoindre facilement les superbes plages du Salento.",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>book_label:"Réservation",book_title:"Réservez votre séjour",book_subtitle:"Envoyez votre demande : nous vous répondrons avec la confirmation de disponibilité.",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>form_lbl_name:"Nom",form_lbl_email:"Email",form_lbl_solution:"Solution",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>form_lbl_arrival:"Arrivée",form_lbl_departure:"Départ",form_lbl_guests:"Invités",form_lbl_msg:"Message",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>form_name:"Nom complet",form_email:"Adresse email",form_select:"Sélectionner la solution",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>form_opt1:"Appartement Principal",form_opt2:"Suite I",form_opt3:"Suite II",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>form_msg:"Message ou demandes particulières (facultatif)",form_send:"Envoyer la demande",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>ct_label:"Contact",ct_title:"Contactez-nous",ct_phone:"Téléphone",ct_wa:"Écrivez-nous sur WhatsApp",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>footer:"© 2026 Vivi Domus — Tous droits réservés"</p>
-<p class="p1"><span class="Apple-converted-space">    </span>},</p>
-<p class="p1"><span class="Apple-converted-space">    </span>de:{</p>
-<p class="p1"><span class="Apple-converted-space">      </span>nav_appartment:"Appartement",nav_suites:"Suiten",nav_booking:"Buchen",nav_location:"Lage",nav_contact:"Kontakt",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>hero_title:"Vivi Domus Lecce",hero_subtitle:"Appartement &amp; Suiten — im Herzen des Barock",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>apt_label:"Das Appartement",apt_title:"Ein helles, geräumiges und einladendes Zuhause",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>apt_p1:"Ausgestattet mit hellen, weißen Innenräumen und goldenen Details, empfängt das Appartement Gäste mit einem außergewöhnlichen Gefühl von Raum, Freude und absolutem Komfort.",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>apt_p2:"Nur wenige Schritte von Porta San Biagio und dem historischen Zentrum von Lecce entfernt, ermöglicht es Ihnen, die Stadt zu Fuß zu erleben und abends in einen luftigen, raffinierten Rückzugsort zurückzukehren.",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>apt_f1_l:"Etage",apt_f1_v:"Erster Stock",apt_f2_l:"Kapazität",apt_f2_v:"Bis zu 4 Gäste",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>apt_f3_l:"Ausstattung",apt_f3_v:"Küche, Wohnzimmer, Bad",apt_f4_l:"Lage",apt_f4_v:"Nahe dem Zentrum",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>btn_book_apt:"Appartement buchen",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>suite_label:"Die Suiten",suite_title:"Zwei Zimmer, ein Sterngewölbe",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>suite_intro:"Zwei exklusive Zimmer mit eigenem Bad, geborgen unter dem alten Sterngewölbe. Ein intimer und privater Raum mit dunklen, behaglichen Tönen für alle, die Stille, Privatsphäre und die diskrete Schönheit des Lecce-Steins suchen.",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>suite_volta:"Sterngewölbe",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>suite1_name:"Suite I",suite1_desc:"Intimes Zimmer mit eigenem Bad. Dunkle, entspannende Töne, schlichte Möbel und das Design des Gewölbes für eine Atmosphäre tiefen Friedens.",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>suite1_f1:"Doppel- / Einzelbett",suite1_f2:"Eigenes Bad",suite1_f3:"Originales Sterngewölbe",suite1_f4:"Maximale Privatsphäre",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>btn_book_suite1:"Suite I buchen",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>suite2_name:"Suite II",suite2_desc:"Exklusives Zimmer mit eigenem Bad. Dieselbe historische Architektur, eine andere Nuance von Intimität und behaglichem Komfort.",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>suite2_f1:"Doppel- / Einzelbett",suite2_f2:"Eigenes Bad",suite2_f3:"Originales Sterngewölbe",suite2_f4:"Maximale Privatsphäre",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>btn_book_suite2:"Suite II buchen",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>loc_label:"Lage",loc_title:"Im barocken Herzen von Lecce",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>loc_p1:"Vivi Domus liegt in strategischer Lage nur einen Steinwurf von Porta San Biagio entfernt. Piazza del Duomo, das Römische Theater und die Wunder des historischen Zentrums sind zu Fuß erreichbar.",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>loc_p2:"Der ideale Ausgangspunkt, um die Stadt zu Fuß zu erkunden und bequem zu den wunderschönen Stränden des Salento zu gelangen.",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>book_label:"Buchung",book_title:"Buchen Sie Ihren Aufenthalt",book_subtitle:"Senden Sie Ihre Anfrage: Wir antworten mit der Verfügbarkeitsbestätigung.",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>form_lbl_name:"Name",form_lbl_email:"E-Mail",form_lbl_solution:"Lösung",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>form_lbl_arrival:"Anreise",form_lbl_departure:"Abreise",form_lbl_guests:"Gäste",form_lbl_msg:"Nachricht",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>form_name:"Vollständiger Name",form_email:"E-Mail-Adresse",form_select:"Option auswählen",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>form_opt1:"Hauptappartment",form_opt2:"Suite I",form_opt3:"Suite II",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>form_msg:"Nachricht oder Sonderwünsche (optional)",form_send:"Anfrage senden",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>ct_label:"Kontakt",ct_title:"Sprechen wir",ct_phone:"Telefon",ct_wa:"Schreiben Sie uns auf WhatsApp",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>footer:"© 2026 Vivi Domus — Alle Rechte vorbehalten"</p>
-<p class="p1"><span class="Apple-converted-space">    </span>},</p>
-<p class="p1"><span class="Apple-converted-space">    </span>es:{</p>
-<p class="p1"><span class="Apple-converted-space">      </span>nav_appartment:"Apartamento",nav_suites:"Suites",nav_booking:"Reservar",nav_location:"Ubicación",nav_contact:"Contacto",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>hero_title:"Vivi Domus Lecce",hero_subtitle:"Apartamento &amp; Suites — en el corazón del barroco",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>apt_label:"El apartamento",apt_title:"Un espacio luminoso, amplio y acogedor",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>apt_p1:"Caracterizado por interiores blancos y luminosos enmarcados por detalles dorados, el apartamento recibe a los huéspedes con una extraordinaria sensación de espacio, alegría y confort absoluto.",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>apt_p2:"Situado a pocos pasos de Porta San Biagio y del centro histórico de Lecce, permite vivir la ciudad a pie, regresando por la noche a un refugio aireado y refinado.",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>apt_f1_l:"Planta",apt_f1_v:"Primer piso",apt_f2_l:"Capacidad",apt_f2_v:"Hasta 4 huéspedes",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>apt_f3_l:"Servicios",apt_f3_v:"Cocina, salón, baño",apt_f4_l:"Ubicación",apt_f4_v:"Cerca del centro",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>btn_book_apt:"Reservar Apartamento",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>suite_label:"Las suites",suite_title:"Dos habitaciones, una bóveda estrellada",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>suite_intro:"Dos habitaciones exclusivas con baño privado, protegidas bajo la antigua bóveda estrellada. Un espacio íntimo y reservado de tonos oscuros y envolventes, pensado para quienes buscan silencio, privacidad y la belleza discreta de la piedra de Lecce.",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>suite_volta:"Bóveda estrellada",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>suite1_name:"Suite I",suite1_desc:"Habitación íntima con baño privado. Tonos oscuros y relajantes, mobiliario sobrio y el diseño de la bóveda que ofrece una atmósfera de profunda paz.",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>suite1_f1:"Cama doble / individual",suite1_f2:"Baño privado",suite1_f3:"Bóveda estrellada original",suite1_f4:"Máxima privacidad",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>btn_book_suite1:"Reservar Suite I",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>suite2_name:"Suite II",suite2_desc:"Habitación exclusiva con baño privado. La misma arquitectura histórica, otro matiz de intimidad y un confort envolvente.",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>suite2_f1:"Cama doble / individual",suite2_f2:"Baño privado",suite2_f3:"Bóveda estrellada original",suite2_f4:"Máxima privacidad",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>btn_book_suite2:"Reservar Suite II",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>loc_label:"Ubicación",loc_title:"En el corazón barroco de Lecce",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>loc_p1:"Vivi Domus se encuentra en una ubicación estratégica a dos pasos de Porta San Biagio. A pie se alcanzan fácilmente la Piazza del Duomo, el Teatro Romano y las maravillas del centro histórico.",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>loc_p2:"La base ideal para explorar la ciudad a pie y desplazarse cómodamente hacia las hermosas playas de Salento.",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>book_label:"Reserva",book_title:"Reserva tu estancia",book_subtitle:"Envía tu solicitud: te responderemos con la confirmación de disponibilidad.",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>form_lbl_name:"Nombre",form_lbl_email:"Email",form_lbl_solution:"Solución",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>form_lbl_arrival:"Llegada",form_lbl_departure:"Salida",form_lbl_guests:"Huéspedes",form_lbl_msg:"Mensaje",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>form_name:"Nombre y apellidos",form_email:"Dirección de correo",form_select:"Selecciona la solución",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>form_opt1:"Apartamento Principal",form_opt2:"Suite I",form_opt3:"Suite II",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>form_msg:"Mensaje o peticiones especiales (opcional)",form_send:"Enviar solicitud",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>ct_label:"Contacto",ct_title:"Hablemos",ct_phone:"Teléfono",ct_wa:"Escríbenos en WhatsApp",</p>
-<p class="p1"><span class="Apple-converted-space">      </span>footer:"© 2026 Vivi Domus — Todos los derechos reservados"</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>};</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>const langButtons = document.querySelectorAll('.lang-switch button');</p>
-<p class="p1"><span class="Apple-converted-space">  </span>langButtons.forEach(btn =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">    </span>btn.addEventListener('click', () =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>langButtons.forEach(b =&gt; b.classList.remove('active'));</p>
-<p class="p1"><span class="Apple-converted-space">      </span>btn.classList.add('active');</p>
-<p class="p1"><span class="Apple-converted-space">      </span>const lang = btn.dataset.lang;</p>
-<p class="p2"><span class="Apple-converted-space">      </span></p>
-<p class="p1"><span class="Apple-converted-space">      </span>document.querySelectorAll('[data-i18n]').forEach(el =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>const key = el.dataset.i18n;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>if(translations[lang] &amp;&amp; translations[lang][key]) {</p>
-<p class="p1"><span class="Apple-converted-space">          </span>el.innerText = translations[lang][key];</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">      </span>});</p>
-<p class="p1"><span class="Apple-converted-space">      </span>document.querySelectorAll('[data-i18n-ph]').forEach(el =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>const key = el.dataset.i18nPh;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>if(translations[lang] &amp;&amp; translations[lang][key]) {</p>
-<p class="p1"><span class="Apple-converted-space">          </span>el.placeholder = translations[lang][key];</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">      </span>});</p>
-<p class="p1"><span class="Apple-converted-space">    </span>});</p>
-<p class="p1"><span class="Apple-converted-space">  </span>});</p>
-<p class="p1">&lt;/script&gt;</p>
-<p class="p1">&lt;/body&gt;</p>
-<p class="p1">&lt;/html&gt;</p>
+
+<header>
+  <div class="logo">Vivi <span>Domus</span></div>
+  <nav>
+    <ul>
+      <li><a href="#appartment" data-i18n="nav_appartment">Appartamento</a></li>
+      <li><a href="#suites" data-i18n="nav_suites">Suite</a></li>
+      <li><a href="#location" data-i18n="nav_location">Posizione</a></li>
+      <li><a href="#booking" data-i18n="nav_booking">Prenota</a></li>
+      <li><a href="#contact" data-i18n="nav_contact">Contatti</a></li>
+    </ul>
+  </nav>
+  <div class="lang-switch">
+    <button data-lang="it" class="active">IT</button>
+    <button data-lang="en">EN</button>
+    <button data-lang="fr">FR</button>
+    <button data-lang="de">DE</button>
+    <button data-lang="es">ES</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="slide active" style="background-image:url('https://images.unsplash.com/photo-1525931464436-3baba87d4e47?w=1600')"></div>
+  <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1533587851505-d119e13fa0d7?w=1600')"></div>
+  <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=1600')"></div>
+  <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=1600')"></div>
+
+  <button class="slider-arrow prev" onclick="moveHeroSlide(-1)">&#10094;</button>
+  <button class="slider-arrow next" onclick="moveHeroSlide(1)">&#10095;</button>
+
+  <div class="hero-content">
+    <h1 data-i18n="hero_title">Vivi Domus Lecce</h1>
+    <p data-i18n="hero_subtitle">Appartamento & Suite — nel cuore del barocco</p>
+  </div>
+
+  <div class="slide-dots">
+    <span class="active" onclick="currentHeroSlide(0)"></span>
+    <span onclick="currentHeroSlide(1)"></span>
+    <span onclick="currentHeroSlide(2)"></span>
+    <span onclick="currentHeroSlide(3)"></span>
+  </div>
+</section>
+
+<section id="appartment" class="appartment">
+  <div class="container">
+    <div class="appartment-grid">
+      <div class="apt-title-area">
+        <div class="section-label" data-i18n="apt_label">L'appartamento</div>
+        <h2 class="section-title" data-i18n="apt_title" style="margin-bottom:0;">Uno spazio luminoso, ampio e accogliente</h2>
+      </div>
+
+      <div class="apt-desc-area appartment-text">
+        <p data-i18n="apt_p1">Caratterizzato da interni bianchi e luminosi incorniciati da dettagli dorati, l'appartamento accoglie gli ospiti con una straordinaria sensazione di spazio, gioia e comfort assoluto.</p>
+        <p data-i18n="apt_p2">La posizione a due passi da Porta San Biagio e dal centro storico di Lecce permette di vivere la città a piedi, tornando la sera in un ambiente arioso e raffinato.</p>
+      </div>
+      
+      <div class="room-slideshow apt-img-area" id="slider-apt">
+        <div class="room-slide active" style="background-image:url('https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=900')"></div>
+        <div class="room-slide" style="background-image:url('https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=900')"></div>
+        <div class="room-slide" style="background-image:url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=900')"></div>
+        
+        <button class="slider-arrow prev" onclick="moveRoomSlide('slider-apt', -1)">&#10094;</button>
+        <button class="slider-arrow next" onclick="moveRoomSlide('slider-apt', 1)">&#10095;</button>
+
+        <div class="room-dots">
+          <span class="active" onclick="currentRoomSlide('slider-apt', 0)"></span>
+          <span onclick="currentRoomSlide('slider-apt', 1)"></span>
+          <span onclick="currentRoomSlide('slider-apt', 2)"></span>
+        </div>
+      </div>
+
+      <div class="features apt-features-area">
+        <div class="feature"><strong data-i18n="apt_f1_l">Piano</strong><span data-i18n="apt_f1_v">Primo piano</span></div>
+        <div class="feature"><strong data-i18n="apt_f2_l">Capienza</strong><span data-i18n="apt_f2_v">Fino a 4 ospiti</span></div>
+        <div class="feature"><strong data-i18n="apt_f3_l">Servizi</strong><span data-i18n="apt_f3_v">Cucina, living, bagno</span></div>
+        <div class="feature"><strong data-i18n="apt_f4_l">Posizione</strong><span data-i18n="apt_f4_v">Vicino al centro</span></div>
+      </div>
+
+      <div class="apt-btn-area">
+        <a href="#booking" class="btn" onclick="selectSolution('Appartamento Principale')" data-i18n="btn_book_apt">Prenota Appartamento</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="suites" class="suites">
+  <div class="container">
+    <div class="section-label" style="text-align:center" data-i18n="suite_label">Le suite</div>
+    <h2 class="section-title" style="text-align:center" data-i18n="suite_title">Due stanze, una volta a stella</h2>
+    <p class="suites-intro" data-i18n="suite_intro">Due camere esclusive con bagno privato, custodite sotto l'antica volta a stella. Uno spazio intimo e riservato, caratterizzato da toni scuri e avvolgenti, pensato per chi cerca silenzio, privacy e la bellezza discreta della pietra leccese.</p>
+
+    <div class="suite-card">
+      <div class="room-slideshow" id="slider-suite1">
+        <div class="room-slide active" style="background-image:url('https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=900')"></div>
+        <div class="room-slide" style="background-image:url('https://images.unsplash.com/photo-1590490360182-c33d57733427?w=900')"></div>
+        
+        <button class="slider-arrow prev" onclick="moveRoomSlide('slider-suite1', -1)">&#10094;</button>
+        <button class="slider-arrow next" onclick="moveRoomSlide('slider-suite1', 1)">&#10095;</button>
+
+        <div class="room-dots">
+          <span class="active" onclick="currentRoomSlide('slider-suite1', 0)"></span>
+          <span onclick="currentRoomSlide('slider-suite1', 1)"></span>
+        </div>
+      </div>
+      <div class="suite-info">
+        <div class="volta" data-i18n="suite_volta">Volta a stella</div>
+        <h3 data-i18n="suite1_name">Suite I</h3>
+        <p data-i18n="suite1_desc">Camera intima con bagno privato. Toni scuri e rilassanti, arredi sobri e il disegno della volta che regala un'atmosfera di profonda quiete.</p>
+        <ul>
+          <li data-i18n="suite1_f1">Letto matrimoniale / singolo</li>
+          <li data-i18n="suite1_f2">Bagno privato</li>
+          <li data-i18n="suite1_f3">Volta a stella originale</li>
+          <li data-i18n="suite1_f4">Massima riservatezza</li>
+        </ul>
+        <a href="#booking" class="btn btn-light" onclick="selectSolution('Suite I')" data-i18n="btn_book_suite1">Prenota Suite I</a>
+      </div>
+    </div>
+
+    <div class="suite-card">
+      <div class="room-slideshow" id="slider-suite2">
+        <div class="room-slide active" style="background-image:url('https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=900')"></div>
+        <div class="room-slide" style="background-image:url('https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?w=900')"></div>
+        
+        <button class="slider-arrow prev" onclick="moveRoomSlide('slider-suite2', -1)">&#10094;</button>
+        <button class="slider-arrow next" onclick="moveRoomSlide('slider-suite2', 1)">&#10095;</button>
+
+        <div class="room-dots">
+          <span class="active" onclick="currentRoomSlide('slider-suite2', 0)"></span>
+          <span onclick="currentRoomSlide('slider-suite2', 1)"></span>
+        </div>
+      </div>
+      <div class="suite-info">
+        <div class="volta" data-i18n="suite_volta">Volta a stella</div>
+        <h3 data-i18n="suite2_name">Suite II</h3>
+        <p data-i18n="suite2_desc">Camera esclusiva con bagno privato. La stessa architettura storica, un'altra sfumatura di intimità e un comfort avvolgente.</p>
+        <ul>
+          <li data-i18n="suite2_f1">Letto matrimoniale / singolo</li>
+          <li data-i18n="suite2_f2">Bagno privato</li>
+          <li data-i18n="suite2_f3">Volta a stella originale</li>
+          <li data-i18n="suite2_f4">Massima riservatezza</li>
+        </ul>
+        <a href="#booking" class="btn btn-light" onclick="selectSolution('Suite II')" data-i18n="btn_book_suite2">Prenota Suite II</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="location" class="location">
+  <div class="container">
+    <div class="location-grid">
+      <div class="location-text">
+        <div class="section-label" data-i18n="loc_label">Posizione</div>
+        <h2 class="section-title" data-i18n="loc_title">Nel cuore barocco di Lecce</h2>
+        <p data-i18n="loc_p1">Vivi Domus si trova in una posizione strategica a due passi da Porta San Biagio. A piedi si raggiungono facilmente Piazza del Duomo, il Teatro Romano e le meraviglie del centro storico.</p>
+        <p data-i18n="loc_p2">La base ideale per esplorare a piedi la città e muoversi comodamente verso le splendide spiagge del Salento.</p>
+      </div>
+      <div class="location-map">Lecce — Porta San Biagio / Via di Leuca</div>
+    </div>
+  </div>
+</section>
+
+<section id="booking" class="booking">
+  <div class="container">
+    <div class="section-label" data-i18n="book_label">Prenotazione</div>
+    <h2 class="section-title" data-i18n="book_title">Prenota il tuo soggiorno</h2>
+    <p class="booking-subtitle" data-i18n="book_subtitle">Invia la richiesta: ti risponderemo con la conferma di disponibilità.</p>
+    
+    <form class="booking-form" onsubmit="event.preventDefault();alert('Richiesta inviata con successo!');">
+      <div class="form-group">
+        <label data-i18n="form_lbl_name">Nome</label>
+        <input type="text" data-i18n-ph="form_name" placeholder="Nome e cognome" required>
+      </div>
+      
+      <div class="form-group">
+        <label data-i18n="form_lbl_email">Email</label>
+        <input type="email" data-i18n-ph="form_email" placeholder="Indirizzo email" required>
+      </div>
+      
+      <div class="form-group full">
+        <label data-i18n="form_lbl_solution">Soluzione</label>
+        <select id="solution-select" required>
+          <option value="" data-i18n="form_select">Seleziona la soluzione</option>
+          <option value="Appartamento Principale" data-i18n="form_opt1">Appartamento Principale</option>
+          <option value="Suite I" data-i18n="form_opt2">Suite I</option>
+          <option value="Suite II" data-i18n="form_opt3">Suite II</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label data-i18n="form_lbl_arrival">Arrivo</label>
+        <input type="date" required>
+      </div>
+      
+      <div class="form-group">
+        <label data-i18n="form_lbl_departure">Partenza</label>
+        <input type="date" required>
+      </div>
+      
+      <div class="form-group full">
+        <label data-i18n="form_lbl_guests">Ospiti</label>
+        <input type="number" min="1" max="10" value="2" required>
+      </div>
+      
+      <div class="form-group full">
+        <label data-i18n="form_lbl_msg">Messaggio</label>
+        <textarea rows="4" data-i18n-ph="form_msg" placeholder="Messaggio o richieste particolari (opzionale)"></textarea>
+      </div>
+      
+      <div class="full">
+        <button type="submit" class="btn" style="width:100%;" data-i18n="form_send">Invia richiesta</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="container">
+    <div class="section-label" data-i18n="ct_label">Contatti</div>
+    <h2 class="section-title" data-i18n="ct_title">Parliamo</h2>
+    <div class="contact-methods">
+      <div class="contact-card">
+        <div class="icon">✆</div>
+        <h4 data-i18n="ct_phone">Telefono</h4>
+        <a href="tel:+393400000000">+39 340 000 0000</a>
+      </div>
+      <div class="contact-card">
+        <div class="icon">✉</div>
+        <h4>Email</h4>
+        <a href="mailto:info@vividomus.it">info@vividomus.it</a>
+      </div>
+      <div class="contact-card">
+        <div class="icon">◉</div>
+        <h4>WhatsApp</h4>
+        <a href="https://wa.me/393400000000" target="_blank" data-i18n="ct_wa">Scrivici su WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="logo">Vivi <span style="color:var(--gold)">Domus</span> — Lecce</div>
+  <p data-i18n="footer">© 2026 Vivi Domus — Tutti i diritti riservati</p>
+  <p class="cin-text">CIN: IT075035C200126683</p>
+</footer>
+
+<a href="https://wa.me/393400000000" class="whatsapp-float" target="_blank" title="WhatsApp">
+  <svg viewBox="0 0 32 32" fill="currentColor"><path d="M16 .5C7.4.5.5 7.4.5 16c0 2.8.7 5.5 2.1 7.9L.5 31.5l7.8-2c2.3 1.3 4.9 1.9 7.7 1.9 8.6 0 15.5-6.9 15.5-15.5S24.6.5 16 .5zm0 28.3c-2.5 0-4.9-.7-7-1.9l-.5-.3-4.6 1.2 1.2-4.5-.3-.5c-1.4-2.2-2.1-4.7-2.1-7.3 0-7.1 5.8-12.8 12.8-12.8 7.1 0 12.8 5.8 12.8 12.8S23.1 28.8 16 28.8zm7-9.6c-.4-.2-2.3-1.1-2.7-1.3-.4-.1-.6-.2-.9.2-.3.4-1 1.3-1.3 1.5-.2.3-.5.3-.9.1s-1.6-.6-3.1-1.9c-1.1-1-1.9-2.3-2.1-2.7-.2-.4 0-.6.2-.8.2-.2.4-.5.6-.7.2-.2.2-.4.3-.7.1-.2 0-.5 0-.7s-.9-2.1-1.2-2.9c-.3-.7-.6-.6-.9-.6h-.7c-.2 0-.6.1-.9.4s-1.2 1.1-1.2 2.8 1.2 3.2 1.4 3.4c.2.2 2.4 3.7 5.8 5.2.8.4 1.4.6 1.9.7.8.3 1.5.2 2.1.1.6-.1 1.9-.8 2.2-1.5.3-.8.3-1.4.2-1.5-.1-.2-.4-.3-.8-.5z"/></svg>
+</a>
+
+<script>
+  function selectSolution(solutionName) {
+    const select = document.getElementById('solution-select');
+    if(select) { select.value = solutionName; }
+  }
+
+  const heroSlides = document.querySelectorAll('.hero .slide');
+  const heroDots = document.querySelectorAll('.slide-dots span');
+  let heroCurrent = 0;
+  
+  function showHeroSlide(i){
+    if (i >= heroSlides.length) heroCurrent = 0;
+    else if (i < 0) heroCurrent = heroSlides.length - 1;
+    else heroCurrent = i;
+
+    heroSlides.forEach(s=>s.classList.remove('active'));
+    heroDots.forEach(d=>d.classList.remove('active'));
+    heroSlides[heroCurrent].classList.add('active');
+    heroDots[heroCurrent].classList.add('active');
+  }
+
+  function moveHeroSlide(n) { showHeroSlide(heroCurrent + n); }
+  function currentHeroSlide(i) { showHeroSlide(i); }
+
+  heroDots.forEach((d, index)=>d.addEventListener('click',()=>currentHeroSlide(index)));
+  setInterval(()=>moveHeroSlide(1), 6000);
+
+  const roomSlidersState = {};
+
+  function setupRoomSlider(containerId) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    const slides = container.querySelectorAll('.room-slide');
+    const dots = container.querySelectorAll('.room-dots span');
+    
+    roomSlidersState[containerId] = { current: 0, slides: slides, dots: dots };
+    setInterval(() => { moveRoomSlide(containerId, 1); }, 5000);
+  }
+
+  function showRoomSlide(containerId, index) {
+    const state = roomSlidersState[containerId];
+    if (!state) return;
+    
+    if (index >= state.slides.length) state.current = 0;
+    else if (index < 0) state.current = state.slides.length - 1;
+    else state.current = index;
+
+    state.slides.forEach((s, i) => {
+      s.classList.toggle('active', i === state.current);
+      if (state.dots[i]) state.dots[i].classList.toggle('active', i === state.current);
+    });
+  }
+
+  function moveRoomSlide(containerId, n) {
+    const state = roomSlidersState[containerId];
+    if (state) { showRoomSlide(containerId, state.current + n); }
+  }
+
+  function currentRoomSlide(containerId, index) {
+    showRoomSlide(containerId, index);
+  }
+
+  setupRoomSlider('slider-apt');
+  setupRoomSlider('slider-suite1');
+  setupRoomSlider('slider-suite2');
+
+  const translations = {
+    it:{
+      nav_appartment:"Appartamento",nav_suites:"Suite",nav_booking:"Prenota",nav_location:"Posizione",nav_contact:"Contatti",
+      hero_title:"Vivi Domus Lecce",hero_subtitle:"Appartamento & Suite — nel cuore del barocco",
+      apt_label:"L'appartamento",apt_title:"Uno spazio luminoso, ampio e accogliente",
+      apt_p1:"Caratterizzato da interni bianchi e luminosi incorniciati da dettagli dorati, l'appartamento accoglie gli ospiti con una straordinaria sensazione di spazio, gioia e comfort assoluto.",
+      apt_p2:"La posizione a due passi da Porta San Biagio e dal centro storico di Lecce permette di vivere la città a piedi, tornando la sera in un ambiente arioso e raffinato.",
+      apt_f1_l:"Piano",apt_f1_v:"Primo piano",apt_f2_l:"Capienza",apt_f2_v:"Fino a 4 ospiti",
+      apt_f3_l:"Servizi",apt_f3_v:"Cucina, living, bagno",apt_f4_l:"Posizione",apt_f4_v:"Vicino al centro",
+      btn_book_apt:"Prenota Appartamento",
+      suite_label:"Le suite",suite_title:"Due stanze, una volta a stella",
+      suite_intro:"Due camere esclusive con bagno privato, custodite sotto l'antica volta a stella. Uno spazio intimo e riservato, caratterizzato da toni scuri e avvolgenti, pensato per chi cerca silenzio, privacy e la bellezza discreta della pietra leccese.",
+      suite_volta:"Volta a stella",
+      suite1_name:"Suite I",suite1_desc:"Camera intima con bagno privato. Toni scuri e rilassanti, arredi sobri e il disegno della volta che regala un'atmosfera di profonda quiete.",
+      suite1_f1:"Letto matrimoniale / singolo",suite1_f2:"Bagno privato",suite1_f3:"Volta a stella originale",suite1_f4:"Massima riservatezza",
+      btn_book_suite1:"Prenota Suite I",
+      suite2_name:"Suite II",suite2_desc:"Camera esclusiva con bagno privato. La stessa architettura storica, un'altra sfumatura di intimità e un comfort avvolgente.",
+      suite2_f1:"Letto matrimoniale / singolo",suite2_f2:"Bagno privato",suite2_f3:"Volta a stella originale",suite2_f4:"Massima riservatezza",
+      btn_book_suite2:"Prenota Suite II",
+      loc_label:"Posizione",loc_title:"Nel cuore barocco di Lecce",
+      loc_p1:"Vivi Domus si trova in una posizione strategica a due passi da Porta San Biagio. A piedi si raggiungono facilmente Piazza del Duomo, il Teatro Romano e le meraviglie del centro storico.",
+      loc_p2:"La base ideale per esplorare a piedi la città e muoversi comodamente verso le splendide spiagge del Salento.",
+      book_label:"Prenotazione",book_title:"Prenota il tuo soggiorno",book_subtitle:"Invia la richiesta: ti risponderemo con la conferma di disponibilità.",
+      form_lbl_name:"Nome",form_lbl_email:"Email",form_lbl_solution:"Soluzione",
+      form_lbl_arrival:"Arrivo",form_lbl_departure:"Partenza",form_lbl_guests:"Ospiti",form_lbl_msg:"Messaggio",
+      form_name:"Nome e cognome",form_email:"Indirizzo email",form_select:"Seleziona la soluzione",
+      form_opt1:"Appartamento Principale",form_opt2:"Suite I",form_opt3:"Suite II",
+      form_msg:"Messaggio o richieste particolari (opzionale)",form_send:"Invia richiesta",
+      ct_label:"Contatti",ct_title:"Parliamo",ct_phone:"Telefono",ct_wa:"Scrivici su WhatsApp",
+      footer:"© 2026 Vivi Domus — Tutti i diritti riservati"
+    },
+    en:{
+      nav_appartment:"Apartment",nav_suites:"Suites",nav_booking:"Book",nav_location:"Location",nav_contact:"Contact",
+      hero_title:"Vivi Domus Lecce",hero_subtitle:"Apartment & Suites — in the heart of the Baroque",
+      apt_label:"The apartment",apt_title:"A bright, spacious and welcoming space",
+      apt_p1:"Featuring bright white interiors framed by gold details, the apartment welcomes guests with an extraordinary sense of space, light, and absolute comfort.",
+      apt_p2:"Just steps away from Porta San Biagio and Lecce's historic center, it allows you to experience the city on foot and return to an airy, refined atmosphere every evening.",
+      apt_f1_l:"Floor",apt_f1_v:"First floor",apt_f2_l:"Capacity",apt_f2_v:"Up to 4 guests",
+      apt_f3_l:"Amenities",apt_f3_v:"Kitchen, living, bathroom",apt_f4_l:"Location",apt_f4_v:"Near the center",
+      btn_book_apt:"Book Apartment",
+      suite_label:"The suites",suite_title:"Two rooms, a star-vaulted ceiling",
+      suite_intro:"Two exclusive rooms with private bathrooms, sheltered beneath an ancient star-vaulted ceiling. An intimate, private space featuring dark, enveloping tones designed for those seeking peace, privacy, and the quiet beauty of Lecce stone.",
+      suite_volta:"Star-vaulted ceiling",
+      suite1_name:"Suite I",suite1_desc:"Intimate room with private bathroom. Relaxing dark tones, sober furnishings, and the unique architecture of the vault offering deep serenity.",
+      suite1_f1:"Double / single bed",suite1_f2:"Private bathroom",suite1_f3:"Original star vault",suite1_f4:"Maximum privacy",
+      btn_book_suite1:"Book Suite I",
+      suite2_name:"Suite II",suite2_desc:"Exclusive room with private bathroom. The same historic architecture paired with a different nuance of intimacy and enveloping comfort.",
+      suite2_f1:"Double / single bed",suite2_f2:"Private bathroom",suite2_f3:"Original star vault",suite2_f4:"Maximum privacy",
+      btn_book_suite2:"Book Suite II",
+      loc_label:"Location",loc_title:"In the Baroque heart of Lecce",
+      loc_p1:"Vivi Domus enjoys a strategic location just a stone's throw from Porta San Biagio. Piazza del Duomo, the Roman Theatre, and the wonders of the historic center are easily reached on foot.",
+      loc_p2:"The ideal base to explore the city on foot and easily travel to the stunning beaches of Salento.",
+      book_label:"Reservation",book_title:"Book your stay",book_subtitle:"Send a request: we will reply with availability confirmation.",
+      form_lbl_name:"Name",form_lbl_email:"Email",form_lbl_solution:"Solution",
+      form_lbl_arrival:"Check-in",form_lbl_departure:"Check-out",form_lbl_guests:"Guests",form_lbl_msg:"Message",
+      form_name:"Full name",form_email:"Email address",form_select:"Select solution",
+      form_opt1:"Main Apartment",form_opt2:"Suite I",form_opt3:"Suite II",
+      form_msg:"Message or special requests (optional)",form_send:"Send request",
+      ct_label:"Contact",ct_title:"Get in touch",ct_phone:"Phone",ct_wa:"Chat on WhatsApp",
+      footer:"© 2026 Vivi Domus — All rights reserved"
+    }
+  };
+
+  document.querySelectorAll('.lang-switch button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.lang-switch button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const lang = btn.getAttribute('data-lang');
+      const t = translations[lang] || translations['it'];
+      
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (t[key]) el.textContent = t[key];
+      });
+      document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+        const key = el.getAttribute('data-i18n-ph');
+        if (t[key]) el.placeholder = t[key];
+      });
+    });
+  });
+</script>
 </body>
 </html>
