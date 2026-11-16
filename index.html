@@ -604,227 +604,242 @@
 </a>
 
 <script>
-  function selectSolution(solutionName) {
-    const select = document.getElementById('solution-select');
-    if(select) { select.value = solutionName; }
-  }
+  // Avvia gli script solo quando il documento è pronto e il thread principale è libero
+  document.addEventListener("DOMContentLoaded", () => {
+    
+    // Gestione soluzione rapida form
+    window.selectSolution = function(solutionName) {
+      const select = document.getElementById('solution-select');
+      if(select) { select.value = solutionName; }
+    };
 
-  const heroSlides = document.querySelectorAll('.hero .slide');
-  const heroDots = document.querySelectorAll('.slide-dots button');
-  let heroCurrent = 0;
-  
-  function showHeroSlide(i){
-    if (i >= heroSlides.length) heroCurrent = 0;
-    else if (i < 0) heroCurrent = heroSlides.length - 1;
-    else heroCurrent = i;
-    heroSlides.forEach(s=>s.classList.remove('active'));
-    heroDots.forEach(d=>d.classList.remove('active'));
-    heroSlides[heroCurrent].classList.add('active');
-    heroDots[heroCurrent].classList.add('active');
-  }
-  function moveHeroSlide(n) { showHeroSlide(heroCurrent + n); }
-  function currentHeroSlide(i) { showHeroSlide(i); }
-  heroDots.forEach((d, index)=>d.addEventListener('click',()=>currentHeroSlide(index)));
-  setInterval(()=>moveHeroSlide(1), 6000);
-
-  const roomSlidersState = {};
-  function setupRoomSlider(containerId) {
-    const container = document.getElementById(containerId);
-    if (!container) return;
-    const slides = container.querySelectorAll('.room-slide');
-    const dots = container.querySelectorAll('.room-dots button');
-    roomSlidersState[containerId] = { current: 0, slides: slides, dots: dots };
-    setInterval(() => { moveRoomSlide(containerId, 1); }, 5000);
-  }
-  function showRoomSlide(containerId, index) {
-    const state = roomSlidersState[containerId];
-    if (!state) return;
-    if (index >= state.slides.length) state.current = 0;
-    else if (index < 0) state.current = state.slides.length - 1;
-    else state.current = index;
-    state.slides.forEach((s, i) => {
-      s.classList.toggle('active', i === state.current);
-      if (state.dots[i]) state.dots[i].classList.toggle('active', i === state.current);
-    });
-  }
-  function moveRoomSlide(containerId, n) {
-    const state = roomSlidersState[containerId];
-    if (state) { showRoomSlide(containerId, state.current + n); }
-  }
-  function currentRoomSlide(containerId, index) {
-    showRoomSlide(containerId, index);
-  }
-  setupRoomSlider('slider-apt');
-  setupRoomSlider('slider-suite1');
-  setupRoomSlider('slider-suite2');
-
-  const translations = {
-    it:{
-      nav_appartment:"Appartamento",nav_suites:"Suite",nav_booking:"Prenota",nav_location:"Posizione",nav_contact:"Contatti",
-      hero_title:"ViviDomus Lecce",hero_subtitle:"Appartamento & Suite — nel cuore del barocco",
-      apt_label:"L'appartamento",apt_title:"Uno spazio luminoso, ampio e accogliente",
-      apt_p1:"Caratterizzato da interni bianchi e luminosi incorniciati da dettagli dorati, l'appartamento accoglie gli ospiti con una straordinaria sensazione di spazio, gioia e comfort assoluto.",
-      apt_p2:"La posizione a due passi da Porta San Biagio e dal centro storico di Lecce permette di vivere la città a piedi, tornando la sera in un ambiente arioso e raffinato.",
-      apt_f1_l:"Piano",apt_f1_v:"Primo piano",apt_f2_l:"Capienza",apt_f2_v:"Fino a 4 ospiti",
-      apt_f3_l:"Servizi",apt_f3_v:"Cucina, living, bagno",apt_f4_l:"Posizione",apt_f4_v:"Vicino al centro",
-      btn_book_apt:"Prenota Appartamento",
-      suite_label:"Le suite",suite_title:"Due stanze, una volta a stella",
-      suite_intro:"Due camere esclusive con bagno privato, custodite sotto l'antica volta a stella. Uno spazio intimo e riservato, caratterizzato da toni scuri e avvolgenti, pensato per chi cerca silenzio, privacy e la bellezza discreta della pietra leccese.",
-      suite_volta:"Volta a stella",
-      suite1_name:"Suite I",suite1_desc:"Camera intima con bagno privato. Toni scuri e rilassanti, arredi sobri e il disegno della volta che regala un'atmosfera di profonda quiete.",
-      suite1_f1:"Letto matrimoniale / singolo",suite1_f2:"Bagno privato",suite1_f3:"Volta a stella originale",suite1_f4:"Massima riservatezza",
-      btn_book_suite1:"Prenota Suite I",
-      suite2_name:"Suite II",suite2_desc:"Camera esclusiva con bagno privato. La stessa architettura storica, un'altra sfumatura di intimità e un comfort avvolgente.",
-      suite2_f1:"Letto matrimoniale / singolo",suite2_f2:"Bagno privato",suite2_f3:"Volta a stella originale",suite2_f4:"Massima riservatezza",
-      btn_book_suite2:"Prenota Suite II",
-      loc_label:"Posizione",loc_title:"Nel cuore barocco di Lecce",
-      loc_p1:"ViviDomus si trova in una posizione strategica a due passi da Porta San Biagio. A piedi si raggiungono facilmente Piazza del Duomo, il Teatro Romano e le meraviglie del centro storico.",
-      loc_p2:"La base ideale per esplorare a piedi la città e muoversi comodamente verso le splendide spiagge del Salento.",
-      book_label:"Prenotazione",book_title:"Prenota il tuo soggiorno",book_subtitle:"Invia la richiesta: ti risponderemo con la conferma di disponibilità.",
-      form_lbl_name:"Nome",form_lbl_email:"Email",form_lbl_solution:"Soluzione",
-      form_lbl_arrival:"Arrivo",form_lbl_departure:"Partenza",form_lbl_guests:"Ospiti",form_lbl_msg:"Messaggio",
-      form_name:"Nome e cognome",form_email:"Indirizzo email",form_select:"Seleziona la soluzione",
-      form_opt1:"Appartamento Principale",form_opt2:"Suite I",form_opt3:"Suite II",
-      form_msg:"Messaggio o richieste particolari (opzionale)",form_send:"Invia richiesta",
-      ct_label:"Contatti",ct_title:"Parliamo",ct_phone:"Telefono",ct_wa:"Scrivici su WhatsApp",
-      footer:"© 2026 ViviDomus — Tutti i diritti riservati"
-    },
-    en:{
-      nav_appartment:"Apartment",nav_suites:"Suites",nav_booking:"Book",nav_location:"Location",nav_contact:"Contact",
-      hero_title:"ViviDomus Lecce",hero_subtitle:"Apartment & Suites — in the heart of the Baroque",
-      apt_label:"The apartment",apt_title:"A bright, spacious and welcoming space",
-      apt_p1:"Featuring bright white interiors framed by gold details, the apartment welcomes guests with an extraordinary sense of space, light, and absolute comfort.",
-      apt_p2:"Just steps away from Porta San Biagio and Lecce's historic center, it allows you to experience the city on foot and return to an airy, refined atmosphere every evening.",
-      apt_f1_l:"Floor",apt_f1_v:"First floor",apt_f2_l:"Capacity",apt_f2_v:"Up to 4 guests",
-      apt_f3_l:"Amenities",apt_f3_v:"Kitchen, living, bathroom",apt_f4_l:"Location",apt_f4_v:"Near the center",
-      btn_book_apt:"Book Apartment",
-      suite_label:"The suites",suite_title:"Two rooms, a star-vaulted ceiling",
-      suite_intro:"Two exclusive rooms with private bathrooms, sheltered beneath an ancient star-vaulted ceiling. An intimate, private space featuring dark, enveloping tones designed for those seeking peace, privacy, and the quiet beauty of Lecce stone.",
-      suite_volta:"Star-vaulted ceiling",
-      suite1_name:"Suite I",suite1_desc:"Intimate room with private bathroom. Relaxing dark tones, sober furnishings, and the unique architecture of the vault offering deep serenity.",
-      suite1_f1:"Double / single bed",suite1_f2:"Private bathroom",suite1_f3:"Original star vault",suite1_f4:"Maximum privacy",
-      btn_book_suite1:"Book Suite I",
-      suite2_name:"Suite II",suite2_desc:"Exclusive room with private bathroom. The same historic architecture paired with a different nuance of intimacy and enveloping comfort.",
-      suite2_f1:"Double / single bed",suite2_f2:"Private bathroom",suite2_f3:"Original star vault",suite2_f4:"Maximum privacy",
-      btn_book_suite2:"Book Suite II",
-      loc_label:"Location",loc_title:"In the Baroque heart of Lecce",
-      loc_p1:"ViviDomus enjoys a strategic location just a stone's throw from Porta San Biagio. Piazza del Duomo, the Roman Theatre, and the wonders of the historic center are easily reached on foot.",
-      loc_p2:"The ideal base to explore the city on foot and easily travel to the stunning beaches of Salento.",
-      book_label:"Reservation",book_title:"Book your stay",book_subtitle:"Send a request: we will reply with availability confirmation.",
-      form_lbl_name:"Name",form_lbl_email:"Email",form_lbl_solution:"Solution",
-      form_lbl_arrival:"Check-in",form_lbl_departure:"Check-out",form_lbl_guests:"Guests",form_lbl_msg:"Message",
-      form_name:"Full name",form_email:"Email address",form_select:"Select solution",
-      form_opt1:"Main Apartment",form_opt2:"Suite I",form_opt3:"Suite II",
-      form_msg:"Message or special requests (optional)",form_send:"Send request",
-      ct_label:"Contact",ct_title:"Get in touch",ct_phone:"Phone",ct_wa:"Chat on WhatsApp",
-      footer:"© 2026 ViviDomus — All rights reserved"
-    },
-    de:{
-      nav_appartment:"Apartment",nav_suites:"Suiten",nav_booking:"Buchen",nav_location:"Lage",nav_contact:"Kontakt",
-      hero_title:"ViviDomus Lecce",hero_subtitle:"Apartment & Suiten — im Herzen des Barock",
-      apt_label:"Das Apartment",apt_title:"Ein helles, geräumiges und einladendes Zuhause",
-      apt_p1:"Mit hellen, weißen Innenräumen, umrahmt von goldenen Details, empfängt das Apartment seine Gäste mit einem außergewöhnlichen Gefühl von Weite, Licht und absolutem Komfort.",
-      apt_p2:"Nur wenige Schritte von der Porta San Biagio und dem historischen Zentrum von Lecce entfernt, können Sie die Stadt zu Fuß erkunden und abends in eine luftige, raffinierte Atmosphäre zurückkehren.",
-      apt_f1_l:"Etage",apt_f1_v:"1. Stock",apt_f2_l:"Kapazität",apt_f2_v:"Bis zu 4 Gäste",
-      apt_f3_l:"Ausstattung",apt_f3_v:"Küche, Wohnbereich, Bad",apt_f4_l:"Lage",apt_f4_v:"Zentrumsnahe",
-      btn_book_apt:"Apartment buchen",
-      suite_label:"Die Suiten",suite_title:"Zwei Zimmer, ein Sterngewölbe",
-      suite_intro:"Zwei exklusive Zimmer mit eigenem Bad, geschützt unter einem antiken Sterngewölbe. Ein intimer, privater Raum mit dunklen, warmen Tönen, ideal für alle, die Ruhe, Privatsphäre und die schlichte Schönheit des Lecce-Steins suchen.",
-      suite_volta:"Sterngewölbe",
-      suite1_name:"Suite I",suite1_desc:"Intimes Zimmer mit eigenem Bad. Entspannende dunkle Töne, schlichte Möbel und die einzigartige Architektur des Gewölbes bieten tiefe Ruhe.",
-      suite1_f1:"Doppel- / Einzelbett",suite1_f2:"Eigenes Badezimmer",suite1_f3:"Originales Sterngewölbe",suite1_f4:"Maximale Privatsphäre",
-      btn_book_suite1:"Suite I buchen",
-      suite2_name:"Suite II",suite2_desc:"Exklusives Zimmer mit eigenem Bad. Dieselbe historische Architektur gepaart mit einer anderen Nuance von Intimität und Behaglichkeit.",
-      suite2_f1:"Doppel- / Einzelbett",suite2_f2:"Eigenes Badezimmer",suite2_f3:"Originales Sterngewölbe",suite2_f4:"Maximale Privatsphäre",
-      btn_book_suite2:"Suite II buchen",
-      loc_label:"Lage",loc_title:"Im barocken Herzen von Lecce",
-      loc_p1:"ViviDomus genießt eine strategische Lage, nur wenige Schritte von der Porta San Biagio entfernt. Die Piazza del Duomo, das Römische Theater und die Wunder des historischen Zentrums sind leicht zu Fuß erreichbar.",
-      loc_p2:"Der ideale Ausgangspunkt, um die Stadt zu Fuß zu erkunden und bequem zu den herrlichen Stränden des Salento zu gelangen.",
-      book_label:"Reservierung",book_title:"Buchen Sie Ihren Aufenthalt",book_subtitle:"Senden Sie eine Anfrage: Wir antworten Ihnen mit der Bestätigung der Verfügbarkeit.",
-      form_lbl_name:"Name",form_lbl_email:"E-Mail",form_lbl_solution:"Unterkunft",
-      form_lbl_arrival:"Anreise",form_lbl_departure:"Abreise",form_lbl_guests:"Gäste",form_lbl_msg:"Nachricht",
-      form_name:"Vollständiger Name",form_email:"E-Mail-Adresse",form_select:"Unterkunft wählen",
-      form_opt1:"Hauptapartment",form_opt2:"Suite I",form_opt3:"Suite II",
-      form_msg:"Nachricht oder Sonderwünsche (optional)",form_send:"Anfrage senden",
-      ct_label:"Kontakt",ct_title:"Sprechen wir",ct_phone:"Telefon",ct_wa:"Auf WhatsApp schreiben",
-      footer:"© 2026 ViviDomus — Alle Rechte vorbehalten"
-    },
-    fr:{
-      nav_appartment:"Appartement",nav_suites:"Suites",nav_booking:"Réserver",nav_location:"Emplacement",nav_contact:"Contact",
-      hero_title:"ViviDomus Lecce",hero_subtitle:"Appartement & Suites — au cœur du baroque",
-      apt_label:"L'appartement",apt_title:"Un espace lumineux, spacieux et accueillant",
-      apt_p1:"Caractérisé par des intérieurs blancs et lumineux encadrés de détails dorés, l'appartement accueille ses hôtes avec une extraordinaire sensation d'espace, de lumière et de confort absolu.",
-      apt_p2:"À deux pas de la Porta San Biagio et du centre historique de Lecce, il vous permet de vivre la ville à pied et de retrouver le soir une atmosphère aérienne et raffinée.",
-      apt_f1_l:"Étage",apt_f1_v:"Premier étage",apt_f2_l:"Capacité",apt_f2_v:"Jusqu'à 4 personnes",
-      apt_f3_l:"Équipements",apt_f3_v:"Cuisine, salon, salle de bain",apt_f4_l:"Emplacement",apt_f4_v:"Près du centre",
-      btn_book_apt:"Réserver l'appartement",
-      suite_label:"Les suites",suite_title:"Deux chambres, une voûte étoilée",
-      suite_intro:"Deux chambres exclusives avec salle de bain privée, abritées sous une ancienne voûte étoilée. Un espace intime et réservé, aux tons sombres et enveloppants, conçu pour ceux qui recherchent le calme, l'intimité et la beauté discrète de la pierre de Lecce.",
-      suite_volta:"Voûte étoilée",
-      suite1_name:"Suite I",suite1_desc:"Chambre intime avec salle de bain privée. Des tons sombres et relaxants, un mobilier soû et le dessin de la voûte qui offre une atmosphère de profonde sérénité.",
-      suite1_f1:"Lit double / simple",suite1_f2:"Salle de bain privée",suite1_f3:"Voûte étoilée d'origine",suite1_f4:"Intimité maximale",
-      btn_book_suite1:"Réserver Suite I",
-      suite2_name:"Suite II",suite2_desc:"Chambre exclusive avec salle de bain privée. La même architecture historique alliée à une autre nuance d'intimité et de confort enveloppant.",
-      suite2_f1:"Lit double / simple",suite2_f2:"Salle de bain privée",suite2_f3:"Voûte étoilée d'origine",suite2_f4:"Intimité maximale",
-      btn_book_suite2:"Réserver Suite II",
-      loc_label:"Emplacement",loc_title:"Au cœur baroque de Lecce",
-      loc_p1:"ViviDomus bénéficie d'un emplacement stratégique à deux pas de la Porta San Biagio. La Piazza del Duomo, le Théâtre Romain et les merveilles du centre historique sont facilement accessibles à pied.",
-      loc_p2:"Le point de départ idéal pour explorer la ville à pied et rejoindre facilement les magnifiques plages du Salento.",
-      book_label:"Réservation",book_title:"Réservez votre séjour",book_subtitle:"Envoyez votre demande : nous vous répondrons avec la confirmation de disponibilité.",
-      form_lbl_name:"Nom",form_lbl_email:"E-mail",form_lbl_solution:"Hébergement",
-      form_lbl_arrival:"Arrivée",form_lbl_departure:"Départ",form_lbl_guests:"Voyageurs",form_lbl_msg:"Message",
-      form_name:"Nom et prénom",form_email:"Adresse e-mail",form_select:"Sélectionnez l'hébergement",
-      form_opt1:"Appartement Principal",form_opt2:"Suite I",form_opt3:"Suite II",
-      form_msg:"Message ou demandes particulières (optionnel)",form_send:"Envoyer la demande",
-      ct_label:"Contact",ct_title:"Parlons-en",ct_phone:"Téléphone",ct_wa:"Écrivez-nous sur WhatsApp",
-      footer:"© 2026 ViviDomus — Tous droits réservés"
-    },
-    es:{
-      nav_appartment:"Apartamento",nav_suites:"Suites",nav_booking:"Reservar",nav_location:"Ubicación",nav_contact:"Contacto",
-      hero_title:"ViviDomus Lecce",hero_subtitle:"Apartamento y Suites — en el corazón del barroco",
-      apt_label:"El apartamento",apt_title:"Un espacio luminoso, amplio y acogedor",
-      apt_p1:"Caracterizado por interiores blancos y luminosos enmarcados por detalles dorados, el apartamento recibe a los huéspedes con una extraordinaria sensación de espacio, luz y confort absoluto.",
-      apt_p2:"A pocos pasos de Porta San Biagio y del centro histórico de Lecce, permite vivir la ciudad a pie y regresar por la noche a un ambiente aireado y refinado.",
-      apt_f1_l:"Planta",apt_f1_v:"Primer piso",apt_f2_l:"Capacidad",apt_f2_v:"Hasta 4 huéspedes",
-      apt_f3_l:"Servicios",apt_f3_v:"Cocina, sala, baño",apt_f4_l:"Ubicación",apt_f4_v:"Cerca del centro",
-      btn_book_apt:"Reservar Apartamento",
-      suite_label:"Las suites",suite_title:"Dos habitaciones, una bóveda estrellada",
-      suite_intro:"Dos habitaciones exclusivas con baño privado, resguardadas bajo una antigua bóveda estrellada. Un espacio íntimo y reservado, con tonos oscuros y envolventes, diseñado para quienes buscan silencio, privacidad y la discreta belleza de la piedra de Lecce.",
-      suite_volta:"Bóveda estrellada",
-      suite1_name:"Suite I",suite1_desc:"Habitación íntima con baño privado. Tonos oscuros y relajantes, mobiliario sobrio y el diseño de la bóveda que ofrece una atmósfera de profunda tranquilidad.",
-      suite1_f1:"Cama doble / individual",suite1_f2:"Baño privado",suite1_f3:"Bóveda estrellada original",suite1_f4:"Máxima privacidad",
-      btn_book_suite1:"Reservar Suite I",
-      suite2_name:"Suite II",suite2_desc:"Habitación exclusiva con baño privado. La misma arquitectura histórica combinada con otro matiz de intimidad y confort envolvente.",
-      suite2_f1:"Cama doble / individual",suite2_f2:"Baño privado",suite2_f3:"Bóveda estrellada original",suite2_f4:"Máxima privacidad",
-      btn_book_suite2:"Reservar Suite II",
-      loc_label:"Ubicación",loc_title:"En el corazón barroco de Lecce",
-      loc_p1:"ViviDomus goza de una ubicación estratégica a un paso de Porta San Biagio. A pie se llega fácilmente a la Piazza del Duomo, el Teatro Romano y las maravillas del centro storico.",
-      loc_p2:"La base ideal para explorar la ciudad a pie e desplazarse cómodamente hacia las hermosas playas de Salento.",
-      book_label:"Reserva",book_title:"Reserva tu estancia",book_subtitle:"Envía la solicitud: te responderemos con la confirmación de disponibilidad.",
-      form_lbl_name:"Nombre",form_lbl_email:"Correo electrónico",form_lbl_solution:"Alojamiento",
-      form_lbl_arrival:"Llegada",form_lbl_departure:"Salida",form_lbl_guests:"Huéspedes",form_lbl_msg:"Mensaje",
-      form_name:"Nombre y apellido",form_email:"Dirección de correo",form_select:"Selecciona el alojamiento",
-      form_opt1:"Apartamento Principal",form_opt2:"Suite I",form_opt3:"Suite II",
-      form_msg:"Mensaje o peticiones especiales (opcional)",form_send:"Enviar solicitud",
-      ct_label:"Contacto",ct_title:"Hablemos",ct_phone:"Teléfono",ct_wa:"Escríbenos por WhatsApp",
-      footer:"© 2026 ViviDomus — Todos los derechos reservados"
+    // Hero Slideshow
+    const heroSlides = document.querySelectorAll('.hero .slide');
+    const heroDots = document.querySelectorAll('.slide-dots button');
+    let heroCurrent = 0;
+    
+    function showHeroSlide(i){
+      if (i >= heroSlides.length) heroCurrent = 0;
+      else if (i < 0) heroCurrent = heroSlides.length - 1;
+      else heroCurrent = i;
+      heroSlides.forEach(s=>s.classList.remove('active'));
+      heroDots.forEach(d=>d.classList.remove('active'));
+      heroSlides[heroCurrent].classList.add('active');
+      heroDots[heroCurrent].classList.add('active');
     }
-  };
+    window.moveHeroSlide = function(n) { showHeroSlide(heroCurrent + n); };
+    window.currentHeroSlide = function(i) { showHeroSlide(i); };
+    
+    if(heroDots.length > 0) {
+      heroDots.forEach((d, index)=>d.addEventListener('click',()=>window.currentHeroSlide(index)));
+      setInterval(()=>window.moveHeroSlide(1), 6000);
+    }
 
-  document.querySelectorAll('.lang-switch button').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.lang-switch button').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const lang = btn.getAttribute('data-lang');
-      const t = translations[lang] || translations['it'];
-      
-      document.querySelectorAll('[data-i18n]').forEach(el => {
-        const key = el.getAttribute('data-i18n');
-        if (t[key]) el.textContent = t[key];
+    // Room Sliders
+    const roomSlidersState = {};
+    function setupRoomSlider(containerId) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+      const slides = container.querySelectorAll('.room-slide');
+      const dots = container.querySelectorAll('.room-dots button');
+      roomSlidersState[containerId] = { current: 0, slides: slides, dots: dots };
+      setInterval(() => { moveRoomSlide(containerId, 1); }, 5000);
+    }
+    
+    function showRoomSlide(containerId, index) {
+      const state = roomSlidersState[containerId];
+      if (!state) return;
+      if (index >= state.slides.length) state.current = 0;
+      else if (index < 0) state.current = state.slides.length - 1;
+      else state.current = index;
+      state.slides.forEach((s, i) => {
+        s.classList.toggle('active', i === state.current);
+        if (state.dots[i]) state.dots[i].classList.toggle('active', i === state.current);
       });
-      document.querySelectorAll('[data-i18n-ph]').forEach(endEl => {
-        const phKey = endEl.getAttribute('data-i18n-ph');
-        if (t[phKey]) endEl.placeholder = t[phKey];
+    }
+    
+    window.moveRoomSlide = function(containerId, n) {
+      const state = roomSlidersState[containerId];
+      if (state) { showRoomSlide(containerId, state.current + n); }
+    };
+    
+    window.currentRoomSlide = function(containerId, index) {
+      showRoomSlide(containerId, index);
+    };
+
+    setupRoomSlider('slider-apt');
+    setupRoomSlider('slider-suite1');
+    setupRoomSlider('slider-suite2');
+
+    // Traduzioni
+    const translations = {
+      it:{
+        nav_appartment:"Appartamento",nav_suites:"Suite",nav_booking:"Prenota",nav_location:"Posizione",nav_contact:"Contatti",
+        hero_title:"ViviDomus Lecce",hero_subtitle:"Appartamento & Suite — nel cuore del barocco",
+        apt_label:"L'appartamento",apt_title:"Uno spazio luminoso, ampio e accogliente",
+        apt_p1:"Caratterizzato da interni bianchi e luminosi incorniciati da dettagli dorati, l'appartamento accoglie gli ospiti con una straordinaria sensazione di spazio, gioia e comfort assoluto.",
+        apt_p2:"La posizione a due passi da Porta San Biagio e dal centro storico di Lecce permette di vivere la città a piedi, tornando la sera in un ambiente arioso e raffinato.",
+        apt_f1_l:"Piano",apt_f1_v:"Primo piano",apt_f2_l:"Capienza",apt_f2_v:"Fino a 4 ospiti",
+        apt_f3_l:"Servizi",apt_f3_v:"Cucina, living, bagno",apt_f4_l:"Posizione",apt_f4_v:"Vicino al centro",
+        btn_book_apt:"Prenota Appartamento",
+        suite_label:"Le suite",suite_title:"Due stanze, una volta a stella",
+        suite_intro:"Due camere esclusive con bagno privato, custodite sotto l'antica volta a stella. Uno spazio intimo e riservato, caratterizzato da toni scuri e avvolgenti, pensato per chi cerca silenzio, privacy e la bellezza discreta della pietra leccese.",
+        suite_volta:"Volta a stella",
+        suite1_name:"Suite I",suite1_desc:"Camera intima con bagno privato. Toni scuri e rilassanti, arredi sobri e il disegno della volta che regala un'atmosfera di profonda quiete.",
+        suite1_f1:"Letto matrimoniale / singolo",suite1_f2:"Bagno privato",suite1_f3:"Volta a stella originale",suite1_f4:"Massima riservatezza",
+        btn_book_suite1:"Prenota Suite I",
+        suite2_name:"Suite II",suite2_desc:"Camera esclusiva con bagno privato. La stessa architettura storica, un'altra sfumatura di intimità e un comfort avvolgente.",
+        suite2_f1:"Letto matrimoniale / singolo",suite2_f2:"Bagno privato",suite2_f3:"Volta a stella originale",suite2_f4:"Massima riservatezza",
+        btn_book_suite2:"Prenota Suite II",
+        loc_label:"Posizione",loc_title:"Nel cuore barocco di Lecce",
+        loc_p1:"ViviDomus si trova in una posizione strategica a due passi da Porta San Biagio. A piedi si raggiungono facilmente Piazza del Duomo, il Teatro Romano e le meraviglie del centro storico.",
+        loc_p2:"La base ideale per esplorare a piedi la città e muoversi comodamente verso le splendide spiagge del Salento.",
+        book_label:"Prenotazione",book_title:"Prenota il tuo soggiorno",book_subtitle:"Invia la richiesta: ti risponderemo con la conferma di disponibilità.",
+        form_lbl_name:"Nome",form_lbl_email:"Email",form_lbl_solution:"Soluzione",
+        form_lbl_arrival:"Arrivo",form_lbl_departure:"Partenza",form_lbl_guests:"Ospiti",form_lbl_msg:"Messaggio",
+        form_name:"Nome e cognome",form_email:"Indirizzo email",form_select:"Seleziona la soluzione",
+        form_opt1:"Appartamento Principale",form_opt2:"Suite I",form_opt3:"Suite II",
+        form_msg:"Messaggio o richieste particolari (opzionale)",form_send:"Invia richiesta",
+        ct_label:"Contatti",ct_title:"Parliamo",ct_phone:"Telefono",ct_wa:"Scrivici su WhatsApp",
+        footer:"© 2026 ViviDomus — Tutti i diritti riservati"
+      },
+      en:{
+        nav_appartment:"Apartment",nav_suites:"Suites",nav_booking:"Book",nav_location:"Location",nav_contact:"Contact",
+        hero_title:"ViviDomus Lecce",hero_subtitle:"Apartment & Suites — in the heart of the Baroque",
+        apt_label:"The apartment",apt_title:"A bright, spacious and welcoming space",
+        apt_p1:"Featuring bright white interiors framed by gold details, the apartment welcomes guests with an extraordinary sense of space, light, and absolute comfort.",
+        apt_p2:"Just steps away from Porta San Biagio and Lecce's historic center, it allows you to experience the city on foot and return to an airy, refined atmosphere every evening.",
+        apt_f1_l:"Floor",apt_f1_v:"First floor",apt_f2_l:"Capacity",apt_f2_v:"Up to 4 guests",
+        apt_f3_l:"Amenities",apt_f3_v:"Kitchen, living, bathroom",apt_f4_l:"Location",apt_f4_v:"Near the center",
+        btn_book_apt:"Book Apartment",
+        suite_label:"The suites",suite_title:"Two rooms, a star-vaulted ceiling",
+        suite_intro:"Two exclusive rooms with private bathrooms, sheltered beneath an ancient star-vaulted ceiling. An intimate, private space featuring dark, enveloping tones designed for those seeking peace, privacy, and the quiet beauty of Lecce stone.",
+        suite_volta:"Star-vaulted ceiling",
+        suite1_name:"Suite I",suite1_desc:"Intimate room with private bathroom. Relaxing dark tones, sober furnishings, and the unique architecture of the vault offering deep serenity.",
+        suite1_f1:"Double / single bed",suite1_f2:"Private bathroom",suite1_f3:"Original star vault",suite1_f4:"Maximum privacy",
+        btn_book_suite1:"Book Suite I",
+        suite2_name:"Suite II",suite2_desc:"Exclusive room with private bathroom. The same historic architecture paired with a different nuance of intimacy and enveloping comfort.",
+        suite2_f1:"Double / single bed",suite2_f2:"Private bathroom",suite2_f3:"Original star vault",suite2_f4:"Maximum privacy",
+        btn_book_suite2:"Book Suite II",
+        loc_label:"Location",loc_title:"In the Baroque heart of Lecce",
+        loc_p1:"ViviDomus enjoys a strategic location just a stone's throw from Porta San Biagio. Piazza del Duomo, the Roman Theatre, and the wonders of the historic center are easily reached on foot.",
+        loc_p2:"The ideal base to explore the city on foot and easily travel to the stunning beaches of Salento.",
+        book_label:"Reservation",book_title:"Book your stay",book_subtitle:"Send a request: we will reply with availability confirmation.",
+        form_lbl_name:"Name",form_lbl_email:"Email",form_lbl_solution:"Solution",
+        form_lbl_arrival:"Check-in",form_lbl_departure:"Check-out",form_lbl_guests:"Guests",form_lbl_msg:"Message",
+        form_name:"Full name",form_email:"Email address",form_select:"Select solution",
+        form_opt1:"Main Apartment",form_opt2:"Suite I",form_opt3:"Suite II",
+        form_msg:"Message or special requests (optional)",form_send:"Send request",
+        ct_label:"Contact",ct_title:"Get in touch",ct_phone:"Phone",ct_wa:"Chat on WhatsApp",
+        footer:"© 2026 ViviDomus — All rights reserved"
+      },
+      de:{
+        nav_appartment:"Apartment",nav_suites:"Suiten",nav_booking:"Buchen",nav_location:"Lage",nav_contact:"Kontakt",
+        hero_title:"ViviDomus Lecce",hero_subtitle:"Apartment & Suiten — im Herzen des Barock",
+        apt_label:"Das Apartment",apt_title:"Ein helles, geräumiges und einladendes Zuhause",
+        apt_p1:"Mit hellen, weißen Innenräumen, umrahmt von goldenen Details, empfängt das Apartment seine Gäste mit einem außergewöhnlichen Gefühl von Weite, Licht und absolutem Komfort.",
+        apt_p2:"Nur wenige Schritte von der Porta San Biagio und dem historischen Zentrum von Lecce entfernt, können Sie die Stadt zu Fuß erkunden und abends in eine luftige, raffinierte Atmosphäre zurückkehren.",
+        apt_f1_l:"Etage",apt_f1_v:"1. Stock",apt_f2_l:"Kapazität",apt_f2_v:"Bis zu 4 Gäste",
+        apt_f3_l:"Ausstattung",apt_f3_v:"Küche, Wohnbereich, Bad",apt_f4_l:"Lage",apt_f4_v:"Zentrumsnahe",
+        btn_book_apt:"Apartment buchen",
+        suite_label:"Die Suiten",suite_title:"Zwei Zimmer, ein Sterngewölbe",
+        suite_intro:"Zwei exklusive Zimmer mit eigenem Bad, geschützt unter einem antiken Sterngewölbe. Ein intimer, privater Raum mit dunklen, warmen Tönen, ideal für alle, die Ruhe, Privatsphäre und die schlichte Schönheit des Lecce-Steins suchen.",
+        suite_volta:"Sterngewölbe",
+        suite1_name:"Suite I",suite1_desc:"Intimes Zimmer mit eigenem Bad. Entspannende dunkle Töne, schlichte Möbel und die einzigartige Architektur des Gewölbes bieten tiefe Ruhe.",
+        suite1_f1:"Doppel- / Einzelbett",suite1_f2:"Eigenes Badezimmer",suite1_f3:"Originales Sterngewölbe",suite1_f4:"Maximale Privatsphäre",
+        btn_book_suite1:"Suite I buchen",
+        suite2_name:"Suite II",suite2_desc:"Exklusives Zimmer mit eigenem Bad. Dieselbe historische Architektur gepaart mit einer anderen Nuance von Intimität und Behaglichkeit.",
+        suite2_f1:"Doppel- / Einzelbett",suite2_f2:"Eigenes Badezimmer",suite2_f3:"Originales Sterngewölbe",suite2_f4:"Maximale Privatsphäre",
+        btn_book_suite2:"Suite II buchen",
+        loc_label:"Lage",loc_title:"Im barocken Herzen von Lecce",
+        loc_p1:"ViviDomus genießt eine strategische Lage, nur wenige Schritte von der Porta San Biagio entfernt. Die Piazza del Duomo, das Römische Theater und die Wunder des historischen Zentrums sind leicht zu Fuß erreichbar.",
+        loc_p2:"Der ideale Ausgangspunkt, um die Stadt zu Fuß zu erkunden und bequem zu den herrlichen Stränden des Salento zu gelangen.",
+        book_label:"Reservierung",book_title:"Buchen Sie Ihren Aufenthalt",book_subtitle:"Senden Sie eine Anfrage: Wir antworten Ihnen mit der Bestätigung der Verfügbarkeit.",
+        form_lbl_name:"Name",form_lbl_email:"E-Mail",form_lbl_solution:"Unterkunft",
+        form_lbl_arrival:"Anreise",form_lbl_departure:"Abreise",form_lbl_guests:"Gäste",form_lbl_msg:"Nachricht",
+        form_name:"Vollständiger Name",form_email:"E-Mail-Adresse",form_select:"Unterkunft wählen",
+        form_opt1:"Hauptapartment",form_opt2:"Suite I",form_opt3:"Suite II",
+        form_msg:"Nachricht oder Sonderwünsche (optional)",form_send:"Anfrage senden",
+        ct_label:"Kontakt",ct_title:"Sprechen wir",ct_phone:"Telefon",ct_wa:"Auf WhatsApp schreiben",
+        footer:"© 2026 ViviDomus — Alle Rechte vorbehalten"
+      },
+      fr:{
+        nav_appartment:"Appartement",nav_suites:"Suites",nav_booking:"Réserver",nav_location:"Emplacement",nav_contact:"Contact",
+        hero_title:"ViviDomus Lecce",hero_subtitle:"Appartement & Suites — au cœur du baroque",
+        apt_label:"L'appartement",apt_title:"Un espace lumineux, spacieux et accueillant",
+        apt_p1:"Caractérisé par des intérieurs blancs et lumineux encadrés de détails dorés, l'appartement accueille ses hôtes avec une extraordinaire sensation d'espace, de lumière et de confort absolu.",
+        apt_p2:"À deux pas de la Porta San Biagio et du centre historique de Lecce, il vous permet de vivre la ville à pied et de retrouver le soir une atmosphère aérienne et raffinée.",
+        apt_f1_l:"Étage",apt_f1_v:"Premier étage",apt_f2_l:"Capacité",apt_f2_v:"Jusqu'à 4 personnes",
+        apt_f3_l:"Équipements",apt_f3_v:"Cuisine, salon, salle de bain",apt_f4_l:"Emplacement",apt_f4_v:"Près du centre",
+        btn_book_apt:"Réserver l'appartement",
+        suite_label:"Les suites",suite_title:"Deux chambres, une voûte étoilée",
+        suite_intro:"Deux chambres exclusives avec salle de bain privée, abritées sous une ancienne voûte étoilée. Un espace intime et réservé, aux tons sombres et enveloppants, conçu pour ceux qui recherchent le calme, l'intimité et la beauté discrète de la pierre de Lecce.",
+        suite_volta:"Voûte étoilée",
+        suite1_name:"Suite I",suite1_desc:"Chambre intime avec salle de bain privée. Des tons sombres et relaxants, un mobilier sobrio et le dessin de la voûte qui offre une atmosphère de profonde sérénité.",
+        suite1_f1:"Lit double / simple",suite1_f2:"Salle de bain privée",suite1_f3:"Voûte étoilée d'origine",suite1_f4:"Intimité maximale",
+        btn_book_suite1:"Réserver Suite I",
+        suite2_name:"Suite II",suite2_desc:"Chambre exclusive avec salle de bain privée. La même architecture historique alliée à une autre nuance d'intimité et de confort enveloppant.",
+        suite2_f1:"Lit double / simple",suite2_f2:"Salle de bain privée",suite2_f3:"Voûte étoilée d'origine",suite2_f4:"Intimité maximale",
+        btn_book_suite2:"Réserver Suite II",
+        loc_label:"Emplacement",loc_title:"Au cœur baroque de Lecce",
+        loc_p1:"ViviDomus bénéficie d'un emplacement stratégique à deux pas de la Porta San Biagio. La Piazza del Duomo, le Théâtre Romain et les merveilles du centre historique sont facilement accessibles à pied.",
+        loc_p2:"Le point de départ idéal pour explorer la ville à pied et rejoindre facilement les magnifiques plages du Salento.",
+        book_label:"Réservation",book_title:"Réservez votre séjour",book_subtitle:"Envoyez votre demande : nous vous répondrons avec la confirmation de disponibilité.",
+        form_lbl_name:"Nom",form_lbl_email:"E-mail",form_lbl_solution:"Hébergement",
+        form_lbl_arrival:"Arrivée",form_lbl_departure:"Départ",form_lbl_guests:"Voyageurs",form_lbl_msg:"Message",
+        form_name:"Nom et prénom",form_email:"Adresse e-mail",form_select:"Sélectionnez l'hébergement",
+        form_opt1:"Appartement Principal",form_opt2:"Suite I",form_opt3:"Suite II",
+        form_msg:"Message ou demandes particulières (optionnel)",form_send:"Envoyer la demande",
+        ct_label:"Contact",ct_title:"Parlons-en",ct_phone:"Téléphone",ct_wa:"Écrivez-nous sur WhatsApp",
+        footer:"© 2026 ViviDomus — Tous droits réservés"
+      },
+      es:{
+        nav_appartment:"Apartamento",nav_suites:"Suites",nav_booking:"Reservar",nav_location:"Ubicación",nav_contact:"Contacto",
+        hero_title:"ViviDomus Lecce",hero_subtitle:"Apartamento y Suites — en el corazón del barroco",
+        apt_label:"El apartamento",apt_title:"Un espacio luminoso, amplio y acogedor",
+        apt_p1:"Caracterizado por interiores blancos y luminosos enmarcados por detalles dorados, el apartamento recibe a los huéspedes con una extraordinaria sensación de espacio, luz y confort absoluto.",
+        apt_p2:"A pocos pasos de Porta San Biagio y del centro histórico de Lecce, permite vivir la ciudad a pie y regresar por la noche a un ambiente aireado y refinado.",
+        apt_f1_l:"Planta",apt_f1_v:"Primer piso",apt_f2_l:"Capacidad",apt_f2_v:"Hasta 4 huéspedes",
+        apt_f3_l:"Servicios",apt_f3_v:"Cocina, sala, baño",apt_f4_l:"Ubicación",apt_f4_v:"Cerca del centro",
+        btn_book_apt:"Reservar Apartamento",
+        suite_label:"Las suites",suite_title:"Dos habitaciones, una bóveda estrellada",
+        suite_intro:"Dos habitaciones exclusivas con baño privado, resguardadas bajo una antigua bóveda estrellada. Un espacio íntimo y reservado, con tonos oscuros y envolventes, diseñado para quienes buscan silencio, privacidad y la discreta belleza de la piedra de Lecce.",
+        suite_volta:"Bóveda estrellada",
+        suite1_name:"Suite I",suite1_desc:"Habitación íntima con baño privado. Tonos oscuros y relajantes, mobiliario sobrio y el diseño de la bóveda que ofrece una atmósfera de profunda tranquilidad.",
+        suite1_f1:"Cama doble / individual",suite1_f2:"Baño privado",suite1_f3:"Bóveda estrellada original",suite1_f4:"Máxima privacidad",
+        btn_book_suite1:"Reservar Suite I",
+        suite2_name:"Suite II",suite2_desc:"Habitación exclusiva con baño privado. La misma arquitectura histórica combinada con otro matiz de intimidad y confort envolvente.",
+        suite2_f1:"Cama doble / individual",suite2_f2:"Baño privado",suite2_f3:"Bóveda estrellada original",suite2_f4:"Máxima privacidad",
+        btn_book_suite2:"Reservar Suite II",
+        loc_label:"Ubicación",loc_title:"En el corazón barroco de Lecce",
+        loc_p1:"ViviDomus goza de una ubicación estratégica a un paso de Porta San Biagio. A pie se llega fácilmente a la Piazza del Duomo, el Teatro Romano y las maravillas del centro storico.",
+        loc_p2:"La base ideal para explorar la ciudad a pie e desplazarse cómodamente hacia las hermosas playas de Salento.",
+        book_label:"Reserva",book_title:"Reserva tu estancia",book_subtitle:"Envía la solicitud: te responderemos con la confirmación de disponibilidad.",
+        form_lbl_name:"Nombre",form_lbl_email:"Correo electrónico",form_lbl_solution:"Alojamiento",
+        form_lbl_arrival:"Llegada",form_lbl_departure:"Salida",form_lbl_guests:"Huéspedes",form_lbl_msg:"Mensaje",
+        form_name:"Nombre y apellido",form_email:"Dirección de correo",form_select:"Selecciona el alojamiento",
+        form_opt1:"Apartamento Principal",form_opt2:"Suite I",form_opt3:"Suite II",
+        form_msg:"Messaggio o peticiones especiales (opcional)",form_send:"Enviar solicitud",
+        ct_label:"Contacto",ct_title:"Hablemos",ct_phone:"Teléfono",ct_wa:"Escríbenos por WhatsApp",
+        footer:"© 2026 ViviDomus — Todos los derechos reservados"
+      }
+    };
+
+    document.querySelectorAll('.lang-switch button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.lang-switch button').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const lang = btn.getAttribute('data-lang');
+        const t = translations[lang] || translations['it'];
+        
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+          const key = el.getAttribute('data-i18n');
+          if (t[key]) el.textContent = t[key];
+        });
+        document.querySelectorAll('[data-i18n-ph]').forEach(endEl => {
+          const phKey = endEl.getAttribute('data-i18n-ph');
+          if (t[phKey]) endEl.placeholder = t[phKey];
+        });
       });
     });
   });
