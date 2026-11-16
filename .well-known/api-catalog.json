@@ -1,0 +1,10 @@
+{
+  "name": "ViviDomus API Catalog",
+  "description": "Endpoint e risorse machine-readable per ViviDomus Lecce",
+  "endpoints": [
+    {
+      "type": "web",
+      "url": "https://vividomus.com/"
+    }
+  ]
+}
