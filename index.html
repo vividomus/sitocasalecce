@@ -25,16 +25,17 @@
 <meta name="twitter:description" content="ViviDomus a Lecce: appartamento e suite di charme a due passi da Porta San Biagio e dal centro storico.">
 <meta name="twitter:image" content="https://vividomus.com/lecce1.avif">
 
-<!-- AI Agent & Discovery Discovery Headers / Links -->
+<!-- AI Agent & Discovery Protocol Links (Per sbloccare Seotesteronline IA) -->
 <link rel="alternate" type="application/json" href="https://vividomus.com/.well-known/api-catalog" title="API Catalog">
 <link rel="help" href="https://vividomus.com/auth.md" title="Agent Registration & Auth">
-<link rel="manifest" href="https://vividomus.com/manifest.json" title="Agent Manifest">
+<link rel="manifest" href="https://vividomus.com/manifest.json" title="Agent Manifest & ARD">
+<link rel="service" type="application/json" href="https://vividomus.com/.well-known/mcp-server-card.json" title="MCP Server Card">
+<link rel="meta" href="https://vividomus.com/.well-known/a2a-agent-card.json" title="A2A Agent Card">
+<link rel="index" href="https://vividomus.com/.well-known/agent-skills.json" title="Agent Skills Index">
 
-<!-- Performance Hints (Preconnect) per azzerare i ritardi di rete -->
+<!-- Performance Hints -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="dns-prefetch" href="https://vividomus.com">
-
-<!-- Preload immagine LCP (massima priorità assoluta) -->
 <link rel="preload" as="image" href="lecce1.avif" fetchpriority="high">
 
 <style>
@@ -598,7 +599,7 @@
         <div class="contact-card">
           <div class="icon">✆</div>
           <h3 data-i18n="ct_phone">Telefono</h3>
-          <a href="tel:+393381875578" title="Chiama ViviDomus">+$39 338 187 5578</a>
+          <a href="tel:+393381875578" title="Chiama ViviDomus">+39 338 187 5578</a>
         </div>
         <div class="contact-card">
           <div class="icon">✉</div>
@@ -626,16 +627,12 @@
 </a>
 
 <script defer>
-  // Avvia gli script solo quando il documento è pronto
   document.addEventListener("DOMContentLoaded", () => {
-    
-    // Gestione soluzione rapida form
     window.selectSolution = function(solutionName) {
       const select = document.getElementById('solution-select');
       if(select) { select.value = solutionName; }
     };
 
-    // Hero Slideshow
     const heroSlides = document.querySelectorAll('.hero .slide');
     const heroDots = document.querySelectorAll('.slide-dots button');
     let heroCurrent = 0;
@@ -657,7 +654,6 @@
       setInterval(()=>window.moveHeroSlide(1), 6000);
     }
 
-    // Room Sliders
     const roomSlidersState = {};
     function setupRoomSlider(containerId) {
       const container = document.getElementById(containerId);
@@ -693,7 +689,6 @@
     setupRoomSlider('slider-suite1');
     setupRoomSlider('slider-suite2');
 
-    // Traduzioni
     const translations = {
       it:{
         nav_appartment:"Appartamento",nav_suites:"Suite",nav_booking:"Prenota",nav_location:"Posizione",nav_contact:"Contatti",
