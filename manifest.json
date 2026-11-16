@@ -1,0 +1,9 @@
+{
+  "name": "ViviDomus Lecce Agent Directory",
+  "short_name": "ViviDomusAI",
+  "description": "Catalogo e risorse per agenti intelligenti di ViviDomus Lecce",
+  "start_url": "/",
+  "display": "standalone",
+  "capabilities": ["discovery", "booking", "properties"],
+  "version": "1.0.0"
+}
