@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://vividomus.it/sitemap.xml
+# Content-Signals per i sistemi IA
+Content-Signal: ai-train=yes, search=yes, index=yes
+
+Sitemap: https://vividomus.com/sitemap.xml
