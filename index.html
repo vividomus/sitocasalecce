@@ -32,12 +32,13 @@
 <meta name="twitter:image" content="https://vividomus.com/lecce1.avif">
 
 <!-- AI Agent & Discovery Protocol Links -->
-<link rel="alternate" type="application/json" href="https://vividomus.com/.well-known/api-catalog" title="API Catalog">
+<link rel="alternate" type="application/json" href="https://vividomus.com/.well-known/api-catalog.json" title="API Catalog">
+<link rel="alternate" type="text/markdown" href="https://vividomus.com/llms.txt" title="LLM Markdown Guide">
 <link rel="help" href="https://vividomus.com/auth.md" title="Agent Registration & Auth">
-<link rel="manifest" href="https://vividomus.com/manifest.json" title="Agent Manifest & ARD">
-<link rel="service" type="application/json" href="https://vividomus.com/.well-known/mcp-server-card.json" title="MCP Server Card">
-<link rel="meta" href="https://vividomus.com/.well-known/a2a-agent-card.json" title="A2A Agent Card">
-<link rel="index" href="https://vividomus.com/.well-known/agent-skills.json" title="Agent Skills Index">
+<link rel="manifest" href="https://vividomus.com/.well-known/ard.json" title="Agentic Resource Discovery (ARD)">
+<link rel="service" type="application/json" href="https://vividomus.com/.well-known/mcp.json" title="MCP Server Card">
+<link rel="meta" type="application/json" href="https://vividomus.com/.well-known/agent.json" title="A2A Agent Card & Skills">
+<link rel="profile" type="application/json" href="https://vividomus.com/.well-known/poppy.json" title="Personal Agent Protocol (Poppy)">
 
 <!-- Performance Hints & Preconnect -->
 <link rel="dns-prefetch" href="https://vividomus.com">
@@ -76,6 +77,41 @@
     {"@type": "LocationFeatureSpecification", "name": "TV LED in camera", "value": true}
   ]
 }
+</script>
+
+<!-- WebMCP Browser Agent Tool Exposure -->
+<script type="application/ld+json" id="webmcp-manifest">
+{
+  "@context": "https://schema.org",
+  "@type": "WebAPI",
+  "name": "ViviDomus WebMCP Tools",
+  "documentation": "https://vividomus.com/.well-known/mcp.json"
+}
+</script>
+<script>
+  if (typeof navigator !== "undefined") {
+    navigator.modelContext = navigator.modelContext || {
+      provideContext: function() {},
+      registerTool: function(tool) { return tool; }
+    };
+    navigator.modelContext.registerTool({
+      name: "get_vividomus_info",
+      description: "Get official details, location, and booking contacts for ViviDomus Lecce",
+      inputSchema: { type: "object", properties: {} },
+      execute: async () => ({
+        name: "ViviDomus Lecce",
+        cin: "IT075035C200126683",
+        location: "Porta San Biagio, Centro Storico, Lecce, Italy",
+        parking: "Free parking outside ZTL",
+        website: "https://vividomus.com",
+        contact: {
+          phone: "+393381875578",
+          email: "info@vividomus.com",
+          whatsapp: "https://wa.me/393381875578"
+        }
+      })
+    });
+  }
 </script>
 
 <style>
@@ -615,7 +651,7 @@
         <div class="location-text">
           <div class="section-label" data-i18n="loc_label">Posizione & Parcheggio</div>
           <h2 class="section-title" data-i18n="loc_title">Vicino al centro di Lecce con parcheggio gratuito</h2>
-          <p data-i18n="loc_p1">ViviDomus si trova in una posizione strategica vicino al centro storico di Lecce, a pochi passi da Porta San Biagio. Essendo subito fuori dalla zona a traffico limitato, offre la comodità di raggiungere a piedi Piazza del Duomo unita al vantaggio di trovare <strong>parcheggio gratuito e libero sotto casa</strong>.</p>
+          <p data-i18n="loc_p1">ViviDomus si trova in una posizione strategica vicino al centro storico di Lecce, a pochi passi da Porta San Biagio. Essendo subito fuori dalla zona a traffico limitato, offre la comodità di raggiungere a piedi Piazza del Duomo unita al vantaggio di trovare parcheggio gratuito e libero sotto casa.</p>
           <p data-i18n="loc_p2">La base ideale per visitare Lecce e muoversi comodamente in auto verso le splendide spiagge del Salento.</p>
         </div>
         <div class="location-map">Vicino al Centro di Lecce — Porta San Biagio<br><span style="font-size:0.75rem;color:var(--gold);display:block;margin-top:6px;">Parcheggio gratuito sotto casa / fuori ZTL</span></div>
@@ -922,7 +958,7 @@
         form_lbl_arrival:"Llegada",form_lbl_departure:"Salida",form_lbl_guests:"Huéspedes",form_lbl_msg:"Mensaje",
         form_name:"Nombre y apellido",form_email:"Dirección de correo",form_select:"Selecciona alojamiento",
         form_opt1:"Apartamento Principal (hasta 9 pers.)",form_opt2:"Suite I / Habitación con baño",form_opt3:"Suite II / Habitación con baño",
-        form_msg:"Message o peticiones especiales (opcional)",form_send:"Enviar solicitud",
+        form_msg:"Mensaje o peticiones especiales (opcional)",form_send:"Enviar solicitud",
         ct_label:"Contacto",ct_title:"Hablemos",ct_phone:"Teléfono",ct_wa:"Escríbenos por WhatsApp",
         footer:"© 2026 ViviDomus — Todos los derechos reservados"
       }
@@ -933,6 +969,7 @@
         document.querySelectorAll('.lang-switch button').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         const lang = btn.getAttribute('data-lang');
+        document.documentElement.lang = lang;
         const t = translations[lang] || translations['it'];
         
         document.querySelectorAll('[data-i18n]').forEach(el => {
