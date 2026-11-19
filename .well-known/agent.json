@@ -1,0 +1,24 @@
+{
+  "name": "ViviDomus Concierge Agent",
+  "description": "AI agent interface for ViviDomus Lecce holiday apartment and en-suite star-vault rooms near Porta San Biagio with free parking.",
+  "url": "https://vividomus.com/",
+  "version": "1.0.0",
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false
+  },
+  "skills": [
+    {
+      "id": "get-accommodation-details",
+      "name": "Get Accommodation Details",
+      "description": "Retrieve apartment (up to 9 guests) and en-suite star-vault room features, location near Porta San Biagio in Lecce, free parking outside ZTL, and CIN IT075035C200126683.",
+      "tags": ["hospitality", "lecce", "accommodation", "free-parking", "booking"]
+    },
+    {
+      "id": "check-direct-booking-info",
+      "name": "Direct Booking & Contact",
+      "description": "Provides direct booking form, phone (+393381875578), WhatsApp, and email (info@vividomus.com) endpoints for stays in Lecce.",
+      "tags": ["booking", "contact", "rates", "whatsapp"]
+    }
+  ]
+}
