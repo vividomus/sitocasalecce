@@ -1,0 +1,10 @@
+/*
+  Link: <https://vividomus.com/.well-known/api-catalog.json>; rel="api-catalog", <https://vividomus.com/.well-known/ard.json>; rel="ard", <https://vividomus.com/.well-known/agent.json>; rel="a2a-agent", <https://vividomus.com/.well-known/mcp.json>; rel="mcp-server", <https://vividomus.com/.well-known/poppy.json>; rel="profile", <https://vividomus.com/llms.txt>; rel="alternate"; type="text/markdown"
+  X-Robots-Tag: all
+
+/.well-known/*
+  Content-Type: application/json; charset=utf-8
+  Access-Control-Allow-Origin: *
+
+/llms.txt
+  Content-Type: text/markdown; charset=utf-8
