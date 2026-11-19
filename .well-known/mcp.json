@@ -1,0 +1,16 @@
+{
+  "mcpVersion": "2025-03-26",
+  "serverInfo": {
+    "name": "vividomus-lecce-info",
+    "version": "1.0.0",
+    "description": "Informazioni ufficiali sull'ospitalità, disponibilità camere e appartamento vicino al centro storico di Lecce (Porta San Biagio) con parcheggio gratuito. CIN: IT075035C200126683."
+  },
+  "capabilities": {
+    "resources": true,
+    "tools": true
+  },
+  "transport": {
+    "type": "http",
+    "url": "https://vividomus.com/.well-known/api-catalog.json"
+  }
+}
