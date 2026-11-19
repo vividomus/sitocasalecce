@@ -1,0 +1,42 @@
+{
+  "version": "1.0",
+  "name": "ViviDomus Lecce AI Catalog",
+  "description": "Catalogo delle risorse AI e dei servizi di accoglienza turistica di ViviDomus Lecce (suite, camere con bagno privato e volte a stella, appartamento).",
+  "provider": {
+    "name": "ViviDomus Lecce",
+    "url": "https://vividomus.com/",
+    "cin": "IT075035C200126683"
+  },
+  "resources": [
+    {
+      "title": "LLMs Guide",
+      "url": "https://vividomus.com/llms.txt",
+      "type": "text/markdown"
+    },
+    {
+      "title": "API Catalog",
+      "url": "https://vividomus.com/.well-known/api-catalog.json",
+      "type": "application/json"
+    },
+    {
+      "title": "ARD Manifest",
+      "url": "https://vividomus.com/.well-known/ard.json",
+      "type": "application/json"
+    },
+    {
+      "title": "MCP Server Card",
+      "url": "https://vividomus.com/.well-known/mcp.json",
+      "type": "application/json"
+    },
+    {
+      "title": "A2A Agent Card",
+      "url": "https://vividomus.com/.well-known/agent.json",
+      "type": "application/json"
+    },
+    {
+      "title": "Poppy Profile",
+      "url": "https://vividomus.com/.well-known/poppy.json",
+      "type": "application/json"
+    }
+  ]
+}
