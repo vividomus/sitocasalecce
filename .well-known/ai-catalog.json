@@ -1,39 +1,41 @@
 {
-  "version": "1.0",
-  "name": "ViviDomus Lecce AI Catalog",
-  "description": "Catalogo delle risorse AI e dei servizi di accoglienza turistica di ViviDomus Lecce (suite, camere con bagno privato e volte a stella, appartamento).",
-  "provider": {
-    "name": "ViviDomus Lecce",
-    "url": "https://vividomus.com/",
-    "cin": "IT075035C200126683"
-  },
-  "resources": [
+  "schema": "ard-manifest/v1",
+  "name": "ViviDomus Lecce",
+  "description": "Suite, camere con bagno privato sotto antiche volte a stella e appartamento fino a 9 ospiti vicino al centro storico di Lecce (zona Porta San Biagio), con parcheggio gratuito fuori dalla ZTL. CIN: IT075035C200126683.",
+  "url": "https://vividomus.com/",
+  "entries": [
     {
+      "id": "home",
+      "title": "ViviDomus Lecce — Suite, Camere e Appartamento",
+      "url": "https://vividomus.com/",
+      "type": "text/html"
+    },
+    {
+      "id": "llms",
       "title": "LLMs Guide",
       "url": "https://vividomus.com/llms.txt",
       "type": "text/markdown"
     },
     {
-      "title": "API Catalog",
-      "url": "https://vividomus.com/.well-known/api-catalog.json",
-      "type": "application/json"
-    },
-    {
+      "id": "ard",
       "title": "ARD Manifest",
       "url": "https://vividomus.com/.well-known/ard.json",
       "type": "application/json"
     },
     {
+      "id": "mcp",
       "title": "MCP Server Card",
       "url": "https://vividomus.com/.well-known/mcp.json",
       "type": "application/json"
     },
     {
+      "id": "agent",
       "title": "A2A Agent Card",
       "url": "https://vividomus.com/.well-known/agent.json",
       "type": "application/json"
     },
     {
+      "id": "poppy",
       "title": "Poppy Profile",
       "url": "https://vividomus.com/.well-known/poppy.json",
       "type": "application/json"
