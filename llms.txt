@@ -4,6 +4,7 @@
 
 - [Sito ufficiale ViviDomus Lecce](https://vividomus.com/)
 - [Contatti e informazioni](https://vividomus.com/#contact)
+- Lingue supportate: Italiano (IT), Inglese (EN), Francese (FR), Tedesco (DE), Spagnolo (ES)
 
 ## Suite & Camere con bagno privato e volta a stella
 - **Suite I / Camera con bagno:** camera indipendente con volta a stella in pietra leccese, bagno privato in camera, climatizzazione autonoma, TV LED e parcheggio gratuito nelle vicinanze fuori dalla ZTL.
