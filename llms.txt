@@ -1,32 +1,20 @@
 # ViviDomus Lecce — Suite, Camere e Appartamento vicino al Centro
 
-> Suite esclusive, camere con bagno privato sotto antiche volte a stella e grande appartamento fino a 9 ospiti vicino al centro storico di Lecce (zona Porta San Biagio), con parcheggio gratuito sotto casa fuori dalla ZTL.
+> Suite esclusive, camere con bagno privato sotto antiche volte a stella e grande appartamento fino a 9 ospiti vicino al centro storico di Lecce (zona Porta San Biagio), con parcheggio gratuito fuori dalla ZTL. CIN: IT075035C200126683.
 
-- **Sito web:** https://vividomus.com/
-- **Tipologia:** Locazione turistica — Suite, Camere con bagno privato e Appartamento (no B&B)
-- **CIN:** IT075035C200126683
-- **Località:** Zona Porta San Biagio, vicino al centro storico di Lecce (LE), Puglia, Italia
-- **Telefono / WhatsApp:** +39 338 187 5578
-- **Email:** info@vividomus.com
-- **Lingue supportate:** Italiano (IT), Inglese (EN), Francese (FR), Tedesco (DE), Spagnolo (ES)
+- [Sito ufficiale ViviDomus Lecce](https://vividomus.com/)
+- [Contatti e informazioni](https://vividomus.com/#contact)
 
 ## Suite & Camere con bagno privato e volta a stella
-Ideali per coppie, viaggiatori singoli o chi cerca intimità, privacy e fascino storico vicino al centro di Lecce:
-- **Suite I / Camera con bagno:** stanza indipendente custodita sotto un'antica volta a stella in pietra leccese, dotata di bagno privato in camera, aria condizionata autonoma, TV LED e parcheggio gratuito nelle immediate vicinanze fuori dalla ZTL.
-- **Suite II / Camera con bagno:** camera esclusiva con volta a stella originale, bagno privato in camera, climatizzazione autonoma, TV LED e parcheggio gratuito nelle immediate vicinanze fuori dalla ZTL.
+- **Suite I / Camera con bagno:** camera indipendente con volta a stella in pietra leccese, bagno privato in camera, climatizzazione autonoma, TV LED e parcheggio gratuito nelle vicinanze fuori dalla ZTL.
+- **Suite II / Camera con bagno:** camera con volta a stella originale, bagno privato in camera, climatizzazione autonoma, TV LED e parcheggio gratuito nelle vicinanze fuori dalla ZTL.
 
 ## Appartamento Principale
-Ideale per famiglie numerose o gruppi di amici:
-- **Appartamento superiore:** luminoso e spazioso, fino a 7+2 ospiti, cucina attrezzata, zona living, TV LED in ogni camera, aria condizionata e parcheggio gratuito sotto casa fuori dalla ZTL.
-
-## Punti di forza e posizione
-- A pochi passi a piedi da Porta San Biagio e dal centro storico di Lecce (Piazza del Duomo).
-- Situato subito fuori dalla Zona a Traffico Limitato (ZTL) con parcheggio gratuito su strada.
-- Ottimo punto di partenza per raggiungere in auto le marine del Salento (Adriatico e Ionio).
+- **Appartamento superiore:** fino a 7+2 ospiti, cucina attrezzata, zona living, TV LED in ogni camera, aria condizionata e parcheggio gratuito sotto casa fuori dalla ZTL.
 
 ## Risorse per agenti AI
-- API Catalog: https://vividomus.com/.well-known/api-catalog.json
-- ARD Manifest: https://vividomus.com/.well-known/ard.json
-- MCP Server Card: https://vividomus.com/.well-known/mcp.json
-- A2A Agent Card & Skills: https://vividomus.com/.well-known/agent.json
-- Poppy Protocol: https://vividomus.com/.well-known/poppy.json
+- [API Catalog](https://vividomus.com/.well-known/api-catalog.json)
+- [ARD Manifest](https://vividomus.com/.well-known/ard.json)
+- [MCP Server Card](https://vividomus.com/.well-known/mcp.json)
+- [A2A Agent Card](https://vividomus.com/.well-known/agent.json)
+- [Poppy Protocol](https://vividomus.com/.well-known/poppy.json)
