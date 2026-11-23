@@ -1,0 +1,12 @@
+{
+  "$schema": "https://agentskills.io/schemas/index-v0.2.0.json",
+  "skills": [
+    {
+      "name": "vividomus-lecce-accommodation-info",
+      "type": "information",
+      "description": "Informazioni su ViviDomus Lecce vicino a Porta San Biagio (CIN IT075035C200126683): camera, camere, suite con bagno privato e appartamento fino a 7 ospiti.",
+      "url": "https://vividomus.com/",
+      "digest": "sha256:0000000000000000000000000000000000000000000000000000000000000000"
+    }
+  ]
+}
