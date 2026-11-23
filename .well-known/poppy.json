@@ -1,23 +1,15 @@
 {
-  "protocol": "poppy",
-  "version": "1.0",
-  "entity": {
+  "protocol_version": "0.1",
+  "organization": {
     "name": "ViviDomus Lecce",
-    "url": "https://vividomus.com/",
-    "contact": "https://vividomus.com/#contact",
+    "domain": "vividomus.com",
     "email": "info@vividomus.com",
     "telephone": "+393381875578",
     "cin": "IT075035C200126683"
   },
-  "authentication": {
-    "type": "none",
-    "publicAccess": true
-  },
-  "endpoints": {
-    "catalog": "https://vividomus.com/.well-known/api-catalog.json",
-    "markdown": "https://vividomus.com/llms.txt",
-    "ard": "https://vividomus.com/.well-known/ard.json",
-    "mcp": "https://vividomus.com/.well-known/mcp.json",
-    "agent": "https://vividomus.com/.well-known/agent.json"
+  "web": {
+    "url": "https://vividomus.com/",
+    "contact": "https://vividomus.com/#contact",
+    "description": "ViviDomus Lecce vicino a Porta San Biagio: camera, camere, suite con bagno privato e appartamento."
   }
 }
