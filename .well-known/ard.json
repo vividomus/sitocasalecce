@@ -1,50 +1,49 @@
 {
   "schema": "ard-manifest/v1",
-  "name": "ViviDomus Lecce",
-  "description": "Suite, camere con bagno privato sotto antiche volte a stella e appartamento fino a 9 ospiti vicino al centro storico di Lecce (zona Porta San Biagio), con parcheggio gratuito fuori dalla ZTL. CIN: IT075035C200126683.",
+  "identifier": "vividomus-lecce",
+  "displayName": "ViviDomus Lecce — Camere, Suite e Appartamento",
+  "description": "Camere con bagno privato, suite sotto antiche volte a stella e appartamento fino a 9 ospiti vicino al centro storico di Lecce (zona Porta San Biagio), con parcheggio gratuito fuori dalla ZTL. CIN: IT075035C200126683.",
   "url": "https://vividomus.com/",
   "entries": [
     {
-      "id": "home",
-      "title": "ViviDomus Lecce — Suite, Camere e Appartamento",
-      "url": "https://vividomus.com/",
-      "type": "text/html"
-    },
-    {
-      "id": "llms",
-      "title": "LLMs Guide",
-      "url": "https://vividomus.com/llms.txt",
-      "type": "text/markdown"
-    },
-    {
-      "id": "ai-catalog",
-      "title": "AI Catalog",
-      "url": "https://vividomus.com/.well-known/ai-catalog.json",
-      "type": "application/json"
-    },
-    {
-      "id": "api-catalog",
-      "title": "API Catalog",
-      "url": "https://vividomus.com/.well-known/api-catalog.json",
-      "type": "application/json"
-    },
-    {
-      "id": "mcp",
-      "title": "MCP Server Card",
-      "url": "https://vividomus.com/.well-known/mcp.json",
-      "type": "application/json"
-    },
-    {
-      "id": "agent",
-      "title": "A2A Agent Card",
+      "identifier": "vividomus-a2a-agent",
+      "displayName": "ViviDomus Lecce — A2A Agent Card",
       "url": "https://vividomus.com/.well-known/agent.json",
-      "type": "application/json"
+      "mediaType": "application/a2a-agent-card+json",
+      "representativeQueries": [
+        "camera con bagno privato e volta a stella vicino centro storico Lecce",
+        "camere e suite Porta San Biagio Lecce parcheggio gratuito fuori ZTL",
+        "camera matrimoniale o suite con bagno privato Lecce senza ZTL",
+        "appartamento turistico fino a 9 ospiti Lecce centro"
+      ]
     },
     {
-      "id": "poppy",
-      "title": "Poppy Profile",
-      "url": "https://vividomus.com/.well-known/poppy.json",
-      "type": "application/json"
+      "identifier": "vividomus-mcp-server",
+      "displayName": "ViviDomus Lecce — MCP Server Card",
+      "url": "https://vividomus.com/.well-known/mcp.json",
+      "mediaType": "application/mcp-server-card+json",
+      "representativeQueries": [
+        "verifica disponibilità camere e suite ViviDomus Lecce",
+        "informazioni camera con volta a stella e appartamento Lecce"
+      ]
+    },
+    {
+      "identifier": "vividomus-api-catalog",
+      "displayName": "ViviDomus Lecce — API & AI Catalog",
+      "url": "https://vividomus.com/.well-known/api-catalog.json",
+      "mediaType": "application/ai-catalog+json",
+      "representativeQueries": [
+        "risorse digitali e contatti ViviDomus Lecce"
+      ]
+    },
+    {
+      "identifier": "vividomus-llms-skills",
+      "displayName": "ViviDomus Lecce — Guida AI (llms.txt)",
+      "url": "https://vividomus.com/llms.txt",
+      "mediaType": "text/markdown; profile=\"urn:air:agent-skills\"",
+      "representativeQueries": [
+        "camere con bagno privato e alloggi Lecce Porta San Biagio"
+      ]
     }
   ]
 }
