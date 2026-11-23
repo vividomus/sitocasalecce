@@ -6,9 +6,10 @@
   "url": "https://vividomus.com/",
   "entries": [
     {
-      "identifier": "vividomus-a2a-agent",
+      "identifier": "urn:air:vividomus:lecce:a2a-agent",
       "displayName": "ViviDomus Lecce — A2A Agent Card",
       "url": "https://vividomus.com/.well-known/agent.json",
+      "type": "application/a2a-agent-card+json",
       "mediaType": "application/a2a-agent-card+json",
       "representativeQueries": [
         "camera con bagno privato e volta a stella vicino centro storico Lecce",
@@ -18,31 +19,37 @@
       ]
     },
     {
-      "identifier": "vividomus-mcp-server",
+      "identifier": "urn:air:vividomus:lecce:mcp-server",
       "displayName": "ViviDomus Lecce — MCP Server Card",
       "url": "https://vividomus.com/.well-known/mcp.json",
+      "type": "application/mcp-server-card+json",
       "mediaType": "application/mcp-server-card+json",
       "representativeQueries": [
         "verifica disponibilità camere e suite ViviDomus Lecce",
-        "informazioni camera con volta a stella e appartamento Lecce"
+        "informazioni camera con volta a stella e appartamento Lecce",
+        "alloggio vicino Porta San Biagio Lecce fuori ZTL"
       ]
     },
     {
-      "identifier": "vividomus-api-catalog",
+      "identifier": "urn:air:vividomus:lecce:api-catalog",
       "displayName": "ViviDomus Lecce — API & AI Catalog",
       "url": "https://vividomus.com/.well-known/api-catalog.json",
+      "type": "application/ai-catalog+json",
       "mediaType": "application/ai-catalog+json",
       "representativeQueries": [
-        "risorse digitali e contatti ViviDomus Lecce"
+        "risorse digitali e contatti ViviDomus Lecce",
+        "catalogo camere e suite ViviDomus Lecce"
       ]
     },
     {
-      "identifier": "vividomus-llms-skills",
+      "identifier": "urn:air:vividomus:lecce:llms-skills",
       "displayName": "ViviDomus Lecce — Guida AI (llms.txt)",
       "url": "https://vividomus.com/llms.txt",
+      "type": "text/markdown; profile=\"urn:air:agent-skills\"",
       "mediaType": "text/markdown; profile=\"urn:air:agent-skills\"",
       "representativeQueries": [
-        "camere con bagno privato e alloggi Lecce Porta San Biagio"
+        "camere con bagno privato e alloggi Lecce Porta San Biagio",
+        "dormire a Lecce vicino centro storico con parcheggio gratuito"
       ]
     }
   ]
