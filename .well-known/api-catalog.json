@@ -1,10 +1,25 @@
 {
-  "name": "ViviDomus API Catalog",
-  "description": "Endpoint e risorse machine-readable per ViviDomus Lecce",
-  "endpoints": [
+  "linkset": [
     {
-      "type": "web",
-      "url": "https://vividomus.com/"
+      "anchor": "https://vividomus.com/",
+      "service-desc": [
+        {
+          "href": "https://vividomus.com/.well-known/ai-catalog.json",
+          "type": "application/json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://vividomus.com/llms.txt",
+          "type": "text/plain"
+        }
+      ],
+      "status": [
+        {
+          "href": "https://vividomus.com/.well-known/ard.json",
+          "type": "application/json"
+        }
+      ]
     }
   ]
 }
