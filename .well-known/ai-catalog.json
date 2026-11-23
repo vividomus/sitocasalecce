@@ -1,44 +1,66 @@
 {
   "schema": "ard-manifest/v1",
-  "name": "ViviDomus Lecce",
-  "description": "Suite, camere con bagno privato sotto antiche volte a stella e appartamento fino a 9 ospiti vicino al centro storico di Lecce (zona Porta San Biagio), con parcheggio gratuito fuori dalla ZTL. CIN: IT075035C200126683.",
+  "identifier": "vividomus-lecce-catalog",
+  "displayName": "ViviDomus Lecce — Catalogo Risorse AI (Camere, Suite e Appartamento)",
+  "description": "Catalogo completo delle risorse digitali per assistenti e agenti AI di ViviDomus Lecce: camere con bagno privato, suite sotto antiche volte a stella e appartamento fino a 9 ospiti vicino al centro storico di Lecce (zona Porta San Biagio), con parcheggio gratuito fuori dalla ZTL. CIN: IT075035C200126683.",
   "url": "https://vividomus.com/",
   "entries": [
     {
-      "id": "home",
-      "title": "ViviDomus Lecce — Suite, Camere e Appartamento",
-      "url": "https://vividomus.com/",
-      "type": "text/html"
-    },
-    {
-      "id": "llms",
-      "title": "LLMs Guide",
-      "url": "https://vividomus.com/llms.txt",
-      "type": "text/markdown"
-    },
-    {
-      "id": "ard",
-      "title": "ARD Manifest",
-      "url": "https://vividomus.com/.well-known/ard.json",
-      "type": "application/json"
-    },
-    {
-      "id": "mcp",
-      "title": "MCP Server Card",
-      "url": "https://vividomus.com/.well-known/mcp.json",
-      "type": "application/json"
-    },
-    {
-      "id": "agent",
-      "title": "A2A Agent Card",
+      "identifier": "vividomus-a2a-agent",
+      "displayName": "ViviDomus Lecce — Agente Informativo e Contatti (A2A)",
+      "description": "Scheda agente per richieste su disponibilità, tariffe, caratteristiche di camere con bagno privato, suite con volta a stella e appartamento.",
       "url": "https://vividomus.com/.well-known/agent.json",
-      "type": "application/json"
+      "mediaType": "application/a2a-agent-card+json",
+      "representativeQueries": [
+        "camera con bagno privato e volta a stella vicino centro storico Lecce",
+        "camere e suite Porta San Biagio Lecce parcheggio gratuito fuori ZTL",
+        "camera matrimoniale con bagno privato Lecce centro",
+        "appartamento turistico fino a 9 ospiti Lecce con parcheggio gratuito",
+        "rooms with private bathroom near Lecce historic center free parking"
+      ]
     },
     {
-      "id": "poppy",
-      "title": "Poppy Profile",
+      "identifier": "vividomus-mcp-server",
+      "displayName": "ViviDomus Lecce — Strumenti e Servizi (MCP)",
+      "description": "Interfaccia strutturata per consultare dotazioni, regole della casa, posizione fuori ZTL e soluzioni di soggiorno.",
+      "url": "https://vividomus.com/.well-known/mcp.json",
+      "mediaType": "application/mcp-server-card+json",
+      "representativeQueries": [
+        "verifica disponibilità camere e suite ViviDomus Lecce",
+        "informazioni camera con volta a stella e appartamento Lecce",
+        "alloggio vicino Porta San Biagio Lecce senza ZTL"
+      ]
+    },
+    {
+      "identifier": "vividomus-llms-skills",
+      "displayName": "ViviDomus Lecce — Guida Sintetica per AI (llms.txt)",
+      "description": "Riepilogo testuale strutturato con descrizione di camere, suite, appartamento, posizione, CIN e contatti diretti.",
+      "url": "https://vividomus.com/llms.txt",
+      "mediaType": "text/markdown; profile=\"urn:air:agent-skills\"",
+      "representativeQueries": [
+        "camere con bagno privato e alloggi Lecce Porta San Biagio",
+        "dove dormire a Lecce vicino al centro con parcheggio gratuito"
+      ]
+    },
+    {
+      "identifier": "vividomus-poppy-profile",
+      "displayName": "ViviDomus Lecce — Profilo Entità (Poppy)",
+      "description": "Dati identificativi ufficiali della struttura, codice CIN, contatti telefonici/WhatsApp ed email.",
       "url": "https://vividomus.com/.well-known/poppy.json",
-      "type": "application/json"
+      "mediaType": "application/ai-catalog+json",
+      "representativeQueries": [
+        "contatti diretti e codice CIN ViviDomus Lecce"
+      ]
+    },
+    {
+      "identifier": "vividomus-api-catalog",
+      "displayName": "ViviDomus Lecce — Indice Endpoint API",
+      "description": "Elenco tecnico degli endpoint pubblici del dominio vividomus.com.",
+      "url": "https://vividomus.com/.well-known/api-catalog.json",
+      "mediaType": "application/ai-catalog+json",
+      "representativeQueries": [
+        "risorse digitali e manifesti ViviDomus Lecce"
+      ]
     }
   ]
 }
