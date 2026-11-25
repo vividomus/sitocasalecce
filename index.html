@@ -1,561 +1,1237 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ViviDomus — Camere con Bagno Privato e Appartamento 7+2 a Lecce</title>
 
-  <title>ViviDomus — Camere con Bagno Privato e Appartamento 7+2 a Lecce</title>
-  <meta name="description" content="Camere con bagno privato e appartamento 7+2 a Lecce, vicino a Porta San Biagio e al centro. Parcheggio pubblico gratuito fuori ZTL. Aria condizionata e WiFi." />
-  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-  <link rel="canonical" href="https://vividomus.com/" />
+<!-- Meta SEO, Keyword Multilingua & Google Snippet Ottimizzati -->
+<meta name="description" content="Camere con bagno privato e appartamento 7+2 a Lecce, vicino a Porta San Biagio e al centro. Parcheggio pubblico gratuito fuori ZTL. Aria condizionata e WiFi." />
+<meta name="keywords" content="vividomus, vividomus lecce, casa a lecce, casa vacanza lecce, casavacanza lecce, case vacanze lecce, camera a lecce, camera singola lecce, camera in singolo lecce, stanza a lecce, stanza singola lecce, camere lecce centro, appartamento lecce, appartamento vacanze lecce, bb lecce, b&b lecce, camera bb lecce, camera b&b lecce, porta san biagio lecce, parcheggio gratuito lecce, fuori ztl lecce, ferienwohnung lecce, holiday apartment near lecce center, location saisonniere proche centre lecce, alquiler vacacional cerca centro lecce">
+<meta name="author" content="ViviDomus">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<link rel="canonical" href="https://vividomus.com/">
 
-  <!-- Open Graph / Social -->
-  <meta property="og:type" content="website" />
-  <meta property="og:locale" content="it_IT" />
-  <meta property="og:site_name" content="ViviDomus" />
-  <meta property="og:title" content="ViviDomus — Camere con Bagno Privato e Appartamento 7+2 a Lecce" />
-  <meta property="og:description" content="Camere con bagno privato e appartamento 7+2 a Lecce, vicino a Porta San Biagio e al centro. Parcheggio pubblico gratuito fuori ZTL. Aria condizionata e WiFi." />
-  <meta property="og:url" content="https://vividomus.com/" />
-  <meta property="og:image" content="https://vividomus.com/assets/og-vividomus-lecce.jpg" />
-  <meta property="og:image:alt" content="ViviDomus Lecce — Camere con volta a stella, bagno privato e appartamento vicino Porta San Biagio" />
+<!-- Favicon / Touch Icons -->
+<link rel="icon" type="image/png" href="https://vividomus.com/lecce1.avif">
+<link rel="apple-touch-icon" href="https://vividomus.com/lecce1.avif">
 
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="ViviDomus — Camere con Bagno Privato e Appartamento 7+2 a Lecce" />
-  <meta name="twitter:description" content="Camere con bagno privato e appartamento 7+2 a Lecce, vicino a Porta San Biagio e al centro. Parcheggio pubblico gratuito fuori ZTL. Aria condizionata e WiFi." />
-  <meta name="twitter:image" content="https://vividomus.com/assets/og-vividomus-lecce.jpg" />
+<!-- OpenGraph / Social Meta Tags -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://vividomus.com/">
+<meta property="og:site_name" content="ViviDomus">
+<meta property="og:locale" content="it_IT">
+<meta property="og:title" content="ViviDomus — Camere con Bagno Privato e Appartamento 7+2 a Lecce">
+<meta property="og:description" content="Camere con bagno privato e appartamento 7+2 a Lecce, vicino a Porta San Biagio e al centro. Parcheggio pubblico gratuito fuori ZTL. Aria condizionata e WiFi.">
+<meta property="og:image" content="https://vividomus.com/lecce1.avif">
 
-  <!-- Styles -->
-  <style>
-    :root {
-      --bg: #121214;
-      --surface: #1b1b1f;
-      --surface-alt: #232329;
-      --text: #f5f3ef;
-      --text-muted: #c7c2b8;
-      --accent: #d4af6a;
-      --accent-soft: rgba(212, 175, 106, 0.14);
-      --border: rgba(255, 255, 255, 0.12);
-      --radius: 14px;
-      --maxw: 1120px;
-    }
+<!-- Twitter Card Meta Tags -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ViviDomus — Camere con Bagno Privato e Appartamento 7+2 a Lecce">
+<meta name="twitter:description" content="Camere con bagno privato e appartamento 7+2 a Lecce, vicino a Porta San Biagio e al centro. Parcheggio pubblico gratuito fuori ZTL. Aria condizionata e WiFi.">
+<meta name="twitter:image" content="https://vividomus.com/lecce1.avif">
 
-    *, *::before, *::after { box-sizing: border-box; }
+<!-- AI Agent & Discovery Protocol Links -->
+<link rel="alternate" type="application/json" href="https://vividomus.com/.well-known/api-catalog.json" title="API Catalog">
+<link rel="alternate" type="text/markdown" href="https://vividomus.com/llms.txt" title="LLM Markdown Guide">
+<link rel="help" href="https://vividomus.com/auth.md" title="Agent Registration & Auth">
+<link rel="manifest" href="https://vividomus.com/.well-known/ard.json" title="Agentic Resource Discovery (ARD)">
+<link rel="service" type="application/json" href="https://vividomus.com/.well-known/mcp.json" title="MCP Server Card">
+<link rel="meta" type="application/json" href="https://vividomus.com/.well-known/agent.json" title="A2A Agent Card & Skills">
+<link rel="profile" type="application/json" href="https://vividomus.com/.well-known/poppy.json" title="Personal Agent Protocol (Poppy)">
 
-    html { scroll-behavior: smooth; }
+<!-- Performance Hints & Preconnect -->
+<link rel="dns-prefetch" href="https://vividomus.com">
+<link rel="preconnect" href="https://vividomus.com" crossorigin>
+<link rel="preload" as="image" href="lecce1.avif" fetchpriority="high">
 
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background-color: var(--bg);
-      color: var(--text);
-      line-height: 1.65;
-      -webkit-font-smoothing: antialiased;
-    }
+<!-- Schema.org Structured Data (LodgingBusiness JSON-LD) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LodgingBusiness",
+  "name": "ViviDomus",
+  "alternateName": ["ViviDomus Lecce", "Camere e Appartamento vicino al centro di Lecce"],
+  "url": "https://vividomus.com/",
+  "image": "https://vividomus.com/lecce1.avif",
+  "description": "Camere con bagno privato e appartamento 7+2 a Lecce, vicino a Porta San Biagio e al centro. Parcheggio pubblico gratuito fuori ZTL. Aria condizionata e WiFi.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Via di Leuca / Zona Porta San Biagio",
+    "addressLocality": "Lecce",
+    "addressRegion": "LE",
+    "postalCode": "73100",
+    "addressCountry": "IT"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 40.3515,
+    "longitude": 18.1750
+  },
+  "telephone": "+393381875578",
+  "email": "info@vividomus.com",
+  "identifier": "IT075035C200126683",
+  "amenityFeature": [
+    {"@type": "LocationFeatureSpecification", "name": "Parcheggio gratuito", "value": true},
+    {"@type": "LocationFeatureSpecification", "name": "Aria condizionata", "value": true},
+    {"@type": "LocationFeatureSpecification", "name": "TV LED in camera", "value": true}
+  ]
+}
+</script>
 
-    a { color: var(--accent); text-decoration: none; }
-    a:hover, a:focus-visible { text-decoration: underline; }
-
-    .skip-link {
-      position: absolute;
-      left: -9999px;
-      top: 0;
-      background: var(--accent);
-      color: #121214;
-      padding: 10px 16px;
-      font-weight: 700;
-      z-index: 1000;
-      border-radius: 0 0 8px 0;
-    }
-    .skip-link:focus { left: 0; }
-
-    .container {
-      width: 100%;
-      max-width: var(--maxw);
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-
-    header.site-header {
-      border-bottom: 1px solid var(--border);
-      background: rgba(18, 18, 20, 0.95);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-
-    .nav-wrap {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      min-height: 68px;
-      flex-wrap: wrap;
-    }
-
-    .brand {
-      font-size: 1.25rem;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      color: var(--text);
-    }
-    .brand span { color: var(--accent); }
-
-    nav[aria-label="Navigazione principale"] ul {
-      list-style: none;
-      display: flex;
-      gap: 20px;
-      margin: 0;
-      padding: 0;
-      flex-wrap: wrap;
-    }
-    nav[aria-label="Navigazione principale"] a {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-      font-weight: 500;
-    }
-    nav[aria-label="Navigazione principale"] a:hover,
-    nav[aria-label="Navigazione principale"] a:focus-visible {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    .btn {
-      display: inline-block;
-      background: var(--accent);
-      color: #121214;
-      font-weight: 700;
-      padding: 12px 20px;
-      border-radius: 10px;
-      border: none;
-      cursor: pointer;
-      font-size: 0.98rem;
-      text-align: center;
-    }
-    .btn:hover, .btn:focus-visible { opacity: 0.92; text-decoration: none; }
-
-    .btn-outline {
-      display: inline-block;
-      background: transparent;
-      color: var(--text);
-      border: 1px solid var(--border);
-      font-weight: 600;
-      padding: 11px 18px;
-      border-radius: 10px;
-      font-size: 0.95rem;
-    }
-    .btn-outline:hover, .btn-outline:focus-visible {
-      border-color: var(--accent);
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    .hero {
-      padding: 56px 0 44px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .badge {
-      display: inline-block;
-      background: var(--accent-soft);
-      color: var(--accent);
-      border: 1px solid rgba(212, 175, 106, 0.35);
-      padding: 5px 12px;
-      border-radius: 999px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      margin-bottom: 14px;
-    }
-
-    h1 {
-      font-size: clamp(1.85rem, 4vw, 2.8rem);
-      line-height: 1.2;
-      margin: 0 0 16px;
-      letter-spacing: -0.01em;
-    }
-
-    .hero-lead {
-      font-size: 1.1rem;
-      color: var(--text-muted);
-      max-width: 78ch;
-      margin: 0 0 24px;
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-bottom: 28px;
-    }
-
-    .highlights {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 14px;
-      margin-top: 8px;
-    }
-
-    .highlight-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 16px;
-    }
-    .highlight-card strong {
-      display: block;
-      color: var(--accent);
-      margin-bottom: 4px;
-      font-size: 1rem;
-    }
-    .highlight-card span {
-      color: var(--text-muted);
-      font-size: 0.92rem;
-    }
-
-    section {
-      padding: 48px 0;
-      border-bottom: 1px solid var(--border);
-    }
-
-    h2 {
-      font-size: clamp(1.45rem, 2.8vw, 2rem);
-      margin: 0 0 12px;
-      line-height: 1.25;
-    }
-
-    .section-intro {
-      color: var(--text-muted);
-      max-width: 75ch;
-      margin: 0 0 24px;
-    }
-
-    .grid-2 {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-      gap: 20px;
-    }
-
-    .card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 24px;
-    }
-    .card h3 {
-      margin: 0 0 10px;
-      font-size: 1.25rem;
-      color: var(--text);
-    }
-    .card p {
-      margin: 0 0 12px;
-      color: var(--text-muted);
-    }
-    .card ul {
-      margin: 0;
-      padding-left: 18px;
-      color: var(--text);
-    }
-    .card li { margin-bottom: 6px; }
-
-    .notice-box {
-      background: var(--surface-alt);
-      border-left: 4px solid var(--accent);
-      border-radius: 8px;
-      padding: 18px 20px;
-      margin-top: 24px;
-      color: var(--text-muted);
-    }
-    .notice-box strong { color: var(--text); }
-
-    .faq-item {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 18px 22px;
-      margin-bottom: 14px;
-    }
-    .faq-item h3 {
-      margin: 0 0 8px;
-      font-size: 1.08rem;
-      color: var(--accent);
-    }
-    .faq-item p {
-      margin: 0;
-      color: var(--text-muted);
-    }
-
-    .contact-box {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 24px;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-
-    footer.site-footer {
-      padding: 32px 0;
-      color: var(--text-muted);
-      font-size: 0.9rem;
-    }
-    .footer-meta {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    @media (max-width: 600px) {
-      .hero { padding: 38px 0 32px; }
-      section { padding: 36px 0; }
-    }
-  </style>
-
-  <!-- Structured Data: LodgingBusiness & FAQPage -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "LodgingBusiness",
-        "@id": "https://vividomus.com/#lodging",
-        "name": "ViviDomus",
-        "url": "https://vividomus.com/",
-        "description": "Camere con bagno privato e appartamento 7+2 a Lecce, vicino a Porta San Biagio e al centro. Parcheggio pubblico gratuito fuori ZTL. Aria condizionata e WiFi.",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Lecce",
-          "addressRegion": "LE",
-          "addressCountry": "IT"
-        },
-        "amenityFeature": [
-          { "@type": "LocationFeatureSpecification", "name": "Bagno privato", "value": true },
-          { "@type": "LocationFeatureSpecification", "name": "Aria condizionata", "value": true },
-          { "@type": "LocationFeatureSpecification", "name": "Wi-Fi", "value": true },
-          { "@type": "LocationFeatureSpecification", "name": "Parcheggio pubblico gratuito fuori ZTL", "value": true }
-        ]
-      },
-      {
-        "@type": "FAQPage",
-        "@id": "https://vividomus.com/#faq",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "ViviDomus è un B&B o una casa vacanza?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "ViviDomus è gestito in formula di locazione turistica: offre camere con bagno privato (con praticità e autonomia in stile B&B) e un appartamento 7+2 ideale per soggiorni e vacanze a Lecce, senza colazione o servizi alberghieri inclusi."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Che tipologia di letti hanno le camere?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Le camere dispongono di letto matrimoniale, bagno privato, aria condizionata e Wi-Fi, con piena autonomia negli orari."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "C'è parcheggio gratuito fuori dalla ZTL vicino a Porta San Biagio?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Sì, la zona vicino a Porta San Biagio e al centro di Lecce consente di usufruire di parcheggio pubblico gratuito fuori dalla ZTL nelle vicinanze."
-            }
-          }
-        ]
+<!-- Schema.org FAQPage JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "ViviDomus è un B&B, BB, casa vacanza o locazione turistica a Lecce?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ViviDomus è gestito come locazione turistica (CIN IT075035C200126683). Chi cerca un B&B o BB a Lecce o un soggiorno in stile casa vacanza trova autonomia, privacy, camere con bagno privato e un appartamento 7+2 vicino a Porta San Biagio, senza colazione o servizi alberghieri inclusi."
       }
-    ]
+    },
+    {
+      "@type": "Question",
+      "name": "Che letti hanno le camere vicino a Porta San Biagio?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Le camere dispongono di letto matrimoniale, bagno privato, aria condizionata e Wi-Fi, con piena libertà negli orari."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Com'è il parcheggio fuori ZTL vicino al centro di Lecce?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "La posizione vicino a Porta San Biagio e al centro di Lecce consente di usufruire di parcheggio pubblico gratuito fuori dalla ZTL nei dintorni."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "A chi è adatto l'appartamento 7+2 a Lecce?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "L'appartamento 7+2 offre spazi ampi e autonomia per famiglie, coppie o gruppi che vogliono vivere le vacanze a Lecce con libertà d'orario."
+      }
+    }
+  ]
+}
+</script>
+
+<!-- WebMCP Browser Agent Tool Exposure -->
+<script type="application/ld+json" id="webmcp-manifest">
+{
+  "@context": "https://schema.org",
+  "@type": "WebAPI",
+  "name": "ViviDomus WebMCP Tools",
+  "documentation": "https://vividomus.com/.well-known/mcp.json"
+}
+</script>
+<script>
+  if (typeof navigator !== "undefined") {
+    navigator.modelContext = navigator.modelContext || {
+      provideContext: function() {},
+      registerTool: function(tool) { return tool; }
+    };
+    navigator.modelContext.registerTool({
+      name: "get_vividomus_info",
+      description: "Get official details, location, and booking contacts for ViviDomus in Lecce",
+      inputSchema: { type: "object", properties: {} },
+      execute: async () => ({
+        name: "ViviDomus",
+        cin: "IT075035C200126683",
+        location: "Porta San Biagio, Centro Storico, Lecce, Italy",
+        parking: "Free parking outside ZTL",
+        website: "https://vividomus.com",
+        contact: {
+          phone: "+393381875578",
+          email: "info@vividomus.com",
+          whatsapp: "https://wa.me/393381875578"
+        }
+      })
+    });
   }
-  </script>
+</script>
+
+<style>
+  :root{
+    --bg:#f6f2ec;
+    --bg-soft:#ede6db;
+    --ink:#2b2a27;
+    --ink-soft:#5a5650;
+    --gold:#a8895f;
+    --gold-light:#dfc28d;
+    --stone:#8a7f6e;
+    --line:#d9d1c2;
+    --suite-bg:#2b2a27;
+    --suite-ink:#e8e2d5;
+    --suite-accent:#c9b48a;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+    line-height:1.6;
+    font-weight:300;
+  }
+  h1,h2,h3,h4{
+    font-family:Georgia, Cambria,"Times New Roman",Times,serif;
+    font-weight:400;
+    letter-spacing:.5px;
+  }
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    padding:14px 30px;
+    display:flex;justify-content:space-between;align-items:center;
+    background:rgba(255, 255, 255, 0.95);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+    gap: 20px;
+  }
+  .logo{
+    font-family:Georgia, Cambria,"Times New Roman",Times,serif;
+    font-size:1.4rem;letter-spacing:2px;text-transform:uppercase;white-space:nowrap;
+    color:var(--ink);
+  }
+  .logo span{color:var(--gold)}
+  
+  nav ul{display:flex;gap:22px;list-style:none;align-items:center;}
+  nav a{font-size:.8rem;letter-spacing:1.5px;text-transform:uppercase;transition:color .3s}
+  nav a:hover{color:var(--gold)}
+
+  .lang-switch{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:4px;
+    font-size:.75rem;
+    letter-spacing:1px;
+    background:var(--bg-soft);
+    padding:4px 8px;
+    border-radius:20px;
+    border:1px solid var(--line);
+  }
+  .lang-switch button{
+    background:none;border:none;padding:4px 8px;cursor:pointer;
+    color:var(--ink-soft);transition:all .3s;border-radius:50%;font-weight:500;
+  }
+  .lang-switch button.active,.lang-switch button:hover{background:var(--gold);color:#fff}
+
+  .hero{
+    position:relative;height:100vh;min-height:550px;overflow:hidden;
+  }
+  .slide{
+    position:absolute;inset:0;
+    background-size:cover;background-position:center;
+    opacity:0;transition:opacity 1.5s ease-in-out;
+  }
+  .slide.active{opacity:1}
+  .slide::after{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(circle at center, rgba(20,18,15,0.6) 0%, rgba(20,18,15,0.38) 60%, rgba(0,0,0,0.68) 100%);
+  }
+  .hero-content{
+    position:absolute;inset:0;display:flex;flex-direction:column;
+    justify-content:center;align-items:center;text-align:center;
+    color:#fff;z-index:2;padding:0 20px;
+  }
+  .hero-content h1{
+    display:flex;flex-direction:column;align-items:center;gap:14px;
+    margin-bottom:16px;
+  }
+  .hero-brand{
+    font-size:clamp(2.5rem,5.2vw,4.7rem);font-weight:400;
+    letter-spacing:3.5px;text-transform:uppercase;
+    color:#f9f6f0;
+    text-shadow:0 4px 20px rgba(0,0,0,0.85), 0 1px 4px rgba(0,0,0,0.9);
+    line-height:1.1;
+  }
+  .hero-brand span{
+    color:var(--gold-light);
+    text-shadow:0 4px 20px rgba(0,0,0,0.9), 0 1px 4px rgba(0,0,0,0.95);
+  }
+  .hero-tagline{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:clamp(0.9rem, 1.5vw, 1.15rem);
+    letter-spacing:2.5px;text-transform:uppercase;
+    font-weight:400;color:#f4efe6;
+    max-width:860px;
+    text-shadow:0 2px 14px rgba(0,0,0,0.9), 0 1px 3px rgba(0,0,0,0.95);
+  }
+  .hero-sub{
+    font-size:clamp(0.75rem, 1.15vw, 0.9rem);
+    letter-spacing:3px;text-transform:uppercase;
+    font-weight:400;color:var(--gold-light);
+    text-shadow:0 2px 12px rgba(0,0,0,0.92);
+  }
+  .slide-dots{
+    position:absolute;bottom:30px;left:50%;transform:translateX(-50%);
+    display:flex;gap:10px;z-index:3;
+  }
+  .slide-dots button{
+    width:25px;height:2px;background:rgba(255,255,255,.4);cursor:pointer;
+    border:none;padding:0;transition:background .3s;
+  }
+  .slide-dots button.active{background:#fff}
+
+  .slider-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.45);
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 20;
+    border: none;
+    font-size: 1.1rem;
+    transition: background 0.3s, transform 0.2s;
+  }
+  .slider-arrow:hover {
+    background: var(--gold);
+    transform: translateY(-50%) scale(1.05);
+  }
+  .slider-arrow.prev { left: 15px; }
+  .slider-arrow.next { right: 15px; }
+
+  .room-slideshow {
+    position: relative;
+    aspect-ratio: 4/5;
+    border-radius: 2px;
+    overflow: hidden;
+    border: 1px solid var(--gold);
+  }
+  .room-slide {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+  }
+  .room-slide.active { opacity: 1; }
+  .room-dots {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 6px;
+    z-index: 10;
+  }
+  .room-dots button {
+    width: 16px;
+    height: 2px;
+    background: rgba(255,255,255,0.5);
+    cursor: pointer;
+    border: none;
+    padding: 0;
+    transition: background 0.3s;
+  }
+  .room-dots button.active { background: #fff; }
+  .room-slideshow .slider-arrow { width: 32px; height: 32px; font-size: 0.9rem; }
+  .room-slideshow .slider-arrow.prev { left: 10px; }
+  .room-slideshow .slider-arrow.next { right: 10px; }
+
+  section{padding:90px 30px}
+  .container{max-width:1200px;margin:0 auto}
+  .section-label{
+    font-size:.7rem;letter-spacing:3px;text-transform:uppercase;
+    color:var(--gold);margin-bottom:12px;
+  }
+  .section-title{
+    font-size:clamp(1.8rem,3.5vw,3rem);margin-bottom:30px;
+    font-weight:300;
+  }
+
+  .appartment{background:var(--bg)}
+  .appartment-grid{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "title img"
+      "desc img"
+      "features img"
+      "btn img";
+    gap: 20px 50px;
+    align-items: center;
+  }
+  .apt-title-area { grid-area: title; }
+  .apt-desc-area { grid-area: desc; }
+  .apt-img-area { grid-area: img; }
+  .apt-features-area { grid-area: features; }
+  .apt-btn-area { grid-area: btn; }
+
+  .appartment-text p{ color:var(--ink-soft);margin-bottom:16px;font-size:1rem; }
+  .features{
+    display:grid;grid-template-columns:repeat(2,1fr);gap:15px;margin:10px 0;
+  }
+  .feature{
+    padding:16px;border:1px solid var(--line);
+    font-size:.85rem;background:#fff;
+  }
+  .feature strong{display:block;color:var(--gold);font-weight:500;margin-bottom:4px;font-size:.7rem;letter-spacing:2px;text-transform:uppercase}
+
+  .suites{
+    background:var(--suite-bg);color:var(--suite-ink);
+    padding:100px 30px;
+  }
+  .suites .section-label{color:var(--suite-accent)}
+  .suites .section-title{color:var(--suite-ink);font-weight:300}
+  .suites-intro{
+    max-width:720px;margin:0 auto 50px;text-align:center;
+    font-size:1rem;line-height:1.8;color:#bdb5a4;font-style:italic;
+    font-family:Georgia, Cambria,"Times New Roman",Times,serif;
+  }
+  .suite-card{
+    display:grid;grid-template-columns:1fr 1fr;gap:50px;
+    margin-bottom:70px;align-items:center;
+  }
+  .suite-card:last-child{margin-bottom:0;}
+  .suite-card:nth-child(even){direction:rtl}
+  .suite-card:nth-child(even) > *{direction:ltr}
+  
+  .suite-info h3{
+    font-size:1.8rem;margin-bottom:10px;color:var(--suite-accent);
+    font-weight:300;letter-spacing:1px;
+  }
+  .suite-info .volta{
+    font-size:.7rem;letter-spacing:3px;text-transform:uppercase;
+    color:var(--suite-accent);margin-bottom:15px;opacity:.8;
+  }
+  .suite-info p{color:#bdb5a4;margin-bottom:14px;font-size:.95rem}
+  .suite-info ul{list-style:none;margin:15px 0 20px;}
+  .suite-info li{
+    padding:6px 0;border-top:1px solid rgba(201,180,138,.15);
+    font-size:.85rem;color:#a8a090;letter-spacing:.5px;
+  }
+  .suite-info li:last-child{border-bottom:1px solid rgba(201,180,138,.15)}
+
+  .location{background:var(--bg-soft)}
+  .location-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+  .location-text p{color:var(--ink-soft);margin-bottom:14px;font-size:0.98rem}
+  .location-map{
+    aspect-ratio:4/3;background:var(--line);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--ink-soft);font-size:.85rem;letter-spacing:2px;text-transform:uppercase;
+    border:1px solid var(--line);
+    text-align:center;padding:20px;
+  }
+
+  .booking{
+    background:var(--suite-bg);
+    color:var(--suite-ink);
+    text-align:center;
+    padding:100px 30px;
+  }
+  .booking .section-label{color:var(--gold)}
+  .booking .section-title{color:#f4f4f0;font-weight:300;margin-bottom:8px}
+  .booking-subtitle{color:#aaa;font-size:.95rem;margin-bottom:35px;letter-spacing:.5px}
+
+  .booking-form{
+    max-width:750px;margin:0 auto;
+    display:grid;grid-template-columns:repeat(2,1fr);gap:20px;text-align:left;
+  }
+  .booking-form .full{grid-column:1/-1}
+  
+  .form-group{ display:flex;flex-direction:column;gap:6px; }
+  .form-group label{
+    font-size:.7rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:500;
+  }
+  .booking-form input,.booking-form select,.booking-form textarea{
+    width:100%;padding:14px;border:1px solid rgba(197,160,89,0.3);
+    background:#383632;font-family:inherit;font-size:.95rem;
+    color:#fff;transition:border-color .3s;border-radius:4px;
+  }
+  .booking-form input:focus,.booking-form select:focus,.booking-form textarea:focus{
+    outline:none;border-color:var(--gold);
+  }
+  .booking-form input::placeholder,.booking-form textarea::placeholder{ color:#888; }
+  
+  .btn{
+    display:inline-block;padding:14px 30px;
+    background:var(--gold);color:#fff;
+    font-size:.75rem;letter-spacing:2px;text-transform:uppercase;
+    border:none;cursor:pointer;transition:all .3s;
+    font-family:inherit;border-radius:4px;font-weight:600;text-align:center;
+  }
+  .btn:hover{background:#d4af37}
+  .btn-light{background:transparent;border:1px solid var(--suite-accent);color:var(--suite-accent)}
+  .btn-light:hover{background:var(--suite-accent);color:var(--suite-bg)}
+
+  /* FAQ Accordion */
+  .faq{background:var(--bg-soft);padding:70px 30px;}
+  .faq-header{max-width:850px;margin:0 auto 28px;text-align:center;}
+  .faq-accordion{
+    max-width:850px;margin:0 auto;
+    display:flex;flex-direction:column;gap:12px;
+  }
+  .faq-item{
+    background:#fff;border:1px solid var(--line);border-radius:4px;overflow:hidden;
+    transition:border-color .25s ease;
+  }
+  .faq-item.open{border-color:var(--gold);}
+  .faq-question{
+    width:100%;background:none;border:none;padding:18px 22px;
+    display:flex;justify-content:space-between;align-items:center;gap:16px;
+    text-align:left;cursor:pointer;color:var(--ink);
+    font-family:Georgia, Cambria,"Times New Roman",Times,serif;
+    font-size:1.05rem;line-height:1.4;
+  }
+  .faq-question:hover{color:var(--gold);}
+  .faq-icon{
+    flex-shrink:0;width:24px;height:24px;border-radius:50%;
+    border:1px solid var(--line);display:flex;align-items:center;justify-content:center;
+    font-family:-apple-system,BlinkMacSystemFont,sans-serif;
+    font-size:1rem;color:var(--gold);transition:transform .3s ease, background .3s ease, color .3s ease;
+  }
+  .faq-item.open .faq-icon{
+    transform:rotate(45deg);background:var(--gold);color:#fff;border-color:var(--gold);
+  }
+  .faq-answer{
+    max-height:0;overflow:hidden;transition:max-height .35s ease;
+  }
+  .faq-item.open .faq-answer{
+    max-height:320px;
+  }
+  .faq-answer-inner{
+    padding:0 22px 20px;
+    color:var(--ink-soft);font-size:0.94rem;line-height:1.65;
+    border-top:1px solid rgba(217,209,194,0.45);
+    padding-top:14px;
+  }
+
+  .contact{background:var(--bg);text-align:center;padding:60px 30px;}
+  .contact-methods{
+    display:flex;justify-content:center;gap:25px;margin-top:20px;flex-wrap:wrap;
+  }
+  .contact-card{
+    padding:18px 25px;border:1px solid var(--line);background:#fff;
+    min-width:200px;transition:all .3s;
+  }
+  .contact-card:hover{border-color:var(--gold);transform:translateY(-3px)}
+  .contact-card .icon{font-size:1.3rem;color:var(--gold);margin-bottom:6px}
+  .contact-card h3{font-size:1rem;margin-bottom:4px;font-weight:500}
+  .contact-card a{color:var(--ink-soft);font-size:.85rem;transition:color .3s}
+  .contact-card a:hover{color:var(--gold)}
+
+  footer{
+    background:var(--ink);color:#8a857c;
+    padding:30px 30px 20px;text-align:center;
+    font-size:.8rem;letter-spacing:1px;
+  }
+  footer .logo{color:#d9d1c2;margin-bottom:6px}
+  footer .cin-text{color:var(--gold);font-weight:500;margin-top:4px;letter-spacing:1px}
+
+  .whatsapp-float{
+    position:fixed;bottom:25px;right:25px;z-index:90;
+    width:52px;height:52px;border-radius:50%;
+    background:#25D366;color:#fff;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 4px 15px rgba(0,0,0,.15);
+    transition:transform .3s;
+  }
+  .whatsapp-float:hover{transform:scale(1.1)}
+  .whatsapp-float svg{width:26px;height:26px}
+
+  @media(max-width:900px){
+    header{
+      padding:10px 12px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap: 10px;
+    }
+    .logo{
+      font-size: 1rem;
+      letter-spacing: 1px;
+    }
+    .lang-switch{
+      padding: 2px 4px;
+      font-size: 0.6rem;
+      gap: 2px;
+    }
+    .lang-switch button {
+      padding: 2px 4px;
+    }
+    nav {
+      display: none;
+    }
+    .hero-tagline {
+      font-size: 0.82rem;
+      letter-spacing: 1.5px;
+    }
+    .hero-sub {
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+    }
+    section{padding:30px 14px}
+    .suites,.booking,.contact,.location,.faq{padding:35px 14px}
+    .hero{height:58vh;min-height:360px}
+    .section-title{margin-bottom:10px;font-size:1.5rem}
+    .appartment-grid{
+      grid-template-columns:1fr;
+      grid-template-areas:"title" "desc" "img" "features" "btn";
+      gap:10px;
+    }
+    .suite-card{grid-template-columns:1fr;gap:12px;margin-bottom:25px;direction:ltr}
+    .location-grid{grid-template-columns:1fr;gap:15px}
+    .features{grid-template-columns:1fr 1fr;gap:6px}
+    .booking-form{grid-template-columns:1fr;gap:10px}
+    .faq-question{padding:15px 16px;font-size:0.96rem;}
+    .faq-answer-inner{padding:12px 16px 16px;font-size:0.88rem;}
+  }
+
+  .formula-note{
+    margin-top:24px;padding:16px 20px;border-left:3px solid var(--gold);
+    background:var(--bg-soft);color:var(--ink-soft);font-size:0.92rem;border-radius:2px;
+  }
+  .formula-note strong{color:var(--ink);font-weight:500;}
+  .suites .formula-note{
+    background:rgba(255,255,255,0.04);color:#bdb5a4;border-color:var(--suite-accent);
+  }
+  .suites .formula-note strong{color:var(--suite-ink);}
+</style>
 </head>
 <body>
-  <a class="skip-link" href="#main-content">Vai al contenuto principale</a>
 
-  <header class="site-header">
-    <div class="container nav-wrap">
-      <a class="brand" href="#top">Vivi<span>Domus</span></a>
-      <nav aria-label="Navigazione principale">
-        <ul>
-          <li><a href="#soluzioni">Camere e Appartamento</a></li>
-          <li><a href="#posizione">Porta San Biagio e ZTL</a></li>
-          <li><a href="#faq">Domande frequenti</a></li>
-          <li><a href="#contatti">Contatti</a></li>
-        </ul>
-      </nav>
-      <a class="btn" href="#contatti">Richiedi disponibilità</a>
+<header>
+  <div class="logo">Vivi<span>Domus</span></div>
+  <nav aria-label="Principale">
+    <ul>
+      <li><a href="#appartment" title="Appartamento a Lecce" data-i18n="nav_appartment">Appartamento</a></li>
+      <li><a href="#suites" title="Camere e stanze con volta a stella" data-i18n="nav_suites">Suite & Camere</a></li>
+      <li><a href="#location" title="Posizione vicino al centro di Lecce e parcheggio gratuito" data-i18n="nav_location">Posizione</a></li>
+      <li><a href="#booking" title="Prenota il soggiorno" data-i18n="nav_booking">Prenota</a></li>
+      <li><a href="#faq" title="Domande frequenti" data-i18n="nav_faq">FAQ</a></li>
+      <li><a href="#contact" title="Contatti ViviDomus" data-i18n="nav_contact">Contatti</a></li>
+    </ul>
+  </nav>
+  <div class="lang-switch" aria-label="Selettore lingua">
+    <button data-lang="it" class="active" aria-label="Italiano">IT</button>
+    <button data-lang="en" aria-label="Inglese">EN</button>
+    <button data-lang="fr" aria-label="Francese">FR</button>
+    <button data-lang="de" aria-label="Tedesco">DE</button>
+    <button data-lang="es" aria-label="Spagnolo">ES</button>
+  </div>
+</header>
+
+<main>
+  <section class="hero" aria-label="Presentazione">
+    <div class="slide active" style="background-image:url('lecce1.avif')"></div>
+    <div class="slide" style="background-image:url('lecce2.avif')"></div>
+    <div class="slide" style="background-image:url('lecce3.avif')"></div>
+    <div class="slide" style="background-image:url('lecce4.avif')"></div>
+
+    <button class="slider-arrow prev" onclick="moveHeroSlide(-1)" aria-label="Precedente">&#10094;</button>
+    <button class="slider-arrow next" onclick="moveHeroSlide(1)" aria-label="Successivo">&#10095;</button>
+
+    <div class="hero-content">
+      <h1>
+        <span class="hero-brand">Vivi<span>Domus</span></span>
+        <span class="hero-tagline" data-i18n="hero_tagline">Camere, Stanze e Appartamento vicino al centro di Lecce</span>
+      </h1>
+      <p class="hero-sub" data-i18n="hero_sub">Il Barocco nel cuore del Salento</p>
     </div>
-  </header>
 
-  <main id="main-content">
-    <!-- Hero -->
-    <section id="top" class="hero" aria-labelledby="hero-heading">
-      <div class="container">
-        <span class="badge">Lecce • Vicino Porta San Biagio</span>
-        <h1 id="hero-heading">Camere con Bagno Privato e Appartamento 7+2 a Lecce</h1>
-        <p class="hero-lead">
-          Soggiorna vicino a <strong>Porta San Biagio</strong> e al centro di <strong>Lecce</strong> con
-          <strong>parcheggio pubblico gratuito fuori ZTL</strong>, <strong>aria condizionata</strong> e <strong>Wi-Fi</strong>.
-          Unisce la praticità e la privacy di camere con bagno privato in stile B&amp;B alla libertà di un appartamento 7+2
-          pensato per vivere la vacanza in autonomia.
-        </p>
-        <div class="hero-actions">
-          <a class="btn" href="#contatti">Verifica disponibilità</a>
-          <a class="btn-outline" href="#soluzioni">Scopri camere e appartamento 7+2</a>
-        </div>
-
-        <div class="highlights" aria-label="Punti di forza della struttura">
-          <div class="highlight-card">
-            <strong>Bagno Privato e Comfort</strong>
-            <span>Letto matrimoniale, bagno privato, aria condizionata e Wi-Fi.</span>
-          </div>
-          <div class="highlight-card">
-            <strong>Appartamento 7+2</strong>
-            <span>Spazi ampi e autonomia per famiglie, coppie o gruppi a Lecce.</span>
-          </div>
-          <div class="highlight-card">
-            <strong>Porta San Biagio e Centro</strong>
-            <span>Posizione comoda e ben collegata a ridosso del centro leccese.</span>
-          </div>
-          <div class="highlight-card">
-            <strong>Parcheggio Gratis Fuori ZTL</strong>
-            <span>Parcheggio pubblico gratuito fuori dalla ZTL nei dintorni.</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Soluzioni: Camere B&B + Appartamento 7+2 -->
-    <section id="soluzioni" aria-labelledby="soluzioni-heading">
-      <div class="container">
-        <h2 id="soluzioni-heading">Camere in stile B&amp;B e Appartamento 7+2 per le tue vacanze</h2>
-        <p class="section-intro">
-          A Lecce puoi scegliere tra camere riservate con bagno privato — comode, autonome e accoglienti come un B&amp;B —
-          oppure un appartamento 7+2 con spazi generosi per un soggiorno rilassante in pieno stile vacanza.
-        </p>
-
-        <div class="grid-2">
-          <article class="card">
-            <h3>Camere con Bagno Privato (Stile B&amp;B)</h3>
-            <p>
-              Pensate per chi cerca riservatezza, semplicità e libertà negli orari vicino al centro di Lecce,
-              valorizzate dal fascino architettonico delle tipiche <strong>volte a stella</strong>.
-            </p>
-            <ul>
-              <li>Letto matrimoniale e bagno privato dedicato</li>
-              <li>Aria condizionata e connessione Wi-Fi</li>
-              <li>Autonomia e tranquillità senza vincoli alberghieri</li>
-            </ul>
-          </article>
-
-          <article class="card">
-            <h3>Appartamento 7+2 (Spazio e Libertà Vacanza)</h3>
-            <p>
-              Ideale per chi desidera vivere Lecce come in una casa vacanza, con ambienti ampi,
-              cucina attrezzata e comodità per soggiorni condivisi o più lunghi.
-            </p>
-            <ul>
-              <li>Configurazione capiente 7+2</li>
-              <li>Spazi vivibili, aria condizionata e Wi-Fi</li>
-              <li>Massima indipendenza per la tua vacanza</li>
-            </ul>
-          </article>
-        </div>
-
-        <aside class="notice-box" aria-label="Formula di locazione turistica">
-          <strong>Formula locazione turistica:</strong> ViviDomus è gestito come locazione turistica.
-          Offre autonomia, privacy e comfort degli spazi, senza colazione inclusa né servizi di reception o pulizia alberghiera.
-        </aside>
-      </div>
-    </section>
-
-    <!-- Posizione & Parcheggio Fuori ZTL -->
-    <section id="posizione" aria-labelledby="posizione-heading">
-      <div class="container">
-        <h2 id="posizione-heading">Vicino a Porta San Biagio e al centro di Lecce, con parcheggio gratis fuori ZTL</h2>
-        <p class="section-intro">
-          Essere vicino a <strong>Porta San Biagio</strong> significa trovarsi in una zona pratica e ben servita,
-          a due passi dal cuore barocco di Lecce, con il vantaggio concreto del <strong>parcheggio pubblico gratuito fuori ZTL</strong>
-          nelle vicinanze per lasciare l'auto senza pensieri.
-        </p>
-        <div class="grid-2">
-          <div class="card">
-            <h3>Posizione strategica a Lecce</h3>
-            <p>
-              Raggiungi facilmente il centro storico, i locali, i servizi e i principali punti di interesse di Lecce,
-              rientrando in un contesto tranquillo e comodo.
-            </p>
-          </div>
-          <div class="card">
-            <h3>Arrivo in auto più sereno</h3>
-            <p>
-              La vicinanza ad aree con parcheggio pubblico gratuito fuori dalla ZTL ti aiuta a gestire l'auto
-              con maggiore praticità durante tutto il soggiorno.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- FAQ -->
-    <section id="faq" aria-labelledby="faq-heading">
-      <div class="container">
-        <h2 id="faq-heading">Domande frequenti su B&amp;B, casa vacanza e soggiorno</h2>
-        <p class="section-intro">
-          Risposte chiare per aiutarti a scegliere tra camere con bagno privato e appartamento 7+2 a Lecce.
-        </p>
-
-        <div class="faq-item">
-          <h3>È un B&amp;B, una casa vacanza o una locazione turistica?</h3>
-          <p>
-            L'attività è inquadrata come <strong>locazione turistica</strong>. Chi cerca un <strong>B&amp;B / BB</strong> o una
-            <strong>casa vacanza</strong> trova qui l'autonomia, la privacy e gli spazi desiderati per il proprio soggiorno a Lecce,
-            tenendo presente che non sono inclusi colazione o servizi alberghieri.
-          </p>
-        </div>
-
-        <div class="faq-item">
-          <h3>Che letti ci sono nelle camere?</h3>
-          <p>
-            Le camere sono dotate di letto matrimoniale e bagno privato, così da offrire comfort e chiarezza senza
-            ambiguità tra singole o doppie con letti separati.
-          </p>
-        </div>
-
-        <div class="faq-item">
-          <h3>Come funziona la capienza dell'appartamento 7+2?</h3>
-          <p>
-            L'appartamento è pensato per ospitare fino a 7+2 posti complessivi, risultando adatto a famiglie numerose,
-            gruppi o viaggiatori che cercano ampi spazi a Lecce.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contatti -->
-    <section id="contatti" aria-labelledby="contatti-heading">
-      <div class="container">
-        <h2 id="contatti-heading">Contatta ViviDomus a Lecce</h2>
-        <div class="contact-box">
-          <p style="margin: 0; color: var(--text-muted);">
-            Hai bisogno di informazioni sulle camere con bagno privato o sull'appartamento 7+2 vicino a Porta San Biagio?
-            Scrivici per verificare disponibilità e dettagli del soggiorno.
-          </p>
-          <div>
-            <a class="btn" href="mailto:info@vividomus.com?subject=Richiesta%20informazioni%20ViviDomus%20Lecce">Scrivi a ViviDomus</a>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-meta">
-      <div><strong>ViviDomus</strong> — Camere con bagno privato e appartamento 7+2 a Lecce (Porta San Biagio).</div>
-      <div>Locazione turistica • Parcheggio pubblico gratuito fuori ZTL • Aria condizionata e Wi-Fi.</div>
-      <div>CIN: <code>IT075035C200126683</code></div>
+    <div class="slide-dots">
+      <button class="active" onclick="currentHeroSlide(0)" aria-label="Slide 1"></button>
+      <button onclick="currentHeroSlide(1)" aria-label="Slide 2"></button>
+      <button onclick="currentHeroSlide(2)" aria-label="Slide 3"></button>
+      <button onclick="currentHeroSlide(3)" aria-label="Slide 4"></button>
     </div>
-  </footer>
+  </section>
+
+  <section id="appartment" class="appartment">
+    <div class="container">
+      <div class="appartment-grid">
+        <div class="apt-title-area">
+          <div class="section-label" data-i18n="apt_label">Appartamento 7+2 • Vacanze a Lecce</div>
+          <h2 class="section-title" data-i18n="apt_title" style="margin-bottom:0;">Appartamento 7+2 vicino al centro di Lecce per le tue vacanze</h2>
+        </div>
+
+        <div class="apt-desc-area appartment-text">
+          <p data-i18n="apt_p1">Un appartamento 7+2 luminoso e spazioso, pensato per vivere le vacanze a Lecce con libertà d'orario e autonomia. Ideale per coppie, famiglie o gruppi con cucina attrezzata, aria condizionata, Wi-Fi e TV LED.</p>
+          <p data-i18n="apt_p2">Situato vicino a Porta San Biagio e al centro di Lecce, unisce la comodità della posizione centrale al vantaggio del parcheggio pubblico gratuito fuori ZTL nei dintorni.</p>
+        </div>
+        
+        <div class="room-slideshow apt-img-area" id="slider-apt">
+          <div class="room-slide active" style="background-image:url('casa1.avif')"></div>
+          <div class="room-slide" style="background-image:url('lecce1.avif')"></div>
+          <div class="room-slide" style="background-image:url('lecce2.avif')"></div>
+          
+          <button class="slider-arrow prev" onclick="moveRoomSlide('slider-apt', -1)" aria-label="Precedente">&#10094;</button>
+          <button class="slider-arrow next" onclick="moveRoomSlide('slider-apt', 1)" aria-label="Successivo">&#10095;</button>
+
+          <div class="room-dots">
+            <button class="active" onclick="currentRoomSlide('slider-apt', 0)" aria-label="Slide 1"></button>
+            <button onclick="currentRoomSlide('slider-apt', 1)" aria-label="Slide 2"></button>
+            <button onclick="currentRoomSlide('slider-apt', 2)" aria-label="Slide 3"></button>
+          </div>
+        </div>
+
+        <div class="features apt-features-area">
+          <div class="feature"><strong data-i18n="apt_f1_l">Formula</strong><span data-i18n="apt_f1_v">Appartamento 7+2 vacanza</span></div>
+          <div class="feature"><strong data-i18n="apt_f2_l">Parcheggio</strong><span data-i18n="apt_f2_v">Pubblico gratis fuori ZTL</span></div>
+          <div class="feature"><strong data-i18n="apt_f3_l">Comfort</strong><span data-i18n="apt_f3_v">Aria condizionata e Wi-Fi</span></div>
+          <div class="feature"><strong data-i18n="apt_f4_l">Posizione</strong><span data-i18n="apt_f4_v">Porta San Biagio • Lecce</span></div>
+        </div>
+
+        <div class="apt-btn-area">
+          <a href="#booking" class="btn" title="Prenota l'appartamento 7+2" onclick="selectSolution('Appartamento 7+2')" data-i18n="btn_book_apt">Prenota Appartamento 7+2</a>
+        </div>
+      </div>
+      <div class="formula-note" data-i18n="formula_note"><strong>Locazione turistica:</strong> ViviDomus opera come locazione turistica a Lecce, offrendo autonomia, privacy e comfort senza colazione o servizi alberghieri inclusi.</div>
+    </div>
+  </section>
+
+  <section id="suites" class="suites">
+    <div class="container">
+      <div class="section-label" style="text-align:center" data-i18n="suite_label">Camere &amp; Formula B&amp;B / BB</div>
+      <h2 class="section-title" style="text-align:center" data-i18n="suite_title">Camere con bagno privato e volta a stella vicino a Porta San Biagio</h2>
+      <p class="suites-intro" data-i18n="suite_intro">Soluzioni accoglienti e riservate in stile B&amp;B / BB con bagno privato e volta a stella a Lecce, pensate per chi desidera autonomia, tranquillità e libertà negli orari vicino al centro.</p>
+
+      <div class="suite-card">
+        <div class="room-slideshow" id="slider-suite1">
+          <div class="room-slide active" style="background-image:url('lecce3.avif')"></div>
+          <div class="room-slide" style="background-image:url('lecce4.avif')"></div>
+          
+          <button class="slider-arrow prev" onclick="moveRoomSlide('slider-suite1', -1)" aria-label="Precedente">&#10094;</button>
+          <button class="slider-arrow next" onclick="moveRoomSlide('slider-suite1', 1)" aria-label="Successivo">&#10095;</button>
+
+          <div class="room-dots">
+            <button class="active" onclick="currentRoomSlide('slider-suite1', 0)" aria-label="Slide 1"></button>
+            <button onclick="currentRoomSlide('slider-suite1', 1)" aria-label="Slide 2"></button>
+          </div>
+        </div>
+        <div class="suite-info">
+          <div class="volta" data-i18n="suite_volta">Volta a stella — Stile B&amp;B / BB</div>
+          <h3 data-i18n="suite1_name">Suite I — Camera con bagno privato</h3>
+          <p data-i18n="suite1_desc">Camera curata con letto matrimoniale e bagno privato sotto volta a stella, ideale per un soggiorno rilassante e autonomo vicino al centro di Lecce.</p>
+          <ul>
+            <li data-i18n="suite1_f1">Letto matrimoniale e bagno privato dedicato</li>
+            <li data-i18n="suite1_f2">Aria condizionata e connessione Wi-Fi</li>
+            <li data-i18n="suite1_f3">Autonomia e riservatezza vicino a Porta San Biagio</li>
+            <li data-i18n="suite1_f4">Parcheggio pubblico gratuito fuori ZTL in zona</li>
+          </ul>
+          <a href="#booking" class="btn btn-light" title="Prenota la Suite I" onclick="selectSolution('Suite I')" data-i18n="btn_book_suite1">Prenota Suite I</a>
+        </div>
+      </div>
+
+      <div class="suite-card">
+        <div class="room-slideshow" id="slider-suite2">
+          <div class="room-slide active" style="background-image:url('lecce4.avif')"></div>
+          <div class="room-slide" style="background-image:url('lecce3.avif')"></div>
+          
+          <button class="slider-arrow prev" onclick="moveRoomSlide('slider-suite2', -1)" aria-label="Precedente">&#10094;</button>
+          <button class="slider-arrow next" onclick="moveRoomSlide('slider-suite2', 1)" aria-label="Successivo">&#10095;</button>
+
+          <div class="room-dots">
+            <button class="active" onclick="currentRoomSlide('slider-suite2', 0)" aria-label="Slide 1"></button>
+            <button onclick="currentRoomSlide('slider-suite2', 1)" aria-label="Slide 2"></button>
+          </div>
+        </div>
+        <div class="suite-info">
+          <div class="volta" data-i18n="suite_volta2">Volta a stella — Autonomia &amp; Comfort</div>
+          <h3 data-i18n="suite2_name">Suite II — Camera con volta a stella</h3>
+          <p data-i18n="suite2_desc">Ambiente silenzioso e luminoso con letto matrimoniale, aria condizionata, Wi-Fi e TV LED a due passi dal centro storico di Lecce.</p>
+          <ul>
+            <li data-i18n="suite2_f1">Letto matrimoniale e comfort riservato</li>
+            <li data-i18n="suite2_f2">Aria condizionata, Wi-Fi e TV LED</li>
+            <li data-i18n="suite2_f3">Libertà negli orari in formula locazione turistica</li>
+            <li data-i18n="suite2_f4">Parcheggio pubblico gratuito fuori ZTL nei dintorni</li>
+          </ul>
+          <a href="#booking" class="btn btn-light" title="Prenota la Suite II" onclick="selectSolution('Suite II')" data-i18n="btn_book_suite2">Prenota Suite II</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="location" class="location">
+    <div class="container">
+      <div class="location-grid">
+        <div class="location-text">
+          <div class="section-label" data-i18n="loc_label">Posizione & Parcheggio</div>
+          <h2 class="section-title" data-i18n="loc_title">Vicino a Porta San Biagio e al centro di Lecce, fuori ZTL</h2>
+          <p data-i18n="loc_p1">A pochi passi da Porta San Biagio e dal centro di Lecce, ViviDomus ti permette di muoverti in città con praticità e di contare su un parcheggio pubblico gratuito fuori ZTL nelle vicinanze.</p>
+          <p data-i18n="loc_p2">Una posizione comoda e ben collegata per vivere Lecce in piena autonomia, sia in camera con bagno privato che nell'appartamento 7+2.</p>
+        </div>
+        <div class="location-map">Porta San Biagio • Centro di Lecce<br><span style="font-size:0.75rem;color:var(--gold);display:block;margin-top:6px;">Parcheggio pubblico gratuito fuori ZTL</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="booking" class="booking">
+    <div class="container">
+      <div class="section-label" data-i18n="book_label">Prenotazione</div>
+      <h2 class="section-title" data-i18n="book_title">Prenota il tuo soggiorno</h2>
+      <p class="booking-subtitle" data-i18n="book_subtitle">Invia la richiesta: ti risponderemo con la conferma di disponibilità.</p>
+      
+      <form class="booking-form" onsubmit="event.preventDefault();alert('Richiesta inviata con successo!');">
+        <div class="form-group">
+          <label for="form-name" data-i18n="form_lbl_name">Nome</label>
+          <input type="text" id="form-name" data-i18n-ph="form_name" placeholder="Nome e cognome" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="form-email" data-i18n="form_lbl_email">Email</label>
+          <input type="email" id="form-email" data-i18n-ph="form_email" placeholder="Indirizzo email" required>
+        </div>
+        
+        <div class="form-group full">
+          <label for="solution-select" data-i18n="form_lbl_solution">Soluzione</label>
+          <select id="solution-select" required aria-label="Seleziona la soluzione">
+            <option value="" data-i18n="form_select">Seleziona la soluzione</option>
+            <option value="Appartamento 7+2" data-i18n="form_opt1">Appartamento 7+2 (vacanza a Lecce)</option>
+            <option value="Suite I" data-i18n="form_opt2">Suite I — Camera con bagno privato (letto matrimoniale)</option>
+            <option value="Suite II" data-i18n="form_opt3">Suite II — Camera con volta a stella (letto matrimoniale)</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="form-arrival" data-i18n="form_lbl_arrival">Arrivo</label>
+          <input type="date" id="form-arrival" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="form-departure" data-i18n="form_lbl_departure">Partenza</label>
+          <input type="date" id="form-departure" required>
+        </div>
+        
+        <div class="form-group full">
+          <label for="form-guests" data-i18n="form_lbl_guests">Ospiti</label>
+          <input type="number" id="form-guests" min="1" max="10" value="2" required>
+        </div>
+        
+        <div class="form-group full">
+          <label for="form-msg" data-i18n="form_lbl_msg">Messaggio</label>
+          <textarea id="form-msg" rows="4" data-i18n-ph="form_msg" placeholder="Messaggio o richieste particolari (opzionale)"></textarea>
+        </div>
+        
+        <div class="full">
+          <button type="submit" class="btn" style="width:100%;" data-i18n="form_send">Invia richiesta</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <section id="faq" class="faq">
+    <div class="container">
+      <div class="faq-header">
+        <div class="section-label" data-i18n="faq_label">Domande frequenti</div>
+        <h2 class="section-title" data-i18n="faq_title" style="margin-bottom:0;">Informazioni su camere, casa vacanza, BB e appartamento a Lecce</h2>
+      </div>
+      <div class="faq-accordion">
+        <div class="faq-item">
+          <button type="button" class="faq-question" aria-expanded="false">
+            <span data-i18n="faq1_q">ViviDomus è un B&amp;B / BB, una casa vacanza o una locazione turistica?</span>
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner" data-i18n="faq1_a">ViviDomus è gestito in formula di locazione turistica (CIN IT075035C200126683). Chi cerca un B&amp;B o BB a Lecce o un soggiorno in stile casa vacanza trova qui autonomia, privacy e libertà d'orario, senza colazione o servizi alberghieri inclusi.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button type="button" class="faq-question" aria-expanded="false">
+            <span data-i18n="faq2_q">Che letti hanno le camere vicino a Porta San Biagio?</span>
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner" data-i18n="faq2_a">Le camere sono attrezzate con letto matrimoniale, aria condizionata, Wi-Fi e bagno privato nella Suite I, offrendo comfort e chiarezza senza distinzioni tra singole o doppie con letti separati.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button type="button" class="faq-question" aria-expanded="false">
+            <span data-i18n="faq3_q">Com'è il parcheggio fuori ZTL vicino al centro di Lecce?</span>
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner" data-i18n="faq3_a">La posizione vicino a Porta San Biagio e al centro di Lecce consente di usufruire di parcheggio pubblico gratuito fuori ZTL nelle vicinanze, rendendo più semplice arrivare e muoversi in auto.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button type="button" class="faq-question" aria-expanded="false">
+            <span data-i18n="faq4_q">Cosa offre l'appartamento 7+2 per le vacanze a Lecce?</span>
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner" data-i18n="faq4_a">L'appartamento 7+2 mette a disposizione spazi ampi, cucina attrezzata, aria condizionata e Wi-Fi per vivere le vacanze a Lecce con indipendenza, per famiglie, coppie o gruppi.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="container">
+      <div class="section-label" data-i18n="ct_label">Contatti</div>
+      <h2 class="section-title" data-i18n="ct_title">Parliamo</h2>
+      <div class="contact-methods">
+        <div class="contact-card">
+          <div class="icon">✆</div>
+          <h3 data-i18n="ct_phone">Telefono</h3>
+          <a href="tel:+393381875578" title="Chiama ViviDomus">+39 338 187 5578</a>
+        </div>
+        <div class="contact-card">
+          <div class="icon">✉</div>
+          <h3>Email</h3>
+          <a href="mailto:info@vividomus.com" title="Invia una email a ViviDomus">info@vividomus.com</a>
+        </div>
+        <div class="contact-card">
+          <div class="icon">◉</div>
+          <h3>WhatsApp</h3>
+          <a href="https://wa.me/393381875578" target="_blank" title="Contatta ViviDomus su WhatsApp" data-i18n="ct_wa">Scrivici su WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="logo">Vivi<span style="color:var(--gold)">Domus</span></div>
+  <p data-i18n="footer">© 2026 ViviDomus · Lecce — Tutti i diritti riservati</p>
+  <p class="cin-text">CIN: IT075035C200126683</p>
+</footer>
+
+<a href="https://wa.me/393381875578" class="whatsapp-float" target="_blank" title="WhatsApp" aria-label="WhatsApp">
+  <svg viewBox="0 0 32 32" fill="currentColor"><path d="M16 .5C7.4.5.5 7.4.5 16c0 2.8.7 5.5 2.1 7.9L.5 31.5l7.8-2c2.3 1.3 4.9 1.9 7.7 1.9 8.6 0 15.5-6.9 15.5-15.5S24.6.5 16 .5zm0 28.3c-2.5 0-4.9-.7-7-1.9l-.5-.3-4.6 1.2 1.2-4.5-.3-.5c-1.4-2.2-2.1-4.7-2.1-7.3 0-7.1 5.8-12.8 12.8-12.8 7.1 0 12.8 5.8 12.8 12.8S23.1 28.8 16 28.8zm7-9.6c-.4-.2-2.3-1.1-2.7-1.3-.4-.1-.6-.2-.9.2-.3.4-1 1.3-1.3 1.5-.2.3-.5.3-.9.1s-1.6-.6-3.1-1.9c-1.1-1-1.9-2.3-2.1-2.7-.2-.4 0-.6.2-.8.2-.2.4-.5.6-.7.2-.2.2-.4.3-.7.1-.2 0-.5 0-.7s-.9-2.1-1.2-2.9c-.3-.7-.6-.6-.9-.6h-.7c-.2 0-.6.1-.9.4s-1.2 1.1-1.2 2.8 1.2 3.2 1.4 3.4c.2.2 2.4 3.7 5.8 5.2.8.4 1.4.6 1.9.7.8.3 1.5.2 2.1.1.6-.1 1.9-.8 2.2-1.5.3-.8.3-1.4.2-1.5-.1-.2-.4-.3-.8-.5z"/></svg>
+</a>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    window.selectSolution = function(solutionName) {
+      const select = document.getElementById('solution-select');
+      if(select) { select.value = solutionName; }
+    };
+
+    // FAQ Accordion toggle
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(el => {
+          el.classList.remove('open');
+          const q = el.querySelector('.faq-question');
+          if (q) q.setAttribute('aria-expanded', 'false');
+        });
+        if (!isOpen) {
+          item.classList.add('open');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+
+    const heroSlides = document.querySelectorAll('.hero .slide');
+    const heroDots = document.querySelectorAll('.slide-dots button');
+    let heroCurrent = 0;
+    
+    function showHeroSlide(i){
+      if (i >= heroSlides.length) heroCurrent = 0;
+      else if (i < 0) heroCurrent = heroSlides.length - 1;
+      else heroCurrent = i;
+      heroSlides.forEach(s=>s.classList.remove('active'));
+      heroDots.forEach(d=>d.classList.remove('active'));
+      heroSlides[heroCurrent].classList.add('active');
+      heroDots[heroCurrent].classList.add('active');
+    }
+    window.moveHeroSlide = function(n) { showHeroSlide(heroCurrent + n); };
+    window.currentHeroSlide = function(i) { showHeroSlide(i); };
+    
+    if(heroDots.length > 0) {
+      heroDots.forEach((d, index)=>d.addEventListener('click',()=>window.currentHeroSlide(index)));
+      setInterval(()=>window.moveHeroSlide(1), 6000);
+    }
+
+    const roomSlidersState = {};
+    function setupRoomSlider(containerId) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+      const slides = container.querySelectorAll('.room-slide');
+      const dots = container.querySelectorAll('.room-dots button');
+      roomSlidersState[containerId] = { current: 0, slides: slides, dots: dots };
+      setInterval(() => { moveRoomSlide(containerId, 1); }, 5000);
+    }
+    
+    function showRoomSlide(containerId, index) {
+      const state = roomSlidersState[containerId];
+      if (!state) return;
+      if (index >= state.slides.length) state.current = 0;
+      else if (index < 0) state.current = state.slides.length - 1;
+      else state.current = index;
+      state.slides.forEach((s, i) => {
+        s.classList.toggle('active', i === state.current);
+        if (state.dots[i]) state.dots[i].classList.toggle('active', i === state.current);
+      });
+    }
+    
+    window.moveRoomSlide = function(containerId, n) {
+      const state = roomSlidersState[containerId];
+      if (state) { showRoomSlide(containerId, state.current + n); }
+    };
+    
+    window.currentRoomSlide = function(containerId, index) {
+      showRoomSlide(containerId, index);
+    };
+
+    setupRoomSlider('slider-apt');
+    setupRoomSlider('slider-suite1');
+    setupRoomSlider('slider-suite2');
+
+    const translations = {
+      it:{
+        nav_appartment:"Appartamento 7+2",nav_suites:"Camere & B&B",nav_faq:"FAQ",nav_booking:"Prenota",nav_location:"Porta San Biagio",nav_contact:"Contatti",
+        hero_tagline:"Camere con bagno privato e appartamento 7+2 a Lecce",
+        hero_sub:"Porta San Biagio • Centro di Lecce • Parcheggio pubblico gratuito fuori ZTL",
+        apt_label:"Appartamento 7+2 • Vacanze a Lecce",apt_title:"Appartamento 7+2 vicino al centro di Lecce per le tue vacanze",
+        apt_p1:"Un appartamento 7+2 luminoso e spazioso, pensato per vivere le vacanze a Lecce con libertà d'orario e autonomia. Ideale per coppie, famiglie o gruppi con cucina attrezzata, aria condizionata, Wi-Fi e TV LED.",
+        apt_p2:"Situato vicino a Porta San Biagio e al centro di Lecce, unisce la comodità della posizione centrale al vantaggio del parcheggio pubblico gratuito fuori ZTL nei dintorni.",
+        apt_f1_l:"Formula",apt_f1_v:"Appartamento 7+2 vacanza",apt_f2_l:"Parcheggio",apt_f2_v:"Pubblico gratis fuori ZTL",
+        apt_f3_l:"Comfort",apt_f3_v:"Aria condizionata e Wi-Fi",apt_f4_l:"Posizione",apt_f4_v:"Porta San Biagio • Lecce",
+        btn_book_apt:"Prenota Appartamento 7+2",
+        suite_label:"Camere & Formula B&B / BB",suite_title:"Camere con bagno privato e volta a stella vicino a Porta San Biagio",
+        suite_intro:"Soluzioni accoglienti e riservate in stile B&B / BB con bagno privato e volta a stella a Lecce, pensate per chi desidera autonomia, tranquillità e libertà negli orari vicino al centro.",
+        suite_volta:"Volta a stella — Stile B&B / BB",
+        suite_volta2:"Volta a stella — Autonomia & Comfort",
+        suite1_name:"Suite I — Camera con bagno privato",suite1_desc:"Camera curata con letto matrimoniale e bagno privato sotto volta a stella, ideale per un soggiorno rilassante e autonomo vicino al centro di Lecce.",
+        suite1_f1:"Letto matrimoniale e bagno privato dedicato",suite1_f2:"Aria condizionata e connessione Wi-Fi",suite1_f3:"Autonomia e riservatezza vicino a Porta San Biagio",suite1_f4:"Parcheggio pubblico gratuito fuori ZTL in zona",
+        btn_book_suite1:"Prenota Suite I",
+        suite2_name:"Suite II — Camera con volta a stella",suite2_desc:"Ambiente silenzioso e luminoso con letto matrimoniale, aria condizionata, Wi-Fi e TV LED a due passi dal centro storico di Lecce.",
+        suite2_f1:"Letto matrimoniale e comfort riservato",suite2_f2:"Aria condizionata, Wi-Fi e TV LED",suite2_f3:"Libertà negli orari in formula locazione turistica",suite2_f4:"Parcheggio pubblico gratuito fuori ZTL nei dintorni",
+        btn_book_suite2:"Prenota Suite II",
+        loc_label:"Posizione & Parcheggio",loc_title:"Vicino a Porta San Biagio e al centro di Lecce, fuori ZTL",
+        loc_p1:"A pochi passi da Porta San Biagio e dal centro di Lecce, ViviDomus ti permette di muoverti in città con praticità e di contare su un parcheggio pubblico gratuito fuori ZTL nelle vicinanze.",
+        loc_p2:"Una posizione comoda e ben collegata per vivere Lecce in piena autonomia, sia in camera con bagno privato che nell'appartamento 7+2.",
+        faq_label:"Domande frequenti",faq_title:"Informazioni su camere, B&B / BB, vacanze e appartamento 7+2 a Lecce",
+        faq1_q:"ViviDomus è un B&B / BB, una casa vacanza o una locazione turistica?",
+        faq1_a:"ViviDomus è gestito in formula di locazione turistica (CIN IT075035C200126683). Chi cerca un B&B o BB a Lecce o un soggiorno in stile casa vacanza trova qui autonomia, privacy e libertà d'orario, senza colazione o servizi alberghieri inclusi.",
+        faq2_q:"Che letti hanno le camere vicino a Porta San Biagio?",
+        faq2_a:"Le camere sono attrezzate con letto matrimoniale, aria condizionata, Wi-Fi e bagno privato nella Suite I, offrendo comfort e chiarezza senza distinzioni tra singole o doppie con letti separati.",
+        faq3_q:"Com'è il parcheggio fuori ZTL vicino al centro di Lecce?",
+        faq3_a:"La posizione vicino a Porta San Biagio e al centro di Lecce consente di usufruire di parcheggio pubblico gratuito fuori ZTL nelle vicinanze, rendendo più semplice arrivare e muoversi in auto.",
+        faq4_q:"Cosa offre l'appartamento 7+2 per le vacanze a Lecce?",
+        faq4_a:"L'appartamento 7+2 mette a disposizione spazi ampi, cucina attrezzata, aria condizionata e Wi-Fi per vivere le vacanze a Lecce con indipendenza, per famiglie, coppie o gruppi.",
+        book_label:"Prenotazione",book_title:"Prenota il tuo soggiorno",book_subtitle:"Invia la richiesta: ti risponderemo con la conferma di disponibilità.",
+        form_lbl_name:"Nome",form_lbl_email:"Email",form_lbl_solution:"Soluzione",
+        form_lbl_arrival:"Arrivo",form_lbl_departure:"Partenza",form_lbl_guests:"Ospiti",form_lbl_msg:"Messaggio",
+        form_name:"Nome e cognome",form_email:"Indirizzo email",form_select:"Seleziona la soluzione",
+        form_opt1:"Appartamento 7+2 (vacanza a Lecce)",form_opt2:"Suite I — Camera con bagno privato (letto matrimoniale)",form_opt3:"Suite II — Camera con volta a stella (letto matrimoniale)",
+        form_msg:"Messaggio o richieste particolari (opzionale)",form_send:"Invia richiesta",
+        ct_label:"Contatti",ct_title:"Parliamo",ct_phone:"Telefono",ct_wa:"Scrivici su WhatsApp",
+        footer:"© 2026 ViviDomus · Lecce — Tutti i diritti riservati"
+      },
+      en:{
+        nav_appartment:"Apartment",nav_suites:"Rooms & Suites",nav_faq:"FAQ",nav_booking:"Book",nav_location:"Location",nav_contact:"Contact",
+        hero_tagline:"Rooms & Apartment near Lecce Center",
+        hero_sub:"Baroque charm in the heart of Salento",
+        apt_label:"Upper apartment",apt_title:"Apartment near Lecce center for families and groups",
+        apt_p1:"A large, bright apartment sleeping up to 7+2 guests. Ideal for large families or groups looking for spacious living, equipped kitchen, LED TV in each room, and central air conditioning.",
+        apt_p2:"Located near Lecce's historic center, just a short walk from Porta San Biagio, allowing you to explore the city on foot with the major advantage of free street parking right outside, outside the ZTL.",
+        apt_f1_l:"Capacity",apt_f1_v:"Up to 7 + 2 guests",apt_f2_l:"Parking",apt_f2_v:"Free nearby parking",
+        apt_f3_l:"Comfort",apt_f3_v:"AC & LED TV",apt_f4_l:"Location",apt_f4_v:"Near Lecce center",
+        btn_book_apt:"Book Apartment",
+        suite_label:"Rooms & Suites",suite_title:"Private rooms with en-suite bathroom & star vault",
+        suite_intro:"Two exclusive rooms with private bathrooms and independent AC, sheltered beneath an ancient star-vaulted ceiling near Lecce center and Porta San Biagio, great for solo travelers or couples.",
+        suite_volta:"Star vault — En-suite bathroom",
+        suite1_name:"Suite I / Room",suite1_desc:"Intimate independent room with private bathroom, independent air conditioning, and LED TV under the original star vault.",
+        suite1_f1:"Double or single bed",suite1_f2:"Private en-suite bathroom",suite1_f3:"AC & LED TV",suite1_f4:"Free neighborhood parking",
+        btn_book_suite1:"Book Suite I",
+        suite2_name:"Suite II / Room",suite2_desc:"Exclusive room with private bathroom, independent air conditioning, and LED TV. Quiet privacy near the center of Lecce.",
+        suite2_f1:"Double or single bed",suite2_f2:"Private en-suite bathroom",suite2_f3:"AC & LED TV",suite2_f4:"Free neighborhood parking",
+        btn_book_suite2:"Book Suite II",
+        loc_label:"Location & Parking",loc_title:"Near Lecce center with free parking",
+        loc_p1:"ViviDomus enjoys a strategic location near Lecce's historic center, just steps from Porta San Biagio. Located right outside the restricted traffic zone (ZTL), you can walk to the center while enjoying free street parking right outside.",
+        loc_p2:"The ideal base to explore Lecce and easily travel by car to the stunning Salento beaches.",
+        faq_label:"FAQ",faq_title:"Helpful info on holiday home, B&B, rooms & apartment in Lecce",
+        faq1_q:"Is ViviDomus a B&B or a licensed tourist rental in Lecce?",
+        faq1_a:"ViviDomus operates as a licensed tourist rental (CIN IT075035C200126683). For travelers looking for a B&B near Lecce center, it offers independent rooms with private bathrooms and flexible arrival without breakfast or hotel services.",
+        faq2_q:"What does ViviDomus offer for a holiday home stay in Lecce?",
+        faq2_a:"For guests looking for a holiday home near Lecce's historic center, we provide spacious, independent accommodations steps from Porta San Biagio with an equipped kitchen in the upper apartment.",
+        faq3_q:"Should I book a single/double room or the full apartment in Lecce?",
+        faq3_a:"Private rooms with star vaults are ideal for solo travelers or couples, while the apartment for up to 7+2 guests near Lecce center suits families and groups.",
+        faq4_q:"How does the location compare to central Lecce rentals and the ZTL?",
+        faq4_a:"Many central properties sit inside the ZTL where parking is difficult. Near Porta San Biagio, you can walk to Piazza del Duomo while staying outside the ZTL with free street parking nearby.",
+        faq5_q:"What amenities are included for exploring Salento?",
+        faq5_a:"All accommodations feature air conditioning, LED TV, and private bathrooms. Our location near Via di Leuca gives easy road access to both the Adriatic and Ionian beaches.",
+        faq6_q:"How can I book directly without extra fees?",
+        faq6_a:"Send a request via the form above or contact us on WhatsApp or phone for direct availability and rates.",
+        book_label:"Reservation",book_title:"Book your stay",book_subtitle:"Send a request: we will reply with availability confirmation.",
+        form_lbl_name:"Name",form_lbl_email:"Email",form_lbl_solution:"Accommodation",
+        form_lbl_arrival:"Check-in",form_lbl_departure:"Check-out",form_lbl_guests:"Guests",form_lbl_msg:"Message",
+        form_name:"Full name",form_email:"Email address",form_select:"Select accommodation",
+        form_opt1:"Main Apartment (up to 9 guests)",form_opt2:"Suite I / Single or double room with bathroom",form_opt3:"Suite II / Single or double room with bathroom",
+        form_msg:"Message or special requests (optional)",form_send:"Send request",
+        ct_label:"Contact",ct_title:"Get in touch",ct_phone:"Phone",ct_wa:"Chat on WhatsApp",
+        footer:"© 2026 ViviDomus · Lecce — All rights reserved"
+      },
+      de:{
+        nav_appartment:"Apartment",nav_suites:"Zimmer & Suiten",nav_faq:"FAQ",nav_booking:"Buchen",nav_location:"Lage",nav_contact:"Kontakt",
+        hero_tagline:"Zimmer & Apartment nahe Lecce Zentrum",
+        hero_sub:"Barock im Herzen des Salento",
+        apt_label:"Oberes Apartment",apt_title:"Apartment nahe Lecce Zentrum für Familien und Gruppen",
+        apt_p1:"Ein großes, helles Apartment für bis zu 7+2 Gäste. Ideal für Familien oder Gruppen, die viel Platz, Küche, LED-TV in jedem Zimmer und Klimaanlage im Wohnbereich suchen.",
+        apt_p2:"Nahe dem historischen Zentrum von Lecce und wenige Schritte von der Porta San Biagio entfernt, erkunden Sie die Stadt zu Fuß, mit dem großen Vorteil von kostenlosen Parkplätzen direkt vor dem Haus außerhalb der ZTL.",
+        apt_f1_l:"Kapazität",apt_f1_v:"Bis zu 7 + 2 Gäste",apt_f2_l:"Parken",apt_f2_v:"Kostenlos vor dem Haus",
+        apt_f3_l:"Komfort",apt_f3_v:"Klimaanlage & LED-TV",apt_f4_l:"Lage",apt_f4_v:"Nahe Zentrum Lecce",
+        btn_book_apt:"Apartment buchen",
+        suite_label:"Zimmer & Suiten",suite_title:"Private Zimmer mit Bad und Sterngewölbe",
+        suite_intro:"Zwei exklusive Zimmer mit eigenem Bad und separater Klimaanlage unter einem antiken Sterngewölbe nahe dem Zentrum von Lecce und der Porta San Biagio.",
+        suite_volta:"Sterngewölbe — Eigenes Bad",
+        suite1_name:"Suite I / Zimmer",suite1_desc:"Intimes Zimmer mit eigenem Bad, separater Klimaanlage und LED-TV unter dem originalen Sterngewölbe.",
+        suite1_f1:"Doppel- oder Einzelbett",suite1_f2:"Eigenes Badezimmer",suite1_f3:"Klimaanlage & LED-TV",suite1_f4:"Kostenloser Parkplatz",
+        btn_book_suite1:"Suite I buchen",
+        suite2_name:"Suite II / Zimmer",suite2_desc:"Exklusives Zimmer mit eigenem Bad, Klimaanlage und LED-TV. Ruhige Privatsphäre nahe dem Zentrum von Lecce.",
+        suite2_f1:"Doppel- oder Einzelbett",suite2_f2:"Eigenes Badezimmer",suite2_f3:"Klimaanlage & LED-TV",suite2_f4:"Kostenloser Parkplatz",
+        btn_book_suite2:"Suite II buchen",
+        loc_label:"Lage & Parken",loc_title:"Nahe dem Zentrum von Lecce mit kostenlosem Parkplatz",
+        loc_p1:"ViviDomus genießt eine strategische Lage nahe dem historischen Zentrum von Lecce und der Porta San Biagio. Direkt außerhalb der verkehrsberuhigten Zone (ZTL) gelegen, profitieren Sie von kostenlosen Parkmöglichkeiten vor dem Haus.",
+        loc_p2:"Der ideale Ausgangspunkt, um Lecce und die Strände des Salento bequem mit dem Auto zu erkunden.",
+        faq_label:"FAQ",faq_title:"Wissenswertes zu Ferienwohnung, B&B, Zimmer & Apartment in Lecce",
+        faq1_q:"Ist ViviDomus ein B&B oder eine touristische Vermietung in Lecce?",
+        faq1_a:"ViviDomus ist als touristische Vermietung (CIN IT075035C200126683) registriert und bietet flexible Aufenthalte ohne Frühstücks- oder Hotelservice.",
+        faq2_q:"Was bietet ViviDomus für einen Ferienwohnungs-Aufenthalt in Lecce?",
+        faq2_a:"Nahe der Porta San Biagio erwarten Sie unabhängige Unterkünfte mit Privatsphäre und einer voll ausgestatteten Küche im oberen Apartment.",
+        faq3_q:"Wann eignet sich ein Einzel-/Doppelzimmer und wann das ganze Apartment?",
+        faq3_a:"Die Zimmer unter dem Sterngewölbe passen ideal für Einzelreisende und Paare, während das Apartment für bis zu 7+2 Gäste Familien und Gruppen viel Platz bietet.",
+        faq4_q:"Wie ist die Lage im Vergleich zum inneren Zentrum und der ZTL?",
+        faq4_a:"Viele Unterkünfte im Zentrum liegen in der ZTL. Nahe der Porta San Biagio erreichen Sie das Zentrum zu Fuß und parken kostenlos außerhalb der ZTL.",
+        faq5_q:"Welche Ausstattung bieten die Unterkünfte für den Salento-Urlaub?",
+        faq5_a:"Alle Einheiten verfügen über Klimaanlage, LED-TV und eigenes Bad sowie eine gute Anbindung an die Strände des Salento.",
+        faq6_q:"Wie kann ich direkt anfragen?",
+        faq6_a:"Nutzen Sie einfach das Formular oben oder schreiben Sie uns per WhatsApp oder Telefon.",
+        book_label:"Reservierung",book_title:"Buchen Sie Ihren Aufenthalt",book_subtitle:"Senden Sie eine Anfrage: Wir antworten Ihnen mit der Bestätigung.",
+        form_lbl_name:"Name",form_lbl_email:"E-Mail",form_lbl_solution:"Unterkunft",
+        form_lbl_arrival:"Anreise",form_lbl_departure:"Abreise",form_lbl_guests:"Gäste",form_lbl_msg:"Nachricht",
+        form_name:"Vollständiger Name",form_email:"E-Mail-Adresse",form_select:"Unterkunft wählen",
+        form_opt1:"Hauptapartment (bis zu 9 Gäste)",form_opt2:"Suite I / Einzel- oder Doppelzimmer mit Bad",form_opt3:"Suite II / Einzel- oder Doppelzimmer mit Bad",
+        form_msg:"Nachricht oder Sonderwünsche (optional)",form_send:"Anfrage senden",
+        ct_label:"Kontakt",ct_title:"Sprechen wir",ct_phone:"Telefon",ct_wa:"Auf WhatsApp schreiben",
+        footer:"© 2026 ViviDomus · Lecce — Alle Rechte vorbehalten"
+      },
+      fr:{
+        nav_appartment:"Appartement",nav_suites:"Chambres & Suites",nav_faq:"FAQ",nav_booking:"Réserver",nav_location:"Emplacement",nav_contact:"Contact",
+        hero_tagline:"Chambres & Appartement près du centre de Lecce",
+        hero_sub:"Le Baroque au cœur du Salento",
+        apt_label:"Appartement supérieur",apt_title:"Appartement près du centre de Lecce pour familles et groupes",
+        apt_p1:"Un grand appartement lumineux pouvant accueillir jusqu'à 7+2 personnes. Idéal pour les familles ou groupes recherchant de grands espaces, cuisine équipée, TV LED dans chaque chambre et climatisation dans l'espace de vie.",
+        apt_p2:"Situé proche du centre historique de Lecce, à deux pas de Porta San Biagio, visitez la ville à pied avec l'avantage majeur d'un parking gratuit et libre devant la maison, hors ZTL.",
+        apt_f1_l:"Capacité",apt_f1_v:"Jusqu'à 7 + 2 personnes",apt_f2_l:"Parking",apt_f2_v:"Gratuit devant la maison",
+        apt_f3_l:"Confort",apt_f3_v:"Climatisation et TV LED",apt_f4_l:"Emplacement",apt_f4_v:"Proche centre Lecce",
+        btn_book_apt:"Réserver l'appartement",
+        suite_label:"Chambres & Suites",suite_title:"Chambres privées avec salle de bain et voûte étoilée",
+        suite_intro:"Deux chambres exclusives avec salle de bain privée et climatisation indépendante, abritées sous une ancienne voûte étoilée proche du centre et de Porta San Biagio.",
+        suite_volta:"Voûte étoilée — Salle de bain privée",
+        suite1_name:"Suite I / Chambre",suite1_desc:"Chambre intime avec salle de bain privée, climatisation autonome et TV LED sous la voûte étoilée d'origine.",
+        suite1_f1:"Lit double ou simple",suite1_f2:"Salle de bain privée",suite1_f3:"Climatisation et TV LED",suite1_f4:"Parking gratuit dans le quartier",
+        btn_book_suite1:"Réserver Suite I",
+        suite2_name:"Suite II / Chambre",suite2_desc:"Chambre exclusive avec salle de bain privée, climatisation et TV LED. Calme et confort proche du centre de Lecce.",
+        suite2_f1:"Lit double ou simple",suite2_f2:"Salle de bain privée",suite2_f3:"Climatisation et TV LED",suite2_f4:"Parking gratuit dans le quartier",
+        btn_book_suite2:"Réserver Suite II",
+        loc_label:"Emplacement & Parking",loc_title:"Proche du centre de Lecce avec parking gratuit",
+        loc_p1:"ViviDomus bénéficie d'un emplacement stratégique proche du centre historique de Lecce, à deux pas de Porta San Biagio. Juste à l'extérieur de la ZTL, profitez d'un stationnement gratuit et facile dans les environs.",
+        loc_p2:"Le point de départ idéal pour explorer Lecce et les superbes plages du Salento.",
+        faq_label:"FAQ",faq_title:"Infos utiles sur location, B&B, chambres et appartement à Lecce",
+        faq1_q:"ViviDomus est-il un B&B ou une location touristique à Lecce ?",
+        faq1_a:"ViviDomus est déclaré en location touristique (CIN IT075035C200126683), sans service hôtelier ni petit-déjeuner inclus.",
+        faq2_q:"Que propose ViviDomus pour une location de vacances à Lecce ?",
+        faq2_a:"À deux pas de Porta San Biagio, nous proposons des hébergements indépendants avec intimité et cuisine équipée dans l'appartement supérieur.",
+        faq3_q:"Chambre individuelle/double ou appartement entier ?",
+        faq3_a:"Les chambres sous voûte étoilée conviennent aux voyageurs solos ou couples, et l'appartement jusqu'à 7+2 personnes aux familles et groupes.",
+        faq4_q:"Et le stationnement près du centre et de la ZTL ?",
+        faq4_a:"À deux pas de Porta San Biagio, vous êtes hors ZTL avec stationnement gratuit à proximité et accès à pied au centre.",
+        faq5_q:"Quels équipements sont inclus pour visiter le Salento ?",
+        faq5_a:"Climatisation, TV LED et salle de bain privée dans chaque hébergement, avec un accès rapide aux plages du Salento.",
+        faq6_q:"Comment réserver en direct ?",
+        faq6_a:"Envoyez votre demande via le formulaire ci-dessus ou contactez-nous par WhatsApp ou téléphone.",
+        book_label:"Réservation",book_title:"Réservez votre séjour",book_subtitle:"Envoyez votre demande : nous vous répondrons rapidement.",
+        form_lbl_name:"Nom",form_lbl_email:"E-mail",form_lbl_solution:"Hébergement",
+        form_lbl_arrival:"Arrivée",form_lbl_departure:"Départ",form_lbl_guests:"Voyageurs",form_lbl_msg:"Message",
+        form_name:"Nom et prénom",form_email:"Adresse e-mail",form_select:"Sélectionnez l'hébergement",
+        form_opt1:"Appartement Principal (jusqu'à 9 pers.)",form_opt2:"Suite I / Chambre simple ou double avec bain",form_opt3:"Suite II / Chambre simple ou double avec bain",
+        form_msg:"Message ou demandes particulières (optionnel)",form_send:"Envoyer la demande",
+        ct_label:"Contact",ct_title:"Parlons-en",ct_phone:"Téléphone",ct_wa:"Écrivez-nous sur WhatsApp",
+        footer:"© 2026 ViviDomus · Lecce — Tous droits réservés"
+      },
+      es:{
+        nav_appartment:"Apartamento",nav_suites:"Habitaciones & Suites",nav_faq:"FAQ",nav_booking:"Reservar",nav_location:"Ubicación",nav_contact:"Contacto",
+        hero_tagline:"Habitaciones y Apartamento cerca del centro de Lecce",
+        hero_sub:"El Barroco en el corazón de Salento",
+        apt_label:"Apartamento superior",apt_title:"Apartamento cerca del centro de Lecce para familias y grupos",
+        apt_p1:"Un amplio y luminoso apartamento con capacidad para hasta 7+2 huéspedes. Ideal para familias o grupos que buscan espacio, cocina equipada, TV LED en cada habitación y aire acondicionado en la zona principal.",
+        apt_p2:"Ubicado cerca del centro histórico de Lecce, a pocos pasos de Porta San Biagio, permite recorrer la ciudad a pie con la gran ventaja de contar con aparcamiento gratuito y libre frente a la casa, fuera de la ZTL.",
+        apt_f1_l:"Capacidad",apt_f1_v:"Hasta 7 + 2 huéspedes",apt_f2_l:"Aparcamiento",apt_f2_v:"Gratis frente a casa",
+        apt_f3_l:"Confort",apt_f3_v:"Aire acondicionado y TV LED",apt_f4_l:"Ubicación",apt_f4_v:"Cerca centro de Lecce",
+        btn_book_apt:"Reservar Apartamento",
+        suite_label:"Habitaciones & Suites",suite_title:"Habitaciones con baño privado y bóveda estrellada",
+        suite_intro:"Dos habitaciones exclusivas con baño privado y aire acondicionado independiente, bajo una antigua bóveda estrellada cerca del centro y Porta San Biagio.",
+        suite_volta:"Bóveda estrellada — Baño privado",
+        suite1_name:"Suite I / Habitación",suite1_desc:"Habitación íntima con baño privado, aire acondicionado independiente y TV LED bajo la bóveda original.",
+        suite1_f1:"Cama doble o individual",suite1_f2:"Baño privado",suite1_f3:"Aire acondicionado y TV LED",suite1_f4:"Aparcamiento gratuito",
+        btn_book_suite1:"Reservar Suite I",
+        suite2_name:"Suite II / Habitación",suite2_desc:"Exclusiva habitación con baño privado, aire acondicionado y TV LED. Tranquilidad y confort cerca del centro de Lecce.",
+        suite2_f1:"Cama doble o individual",suite2_f2:"Baño privado",suite2_f3:"Aire acondicionado y TV LED",suite2_f4:"Aparcamiento gratuito",
+        btn_book_suite2:"Reservar Suite II",
+        loc_label:"Ubicación & Aparcamiento",loc_title:"Cerca del centro de Lecce con aparcamiento gratuito",
+        loc_p1:"ViviDomus goza de una ubicación estratégica cerca del centro histórico de Lecce, junto a Porta San Biagio. Al estar fuera de la ZTL, ofrece la ventaja de encontrar aparcamiento gratuito en la calle.",
+        loc_p2:"La base ideal para explorar Lecce y las maravillosas playas de Salento en coche.",
+        faq_label:"FAQ",faq_title:"Información sobre alojamiento, B&B, habitaciones y apartamento en Lecce",
+        faq1_q:"¿ViviDomus es un B&B o alquiler turístico en Lecce?",
+        faq1_a:"ViviDomus opera como alquiler turístico (CIN IT075035C200126683), sin desayuno ni servicios hoteleros incluidos.",
+        faq2_q:"¿Qué ofrece ViviDomus para alquiler vacacional en Lecce?",
+        faq2_a:"Junto a Porta San Biagio ofrecemos alojamientos independientes con privacidad y cocina equipada en el apartamento superior.",
+        faq3_q:"¿Habitación individual/doble o apartamento completo?",
+        faq3_a:"Las habitaciones con bóveda estrellada son ideales para viajeros solos o parejas, y el apartamento hasta 7+2 huéspedes para familias o grupos.",
+        faq4_q:"¿Cómo es la ubicación respecto al centro y la ZTL?",
+        faq4_a:"Junto a Porta San Biagio estás fuera de la ZTL con aparcamiento gratuito cerca y a pocos minutos a pie del centro.",
+        faq5_q:"¿Qué equipamiento incluyen las habitaciones y el apartamento?",
+        faq5_a:"Aire acondicionado, TV LED y baño privado en todas las opciones, con fácil acceso en coche a las playas de Salento.",
+        faq6_q:"¿Cómo reservar de forma directa?",
+        faq6_a:"Envía tu solicitud desde el formulario superior o contáctanos por WhatsApp o teléfono.",
+        book_label:"Reserva",book_title:"Reserva tu estancia",book_subtitle:"Envía tu solicitud y te responderemos con la disponibilidad.",
+        form_lbl_name:"Nombre",form_lbl_email:"Correo electrónico",form_lbl_solution:"Alojamiento",
+        form_lbl_arrival:"Llegada",form_lbl_departure:"Salida",form_lbl_guests:"Huéspedes",form_lbl_msg:"Mensaje",
+        form_name:"Nombre y apellido",form_email:"Dirección de correo",form_select:"Selecciona alojamiento",
+        form_opt1:"Apartamento Principal (hasta 9 pers.)",form_opt2:"Suite I / Habitación individual o doble con baño",form_opt3:"Suite II / Habitación individual o doble con baño",
+        form_msg:"Mensaje o peticiones especiales (opcional)",form_send:"Enviar solicitud",
+        ct_label:"Contacto",ct_title:"Hablemos",ct_phone:"Teléfono",ct_wa:"Escríbenos por WhatsApp",
+        footer:"© 2026 ViviDomus · Lecce — Todos los derechos reservados"
+      }
+    };
+
+    document.querySelectorAll('.lang-switch button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.lang-switch button').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const lang = btn.getAttribute('data-lang');
+        document.documentElement.lang = lang;
+        const t = translations[lang] || translations['it'];
+        
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+          const key = el.getAttribute('data-i18n');
+          if (t[key]) el.innerHTML = t[key];
+        });
+        document.querySelectorAll('[data-i18n-ph]').forEach(endEl => {
+          const phKey = endEl.getAttribute('data-i18n-ph');
+          if (t[phKey]) endEl.placeholder = t[phKey];
+        });
+      });
+    });
+  });
+</script>
 </body>
 </html>
